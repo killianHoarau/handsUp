@@ -38,7 +38,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="images/logo/headerBlanc.png" id="logo" alt="logo"></a>
+                    <a class="navbar-brand" href="index.php"><img src="images/logo/headerBlanc.png" id="logo" alt="logo"></a>
                 </div>
 				
                 <div class="collapse navbar-collapse navbar-right">
