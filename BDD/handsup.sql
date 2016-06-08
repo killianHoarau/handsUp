@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 08 Juin 2016 à 09:27
+-- Généré le :  Mer 08 Juin 2016 à 10:44
 -- Version du serveur :  5.6.30
 -- Version de PHP :  5.3.29
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `cours` (
   `id` int(5) NOT NULL,
   `libelle` varchar(50) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `nomFichier` varchar(20) NOT NULL
+  `nomFichier` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -54,7 +54,8 @@ CREATE TABLE IF NOT EXISTS `message` (
 
 CREATE TABLE IF NOT EXISTS `question` (
   `id` int(10) NOT NULL,
-  `libelle` varchar(500) NOT NULL
+  `libelle` varchar(500) NOT NULL,
+  `verrouille` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
