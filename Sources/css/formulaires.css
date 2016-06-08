@@ -36,7 +36,22 @@
 }
 
 /*buttons*/
-.msform .action-button {
+.msform .oubli-button{
+	width: 100px;
+	background: #c52d2f;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+.msform .oubli-button:hover, .msform .oubli-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #c52d2f;
+}
+
+.msform .action-button  {
 	width: 100px;
 	background: #27AE60;
 	font-weight: bold;
