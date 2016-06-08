@@ -2,7 +2,7 @@
     $title="Compte <?php echo SESSION['login']; ?>";
     include("header.php");
 ?>
-<section id="feature" >
+    <section id="feature" >
         <div class="container">
            <div class="center wow fadeInDown">
                 <h2>Voici vos informations</h2>
@@ -51,7 +51,7 @@
             </div>
         </div>
     </section><!--/#feature-->
-    
+
 <?php
     include("footer.php");
 ?>
