@@ -11,7 +11,7 @@
 <span class="prg">Inscription</span> 
 </div>
 </div>
-<form id="msform">
+<form id="signIn" class="msform">
 <!-- fieldsets -->
   <fieldset>
   	<input type="text" name="nom" placeholder="Nom" />
@@ -32,7 +32,7 @@
 </div>
 </div>
 	<div class="formConnexion">
-  <form id="msform" action="../php/confirmLogin.php" method="POST">
+  <form action="../php/confirmLogin.php" method="POST" class="msform">
 <!-- fieldsets -->
   <fieldset>
   	<input type="text" name="login" placeholder="Login" />
@@ -50,3 +50,9 @@
 <?php
 	include("footer.php");
 ?>
+<script>
+	$('#signIn').click(function(){
+		alert('test');
+		
+	});
+</script>

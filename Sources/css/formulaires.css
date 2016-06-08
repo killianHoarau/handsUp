@@ -1,11 +1,11 @@
 
-#msform {
+.msform {
 	width: 400px;
 	margin: 50px auto;
 	text-align: center;
 	position: relative;
 }
-#msform fieldset {
+.msform fieldset {
 	background: white;
 	border: 0 none;
 	border-radius: 3px;
@@ -19,12 +19,12 @@
 	position: relative;
 }
 /*Hide all except first fieldset*/
-#msform fieldset:not(:first-of-type) {
+.msform fieldset:not(:first-of-type) {
 	display: none;
 }
 
 /*inputs*/
-#msform input, #msform textarea {
+.msform input, .msform textarea {
 	padding: 15px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -36,7 +36,7 @@
 }
 
 /*buttons*/
-#msform .action-button {
+.msform .action-button {
 	width: 100px;
 	background: #27AE60;
 	font-weight: bold;
@@ -47,7 +47,7 @@
 	padding: 10px 5px;
 	margin: 10px 5px;
 }
-#msform .action-button:hover, #msform .action-button:focus {
+.msform .action-button:hover, .msform .action-button:focus {
 	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
 
