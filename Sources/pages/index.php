@@ -4,7 +4,7 @@
 
     <section id="main-video" class="col-lg-12">
         <div class="col-lg-2"></div>
-        <video controls class="videoPub col-lg-8" src="../images/pub.mp4">Publicité de l'application</video>
+        <video controls class="videoPub col-lg-8" src="images/index/pub.mp4">Publicité de l'application</video>
         <div class="col-lg-2"></div>
     </section><!--/#main-video-->
 
@@ -55,7 +55,7 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="../images/services/services1.png">
+                            <img class="img-responsive" src="images/ico/qrcode.png">
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">QR Code</h3>
@@ -67,7 +67,7 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="../images/services/services2.png">
+                            <img class="img-responsive" src="images/ico/chat.png">
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">Pour vous timides</h3>
@@ -79,7 +79,7 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="../images/services/services3.png">
+                            <img class="img-responsive" src="images/ico/livre.png">
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">Fini le papiers</h3>
