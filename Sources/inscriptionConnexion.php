@@ -16,8 +16,9 @@
   <fieldset>
   	<input type="text" name="nom" placeholder="Nom" />
     <input type="text" name="email" placeholder="Email" />
-    <input type="password" name="pass" placeholder="Mot De Passe" />
+    <input type="password" name="mdp" placeholder="Mot De Passe" />
     <input type="password" name="cpass" placeholder="Confirmation" />
+    <input type="password" name="code" placeholder="Code Etudiant / Enseignant" />
     <input type="button" name="next" class="next action-button" value="Inscription" />
   </fieldset>
   </form>
@@ -31,12 +32,12 @@
 </div>
 </div>
 	<div class="formConnexion">
-  <form id="msform">
+  <form id="msform" action="confirmLogin.php" method="POST">
 <!-- fieldsets -->
   <fieldset>
-  	<input type="text" name="nom" placeholder="Nom" />
-    <input type="password" name="pass" placeholder="Mot De Passe" />
-    <input type="button" name="next" class="next action-button" value="Connexion" />
+  	<input type="text" name="login" placeholder="Login" />
+    <input type="password" name="mdp" placeholder="Mot De Passe" />
+    <input type="submit" name="next" class="next action-button" value="Connexion" />
   </fieldset>
   </form>
   </div>
