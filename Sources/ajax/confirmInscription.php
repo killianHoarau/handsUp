@@ -76,7 +76,7 @@ if($valide)
 	$query = "INSERT INTO utilisateur (login,motDePasse, statut, valide, email) VALUES ('$login', '$mdp', $statut, 1, '$email');";
 	$result = $link->query($query);
 	
-	//ok
+	//ok cest bon
 	//Envoie mail de confirmation
 	//$destinataire = $email;
 	//$sujet = "Confirmez votre inscription à HandsUp !";
