@@ -103,7 +103,7 @@
 				},
 				success : function(code_html){ // code_html contient le HTML renvoyé
 							console.log("test");
-							$('#myModal').css('opacity','1');
+							$('#myModal').css('opacity','1'); //ok
 							$('#myModal').toggle();
 				},
 			});
