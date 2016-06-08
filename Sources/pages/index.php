@@ -1,5 +1,5 @@
 <?php
-    $tilte="Accueil";
+    $title="Accueil";
     include("header.php");
 ?>
 
@@ -91,6 +91,7 @@
             </div><!--/.row-->
         </div><!--/.container-->
     </section><!--/#services-->
+    
 <?php
     include("footer.php");
 ?>
