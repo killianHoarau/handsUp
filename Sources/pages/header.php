@@ -24,6 +24,13 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../images/ico/apple-touch-icon-57-precomposed.png">
+    <script type="text/javascript">
+        d = document.getElementById("logo");
+ 
+topPos = d.offsetTop;
+alert(topPos);
+
+    </script>
 </head><!--/head-->
 
 <body class="homepage">
@@ -31,7 +38,7 @@
     <header class="navbar navbar-inverse">
         <nav id="header" role="banner">
             <div class="container">
-                <div class="navbar-header">
+                <div class="navbar-header" >
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
