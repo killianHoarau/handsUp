@@ -1,10 +1,11 @@
 <?php
+    $title="Accueil";
     include("header.php");
 ?>
 
     <section id="main-video" class="col-lg-12">
         <div class="col-lg-2"></div>
-        <video controls class="videoPub col-lg-8" src="../images/pub.mp4">Publicité de l'application</video>
+        <video controls class="videoPub col-lg-8" src="../images/index/pub.mp4">Publicité de l'application</video>
         <div class="col-lg-2"></div>
     </section><!--/#main-video-->
 
@@ -19,21 +20,21 @@
                 <div class="features">
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
-                            <i class="fa fa-bullhorn"></i>
+                            <i class="fa fa-video-camera"></i>
                             <h2>Visualisation</h2>
                             <h3>Diffuser vos cours directement depuis Hands Up!</h3>
                         </div>
                     </div><!--/.col-md-4-->
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
-                            <i class="fa fa-cloud-download"></i>
+                            <i class="fa fa-download"></i>
                             <h2>Récupération</h2>
                             <h3>Fini la fille d'attente devant la photocopieuse, le cours est téléchargeable au format PDF</h3>
                         </div>
                     </div><!--/.col-md-4-->
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
-                            <i class="fa fa-comments"></i>
+                            <i class="fa  fa-question "></i>
                             <h2>Interaction</h2>
                             <h3>Une baisse d'energie? Faites participer vos élèves en leur donnant des QCM</h3>
                         </div>
@@ -54,8 +55,8 @@
 
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
-                        <div class="pull-left">
-                            <img class="img-responsive" src="../images/services/services1.png">
+                        <div>
+                            <img class="img-responsive icoImg" src="../images/ico/qrcode.png">
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">QR Code</h3>
@@ -66,10 +67,10 @@
 
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
-                        <div class="pull-left">
-                            <img class="img-responsive" src="../images/services/services2.png">
+                        <div>
+                            <img class="img-responsive icoImg" src="../images/ico/chat.png">
                         </div>
-                        <div class="media-body">
+                        <div>
                             <h3 class="media-heading">Pour vous timides</h3>
                             <p>Peur de prendre la parole en public? Utilise le Chat!</p>
                         </div>
@@ -78,18 +79,19 @@
 
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
-                        <div class="pull-left">
-                            <img class="img-responsive" src="../images/services/services3.png">
+                        <div>
+                            <img class="img-responsive icoImg" src="../images/ico/livre.png">
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">Fini le papiers</h3>
                             <p>Maintenant tous vos cours sont sur Hands Up</p>
                         </div>
                     </div>
-                </div>                              
-            </div><!--/.row-->        
-        </div><!--/.container-->    
+                </div>
+            </div><!--/.row-->
+        </div><!--/.container-->
     </section><!--/#services-->
+
 <?php
     include("footer.php");
 ?>

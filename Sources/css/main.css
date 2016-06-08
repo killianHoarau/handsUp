@@ -17,9 +17,14 @@
   background-color: #151515;
 }
 
+.icoImg{
+  float: left;
+  margin-right: 15px;
+}
+
 .logoFooter{
-  width: 15%;
-  height: 15%;
+  width: 35%;
+  height: 35%;
 }
 /*************************
 *******Typography******
@@ -672,7 +677,7 @@ input.search-form:hover {
 }
 
 #services {
-  background: #000 url(../images/services/bg_services.png);
+  background: #000 url(../images/index/bg_services_etudiant.png);
   background-size: cover;
 }
 
@@ -2519,14 +2524,12 @@ shortcodes page css
   margin-bottom: 0;
 }
 
+
 #footer {
   padding-top: 30px;
   padding-bottom: 30px;
   color: #fff;
-  background: #2e2e2e;
-  bottom: 0px;
-  position: fixed;
-  width: 100%;
+  background: #151515;
 }
 
 #footer a {

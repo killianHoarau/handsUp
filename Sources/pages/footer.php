@@ -1,8 +1,9 @@
+</div>
 <footer id="footer" class="midnight-blue">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
-                   <a class="navbar-brand" href="index.php"><img src="../images/logo/footer.png" class="logoFooter" alt="logo"></a>
+                <div class="col-sm-6">
+                    <a class="navbar-brand" href="index.php"><img src="../images/logo/footer.png" class="logoFooter" alt="logo"></a>
                 </div>
             </div>
         </div>
@@ -14,5 +15,5 @@
     <script src="../js/jquery.isotope.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/wow.min.js"></script>
-</body>
+    </body>
 </html>

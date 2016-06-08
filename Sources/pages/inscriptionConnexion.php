@@ -1,6 +1,8 @@
 <?php
+  $title="Inscription | Connexion";
 	include("header.php");
 ?>
+
 <br>
 <div class="container">
 	<div class="col-lg-12">

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | Corlate</title>
+    <title><?php echo $title; ?></title>
 	
 	<!-- core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -24,6 +24,13 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../images/ico/apple-touch-icon-57-precomposed.png">
+    <script type="text/javascript">
+        d = document.getElementById("logo");
+ 
+topPos = d.offsetTop;
+alert(topPos);
+
+    </script>
 </head><!--/head-->
 
 <body class="homepage">
@@ -31,7 +38,7 @@
     <header class="navbar navbar-inverse">
         <nav id="header" role="banner">
             <div class="container">
-                <div class="navbar-header">
+                <div class="navbar-header" >
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -49,12 +56,13 @@
 						if (!isset($_SESSION['login']))
 						{
 ?>						
-							<li><a href="inscriptionConnexion.php">Inscription/Connexion</a></li>       
+							<li><a href="inscriptionConnexion.php">Inscription/Connexion</a></li> 
+                            <li><a href="compte.php">Mon Compte</a></li>     
 <?php 
 						}
 						else
 						{ ?>
-							<li><a href="monCompte.php?statut=<?php echo $_SESSION['droit']; ?>">Mon Compte</a></li>
+                            <li><a href="compte.php?statut=<?php echo $_SESSION['droit']; ?>"><?php echo $_SESSION['login']?></a></li> 
 							<li><a href="../php/deconnexion.php">Deconnexion</a></li>
 <?php					} ?>
                     </ul>
@@ -63,3 +71,4 @@
         </nav><!--/nav-->
 		
     </header><!--/header-->
+<div class="corps">
