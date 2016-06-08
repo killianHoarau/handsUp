@@ -14,13 +14,11 @@
 <form id="msform">
 <!-- fieldsets -->
   <fieldset>
-  	<input type="text" name="login" placeholder="Login" />
+  	<input type="text" name="nom" placeholder="Nom" />
     <input type="text" name="email" placeholder="Email" />
     <input type="password" name="pass" placeholder="Mot De Passe" />
     <input type="password" name="cpass" placeholder="Confirmation" />
-    <input type="text" name="tel" placeholder="Telephone" />
-    <input type="password" name="code" placeholder="Code Etudiant / Enseignant" />
-    <input type="button" name="next" class="action-button" value="Inscription" />
+    <input type="button" name="next" class="next action-button" value="Inscription" />
   </fieldset>
   </form>
 </div>
@@ -36,9 +34,9 @@
   <form id="msform">
 <!-- fieldsets -->
   <fieldset>
-  	<input type="text" name="login" placeholder="Login" />
+  	<input type="text" name="nom" placeholder="Nom" />
     <input type="password" name="pass" placeholder="Mot De Passe" />
-    <input id='connectButton' type="button" name="next" class="action-button" value="Connexion" />
+    <input type="button" name="next" class="next action-button" value="Connexion" />
   </fieldset>
   </form>
   </div>
@@ -46,13 +44,8 @@
   </div>
 </div>
 
+
+</form>
 <?php
 	include("footer.php");
 ?>
-<script>
-	$("#connectButton").click(function(){
-		alert("test");
-		
-	});
-
-</script>
