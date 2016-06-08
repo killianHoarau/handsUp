@@ -86,9 +86,9 @@
                             <p>Maintenant tous vos cours sont sur Hands Up</p>
                         </div>
                     </div>
-                </div>                              
-            </div><!--/.row-->        
-        </div><!--/.container-->    
+                </div>
+            </div><!--/.row-->
+        </div><!--/.container-->
     </section><!--/#services-->
 <?php
     include("footer.php");
