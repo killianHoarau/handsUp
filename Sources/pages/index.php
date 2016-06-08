@@ -1,4 +1,5 @@
 <?php
+    $tilte="Accueil";
     include("header.php");
 ?>
 

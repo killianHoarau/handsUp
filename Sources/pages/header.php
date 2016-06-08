@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | Corlate</title>
+    <title><?php echo $title?></title>
 	
 	<!-- core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -49,12 +49,13 @@
 						if (!isset($_SESSION['login']))
 						{
 ?>						
-							<li><a href="inscriptionConnexion.php">Inscription/Connexion</a></li>       
+							<li><a href="inscriptionConnexion.php">Inscription/Connexion</a></li> 
+                            <li><a href="compte.php">Mon Compte</a></li>     
 <?php 
 						}
 						else
 						{ ?>
-							<li><a href="monCompte.php?statut=<?php echo $_SESSION['droit']; ?>">Mon Compte</a></li>
+                            <li><a href="compte.php?statut=<?php echo $_SESSION['droit']; ?>"><?php echo $_SESSION['login']?></a></li> 
 							<li><a href="../php/deconnexion.php">Deconnexion</a></li>
 <?php					} ?>
                     </ul>
