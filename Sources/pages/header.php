@@ -50,7 +50,6 @@
 						{
 ?>
 							<li><a href="inscriptionConnexion.php">Inscription/Connexion</a></li>
-                            <li><a href="compte.php">Mon Compte</a></li>
 <?php
 						}
 						else

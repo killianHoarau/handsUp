@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	if (!isset($_SESSION['login'])){
+		header('Location: index.php');
+	}
     $title="Compte ". $_SESSION['login'];
     include("header.php");
 	include("../php/infoCompte.php");
@@ -7,9 +10,13 @@
     <section id="feature" >
         <div class="container">
            <div class="center wow fadeInDown">
-                <h2>Voici vos informations</h2>
+                <h2>Voici vos informations
+					<button id="btnEdit">
+						<i class="fa fa-pencil-square-o fa-lg"/></i>
+					</button>
+				</h2>
                 <p class="lead">Ici vous pouvez mettre à jour vos information personnel</p>
-				<button id="btnEdit"><i class="fa fa-pencil-square-o fa-lg"/></i></button>
+
             </div>
 
             <div class="row">
@@ -44,13 +51,13 @@
                     </div>
                 </div>
             </div>
-<span id="test"></span>
+
 			<div class=" row msform">
 				<div class="col-lg-6">
 					<button id='btnSaveInfo' name="next" class="next action-button">Valider</button>
 				</div>
 				<div class="col-lg-6">
-					<button id="btnCancelInfo" class="next oubli-button">Annuler</button>	
+					<button id="btnCancelInfo" class="next oubli-button">Annuler</button>
 				</div>
 
 			</div>
@@ -81,6 +88,17 @@
             </div>
         </div>
     </section><!--/#feature-->
+
+	<!-- <section id="feature" class="">
+		<fieldset class="msform">
+			<input type="text" name="login" placeholder="Login"/>
+			<input type="email" name="email" placeholder="Email"/>
+			<input type="password" name="mdp" placeholder="Mot De Passe"/>
+			<input type="password" name="cmdp" placeholder="Confirmation"/>
+			<input type="text" name="code" placeholder="Code Etudiant / Enseignant"/>
+			<input id='btnInscription' type="submit" name="next" class="next action-button" value="Inscription"/>
+		</fieldset>
+	</section> -->
 
 <?php
 	$nomScript="modifCompte";

@@ -9,14 +9,33 @@ jQuery(function($) {'use strict',
 	 	$(this).closest('.panel-heading').toggleClass('active');
 	});
 
-	$('#btnEdit').on('click', function(){
-		$("#inputLogin").css('display', 'block');
-		$("#inputEmail").css('display', 'block');
-		$("#btnSaveInfo").css('display', 'block');
-		$("#btnCancelInfo").css('display', 'block');
 
-		$('#login').hide();
-		$('#email').hide();
+// Page compte
+	var toggled = false;
+	$('#btnEdit').on('click', function(){
+		if (!toggled) {
+			$("#inputLogin").css('display', 'block');
+			$("#inputEmail").css('display', 'block');
+			$("#btnSaveInfo").css('display', 'block');
+			$("#btnCancelInfo").css('display', 'block');
+
+			$('#login').hide();
+			$('#email').hide();
+
+			toggled = true;
+			console.log(toggled);
+		}else {
+			$("#inputLogin").hide();
+			$("#inputEmail").hide();
+			$("#btnSaveInfo").hide();
+			$("#btnCancelInfo").hide();
+
+			$('#login').css('display', 'block');
+			$('#email').css('display', 'block');
+
+			toggled = false;
+			console.log(toggled);
+		}
 	});
 
 	$('#btnCancelInfo').on('click', function(){

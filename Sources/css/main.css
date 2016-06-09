@@ -1,5 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800);
 
+#market{
+	margin-top: 11%;
+}
+
 /*Page mon compte*/
 
 .info-perso p{
@@ -19,18 +23,35 @@
 }
 
 .info-perso input{
-	text-align: center;
-	margin: 0px auto;
 	display: none;
+	margin: 0px auto;
+	font-size: 16px;
+	color: #787878;
+	font-weight: 400;
+	line-height: 24px;
+	text-align: center;
+
 }
 
 #btnSaveInfo{
 	margin: 0 auto;
 	display: none;
 }
+
 #btnCancelInfo{
 	margin: 0 auto;
 	display: none;
+}
+
+#btnEdit {
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	color: #c52d2f ;
+}
+
+#btnEdit:hover, #btnEdit:active, #btnEdit:focus{
+	opacity: 0.7;
 }
 
 /**/
@@ -598,6 +619,10 @@ input.search-form:hover {
   padding-bottom: 40px;
 }
 
+#feature:first-child{
+	padding-top: 20px;
+}
+
 .features{
   padding: 0;
 }
@@ -615,7 +640,7 @@ input.search-form:hover {
   margin-right: 25px;
 }
 
-.feature-wrap i{
+.feature-wrap i, .feature-wrap a{
   font-size: 48px;
   height: 110px;
   width: 110px;
@@ -636,7 +661,7 @@ input.search-form:hover {
   margin-right: 25px;
 }
 
-.feature-wrap i:hover {
+.feature-wrap i:hover, .feature-wrap a:hover {
   background: #c52d2f;
   color: #fff;
   box-shadow: inset 0 0 0 5px #c52d2f;

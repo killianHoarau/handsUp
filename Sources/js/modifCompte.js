@@ -24,7 +24,6 @@ $('#btnSaveInfo').click(function(){
 				email : email.value
 			},
 			success : function(code_html){
-				$('#test').html(code_html);
 				window.location.reload();
 			},
 		});
