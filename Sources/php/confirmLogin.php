@@ -8,8 +8,10 @@ $result = $link->query($query);
 if ($result->num_rows > 0) {
 	$row = $result->fetch_assoc();
 	session_start();
+	$_SESSION["id"] = $row['id'];
 	$_SESSION["login"] = $row['login'];
 	$_SESSION["droit"] = $row['statut'];
+	$_SESSION["email"] = $row['email'];
 	header('Location: ../pages/index.php');
 }
 else

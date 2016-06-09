@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Jeu 09 Juin 2016 à 08:40
+-- Généré le :  Jeu 09 Juin 2016 à 13:23
 -- Version du serveur :  5.6.30
 -- Version de PHP :  5.3.29
 
@@ -49,8 +49,19 @@ CREATE TABLE IF NOT EXISTS `cours` (
   `id` int(5) NOT NULL,
   `libelle` varchar(50) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `nomFichier` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nomFichier` varchar(20) DEFAULT NULL,
+  `idEnseignant` int(3) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `cours`
+--
+
+INSERT INTO `cours` (`id`, `libelle`, `description`, `nomFichier`, `idEnseignant`) VALUES
+(1, 'Géographie', 'Cours de géographie', NULL, 2),
+(2, 'Mathématique', 'Cours de mathématique', NULL, 2),
+(3, 'Français', 'Cours de français', NULL, 2),
+(4, 'Histoire', 'Cours d''histoire', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -115,6 +126,14 @@ CREATE TABLE IF NOT EXISTS `suivre_cours` (
   `idCours` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `suivre_cours`
+--
+
+INSERT INTO `suivre_cours` (`idUtilisateur`, `idCours`) VALUES
+(1, 2),
+(1, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -128,14 +147,15 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `email` varchar(50) NOT NULL,
   `statut` tinyint(1) NOT NULL,
   `valide` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`id`, `login`, `motDePasse`, `email`, `statut`, `valide`) VALUES
-(1, 'jp', 'm', '', 0, 1);
+(1, 'jp', 'm', 'jp@m.fr', 0, 1),
+(2, 'MrProf', 'prof', 'prof@test.fr', 1, 1);
 
 --
 -- Index pour les tables exportées
@@ -185,7 +205,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `cours`
 --
 ALTER TABLE `cours`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `question`
 --
@@ -200,7 +220,7 @@ ALTER TABLE `reponse`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

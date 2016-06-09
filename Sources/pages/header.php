@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title><?php echo $title; ?></title>
-	
+
 	<!-- core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
@@ -18,19 +18,12 @@
     <!--[if lt IE 9]>
     <script src="../js/html5shiv.js"></script>
     <script src="../js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
     <link rel="shortcut icon" href="../images/ico/onglet.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../images/ico/apple-touch-icon-57-precomposed.png">
-    <script type="text/javascript">
-        d = document.getElementById("logo");
- 
-topPos = d.offsetTop;
-alert(topPos);
-
-    </script>
 </head><!--/head-->
 
 <body class="homepage">
@@ -47,7 +40,7 @@ alert(topPos);
                     </button>
                     <a class="navbar-brand" href="index.php"><img src="../images/logo/headerBlanc.png" id="logo" alt="logo"></a>
                 </div>
-				
+
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.php">Accueil</a></li>
@@ -55,20 +48,20 @@ alert(topPos);
 						session_start();
 						if (!isset($_SESSION['login']))
 						{
-?>						
-							<li><a href="inscriptionConnexion.php">Inscription/Connexion</a></li> 
-                            <li><a href="compte.php">Mon Compte</a></li>     
-<?php 
+?>
+							<li><a href="inscriptionConnexion.php">Inscription/Connexion</a></li>
+                            <li><a href="compte.php">Mon Compte</a></li>
+<?php
 						}
 						else
 						{ ?>
-                            <li><a href="compte.php?statut=<?php echo $_SESSION['droit']; ?>"><?php echo $_SESSION['login']?></a></li> 
+                            <li><a href="compte.php"><?php echo $_SESSION['login']?></a></li>
 							<li><a href="../php/deconnexion.php">Deconnexion</a></li>
 <?php					} ?>
                     </ul>
                 </div>
             </div><!--/.container-->
         </nav><!--/nav-->
-		
+
     </header><!--/header-->
 <div class="corps">
