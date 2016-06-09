@@ -12,7 +12,11 @@
 					<span class="prg">Inscription</span> 
 				</div>
 			</div>
-			<div id="signIn" class="msform" method='POST'>
+			<div id="statutInscription" class='col-lg-12'>
+				<span id="erreurVide" class='popupW col-lg-12'>Veuillez remplir les champs</span>
+				</div>
+			<div id="signIn" class="msform col-lg-12">
+
 				<!-- fieldsets -->
 				<fieldset>
 					<input type="text" name="login" placeholder="Login"/>
@@ -31,19 +35,31 @@
 					<span class="prg">Connexion</span> 
 				</div>
 			</div>
-			<div class="formConnexion msform">
-				<form action="../php/confirmLogin.php" method="POST" >
+				<div id="statutConnexion" class='col-lg-12'>
+					<span id="connectVide" class='popupW col-lg-12'>Veuillez remplir les champs</span>
+				</div>
+			
+				<div id="Connect" class="msform col-lg-12">
 					<!-- fieldsets -->
 					<fieldset>
 						<input type="text" name="login" placeholder="Login" />
 						<input type="password" name="mdp" placeholder="Mot De Passe" />
-						<div class="col-lg-6"><input type="submit" name="next" class="next action-button" value="Connexion" /></div>
-						<div class="col-lg-6"><button id="bstnOubli" class="next oubli-button">Un oubli?</button></div>
+						<div class="col-lg-6"><input id="btnConnexion" type="submit" name="next" class="next action-button" value="Connexion" /></div>
+						<div class="col-lg-6"><button id="btnOubli" class="next oubli-button">Un oubli?</button></div>
 					</fieldset>
-				</form>					
-			</div>
-		</div>	  
-	</div> 
+				</div>		
+				
+				<div id='formCompteOublie' class='msform formCompteOublie col-md-12'>
+					<fieldset>
+								<span id="recupSpan" class='col-md-12' style='position: relative; top: 0px;'>Remplissez les données dont vous vous souvenez</span>
+								<input name='login' placeholder="Login"/>
+								<input name='email' placeholder="email"/>
+								<input id='btnRecuperation' type="submit" class="next action-button recupererBnt" value="Recupérer mes identifiants" />
+					</fieldset>
+				</div>
+		</div>
+	</div>	  
+</div> 
 	<!-------------------------------------------------------------DEBUT DU POPUP ERREUR AVEC FORMULAIRE 
 		<div class="formConnexion msform">
 		<form action="../php/confirmOubli.php" method="POST" >
@@ -65,9 +81,9 @@
 	</div>-->
 </div>	 
 	<?php
-		include("popUp_ConfirmInscription.php");
-		include("popUp_Oubli.php");
-		include("popUp_Erreur.php");
+		// include("popUp_ConfirmInscription.php");
+		// include("popUp_Oubli.php");
+		// include("popUp_Erreur.php");
 	?>
 </div>
 

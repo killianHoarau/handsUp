@@ -1,7 +1,6 @@
 
 .msform {
-	width: 400px;
-	margin: 50px auto;
+	margin: 50px 0 auto;
 	text-align: center;
 	position: relative;
 }
@@ -65,7 +64,9 @@
 .msform .action-button:hover, .msform .action-button:focus {
 	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
-
+input.next.action-button.recupererBnt {
+    width: auto;
+}
 .titleprghp {
 background:#c52d2f;
 height: 46px;
@@ -74,10 +75,25 @@ font-size: 23px;
 height: 46px;
 line-height: 40px;
 padding: 0 0 0 20px;
-margin: 20px 0 20px;
 }
 
 .formConnexion
 {
 	padding-top: 20%;
+}
+div#formCompteOublie
+{
+	margin-bottom: 50px;
+	margin-top: 5px;
+}
+span.popup{
+	background: #27AE60;
+	text-align: center;
+	color: #fff;
+}
+span.popupW{
+	background: #c67476;
+	text-align: center;
+	color: #fff;
+	animation: ease;
 }

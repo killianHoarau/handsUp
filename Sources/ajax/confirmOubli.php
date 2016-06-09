@@ -76,6 +76,7 @@ if($valide)
 	$query = "INSERT INTO utilisateur (login,motDePasse, statut, valide, email) VALUES ('$login', '$mdp', $statut, 1, '$email');";
 	$result = $link->query($query);
 	
+	echo "Vous êtes bien inscris";
 	//ok cest bon
 	//Envoie mail de confirmation
 	//$destinataire = $email;
