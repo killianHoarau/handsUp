@@ -1,7 +1,7 @@
 <?php
 $login = $_POST['login'];
 $mdp = $_POST['mdp'];
-$link = new mysqli('localhost', 'root', '', 'handsup');
+$link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 $query = "SELECT * FROM utilisateur WHERE login = '$login' AND motDePasse = '$mdp' AND valide = 1";
 echo $query;
 $result = $link->query($query);
