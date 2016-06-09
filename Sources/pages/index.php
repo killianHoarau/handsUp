@@ -86,36 +86,34 @@
 	</div><!--/.row-->
 	</section>
 
-	<section id="feature" >
-        <div class="container">
-           <div class="center wow fadeInDown">
-                <h2>Télécharger un lecteur de QR code</h2>
-                <p class="lead">Accéder directement à un cours via le QR code fourni par l'enseignant</p>
-            </div>
+	<section id="feature" class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container center wow fadeInDown">
+        <h2>Télécharger un lecteur de QR code</h2>
+        <p class="lead">Accéder directement à un cours via le QR code fourni par l'enseignant</p>
+	</div>
 
-            <div class="row">
-                <div class="features">
-                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                        <div class="feature-wrap">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row features">
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+			<div class="feature-wrap">
                             <a href="https://play.google.com/store/apps/details?id=com.application_4u.qrcode.barcode" class="fa fa-android" target="_blank"></a>
                             <h2 id="market">Android</h2>
                         </div>
-                    </div><!--/.col-md-4-->
-                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                        <div class="feature-wrap">
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+			<div class="feature-wrap">
                             <a href="https://itunes.apple.com/fr/app/scanner-de-codes-qr/id483336864?mt=8" class="fa fa-apple" target="_blank"></a>
                             <h2 id="market">Apple</h2>
                         </div>
-                    </div><!--/.col-md-4-->
-                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                        <div class="feature-wrap">
+		</div>
+
+		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+			<div class="feature-wrap">
                             <a href="https://www.microsoft.com/fr-fr/store/apps/code-qr-code-barre/9nblggh3m5fl" class="fa fa-windows" target="_blank"></a>
                             <h2 id="market">Windows</h2>
                         </div>
-                    </div><!--/.col-md-4-->
-                </div>
-            </div>
-        </div>
+		</div>
+	</div>
     </section><!--/#feature-->
 
 <?php
