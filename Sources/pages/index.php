@@ -1,7 +1,20 @@
 <?php
     $title="Accueil";
     include("header.php");
+	if(isset($_GET['email']))
+	{
+		$email = $_GET['email'];
+		$link = new mysqli('localhost', 'root', 'mysql', 'handsup');
+		$query = "UPDATE utilisateur set valide = 1
+			WHERE email = '$email'";
+		//echo $query;
+		$result = $link->query($query);
+	}
 ?>
+<div id="firstConnection" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block;">
+		<span id="bienvenu" class="popup col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block;">Bienvenu, bon cours !</span>
+</div>
+
 <section id="main-video" class="row">
 	<div class="col-md-2 col-lg-2"></div>
     <video controls class="col-xs-12 col-sm-12 col-md-8 col-lg-8" src="../images/index/pub.mp4">Publicité de l'application</video>
@@ -119,3 +132,12 @@
 <?php
     include("footer.php");
 ?>
+<script>
+	$(document).ready(function(){
+		$('#firstConnection').hide();
+		if (<?php echo isset($_GET['email']); ?> == true)
+			$('#firstConnection').animate();
+		else
+			alert("no");
+	});
+</script>

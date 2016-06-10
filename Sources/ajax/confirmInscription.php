@@ -1,7 +1,4 @@
 <?php
-ini_set("SMTP", "smtp.gmail.com");
-ini_set("smtp_port", 465 );
-
 $login = $_POST['login'];
 $mdp = $_POST['mdp'];
 $cmdp = $_POST['cmdp'];
@@ -73,10 +70,13 @@ if($valide)
 	$statut = $row['statut'];
 	
 	//Insertion en base
-	$query = "INSERT INTO utilisateur (login,motDePasse, statut, valide, email) VALUES ('$login', '$mdp', $statut, 1, '$email');";
+	$query = "INSERT INTO utilisateur (login,motDePasse, statut, valide, email) VALUES ('$login', '$mdp', $statut, 0, '$email');";
 	$result = $link->query($query);
+	
+	include('../php/mailInscription.php');
 ?>
-<?php echo utf8_encode("<span class='popup col-lg-12'>Bienvenu</span>"); ?>
+
+<?php echo utf8_encode("<span class='popup col-lg-12'>Un Mail de confirmation vous a été envoyé</span>"); ?>
 <?php
 	//ok cest bon
 	//Envoie mail de confirmation
