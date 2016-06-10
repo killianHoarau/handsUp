@@ -1,7 +1,4 @@
 <?php
-ini_set("SMTP", "smtp.gmail.com");
-ini_set("smtp_port", 465 );
-
 $login = $_POST['login'];
 $mdp = $_POST['mdp'];
 $cmdp = $_POST['cmdp'];

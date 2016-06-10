@@ -1,20 +1,20 @@
 $(document).ready(function(){
-	$('#statutInscription').toggle();
+	$('#statutInscription').hide();
 	$('#statutConnexion').toggle();
 	$('#statutRecuperation').toggle();
 	$('#erreurVide').hide();	
 	$('#connectVide').hide();	
 	$('#recupVide').hide();	
-	$('#formCompteOublie').toggle();
+	$('#formCompteOublie').hide();
 	$('#recupSpan').hide();
 });
 var inscriptionToggled = false;
 $('#btnInscription').click(function(){
-		var login = document.getElementsByName('login')[0];
-		var email = document.getElementsByName("email")[0];
-		var mdp = document.getElementsByName("mdp")[0];
-		var cmdp = document.getElementsByName("cmdp")[0];
-		var code = document.getElementsByName("code")[0];
+		var login = document.getElementsByName('loginI')[0];
+		var email = document.getElementsByName("emailI")[0];
+		var mdp = document.getElementsByName("mdpI")[0];
+		var cmdp = document.getElementsByName("cmdpI")[0];
+		var code = document.getElementsByName("codeI")[0];
 		
 		var valid = true;
 		if(login.value.length === 0){
@@ -56,7 +56,9 @@ $('#btnInscription').click(function(){
 						$('#statutInscription').html(code_html);
 						if (!inscriptionToggled)
 						{
-							$('#statutInscription').toggle(1000, "swing");
+							$('#statutInscription').animate({
+								height: 'toggle'
+							});
 							inscriptionToggled = true;
 						}
 				},
@@ -67,7 +69,9 @@ $('#btnInscription').click(function(){
 			$('#erreurVide').show();
 			if (!inscriptionToggled)
 			{
-				$('#statutInscription').toggle(1000, "swing");
+				$('#statutInscription').animate({
+					height: 'toggle'
+				});
 				inscriptionToggled = true;
 			}
 		}
@@ -79,8 +83,8 @@ $("input").click(function()
 
 var connexionToggled = false;
 $('#btnConnexion').click(function(){
-	var login = document.getElementsByName('login')[1];
-	var mdp = document.getElementsByName("mdp")[1];
+	var login = document.getElementsByName('loginC')[0];
+	var mdp = document.getElementsByName("mdpC")[0];
 	
 	var valid = true;
 	if(login.value.length === 0){
@@ -105,13 +109,15 @@ $('#btnConnexion').click(function(){
 				success : function(code_html){ // code_html contient le HTML renvoyé
 						$('#statutConnexion').html(code_html);
 						if(code_html=='1')
-							window.location.assign("http://localhost:8080/handsup/sources/pages/index.php");
+							window.location.assign("../pages/index.php");
 						else
 						{
 							if (!connexionToggled)
 							{
 								$('#connectVide').show();
-								$('#statutConnexion').toggle(1000, "swing");
+								$('#statutConnexion').animate({
+									height: 'toggle'
+								});
 								connexionToggled = true;
 							}
 						}
@@ -123,7 +129,9 @@ $('#btnConnexion').click(function(){
 			$('#connectVide').show();
 			if (!connexionToggled)
 			{
-				$('#statutConnexion').toggle(1000, "swing");
+				$('#statutConnexion').animate({
+					height: 'toggle'
+				});
 				connexionToggled = true;
 			}
 		}
@@ -131,35 +139,54 @@ $('#btnConnexion').click(function(){
 	//alert("test");
 });
 $('#btnOubli').click(function(){
-	$('#formCompteOublie').toggle(500, "swing")
+	$('#formCompteOublie').show();
 	$('#recupSpan').show();
 	
 })
 
 //Au click sur le bouton de recuperation
 $('#btnRecuperation').click(function(){
-	var login = document.getElementsByName('login')[2];
-	var email = document.getElementsByName("email")[1];
+	var email = document.getElementsByName("emailR")[0];
 	var valid = true;
-	if(login.value.length === 0){
-			login.style.border = "1px solid red";
-		}
 	if(email.value.length === 0){
 			email.style.border = "1px solid red";
+			valid = false;
 		}
-	if(login.value.length === 0 && email.value.length === 0)
-		valid = false;
 	if(!valid)
 		{
 			$('#connectVide').show();
 			if (!connexionToggled)
 			{
-				$('#statutConnexion').toggle(1000, "swing");
+				$('#statutConnexion').animate({
+					height: 'toggle'
+				});
 				connexionToggled = true;
 			}
 		}
 	else
 	{
-		alert("ca va chier");
+		$.ajax({
+				url: "../ajax/envoiRecuperation.php",
+				type: 'POST',
+				async: true,
+				data : {
+					email : email.value
+				},
+				success : function(code_html){ // code_html contient le HTML renvoyé
+						$('#statutInscription').html(code_html);
+						if (!inscriptionToggled)
+						{
+							$('#statutInscription').animate({
+								height: 'toggle'
+							});
+							inscriptionToggled = true;
+						}
+				},
+			});
 	}
-})
+});
+$('#btnAnnul').click(function(){
+	$('#formCompteOublie').animate({
+		height: 'toggle'
+	});
+});
