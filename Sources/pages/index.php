@@ -11,7 +11,7 @@
 		$result = $link->query($query);
 	}
 ?>
-<div id="firstConnection" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block;">
+<div id="firstConnection" class="row" style="display: block;">
 		<span id="bienvenu" class="popup col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block;">Bienvenu, bon cours !</span>
 </div>
 
@@ -135,8 +135,12 @@
 <script>
 	$(document).ready(function(){
 		$('#firstConnection').hide();
-		if (<?php echo isset($_GET['email']); ?> == true)
-			$('#firstConnection').animate();
+		var isset = <?php echo isset($_GET['email']); ?>+' ';
+		if (isset == 1){
+			$('#firstConnection').animate({
+								height: 'toggle'
+							});
+		}
 		else
 			alert("no");
 	});
