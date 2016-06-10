@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Jeu 09 Juin 2016 à 13:23
+-- Généré le :  Ven 10 Juin 2016 à 15:29
 -- Version du serveur :  5.6.30
 -- Version de PHP :  5.3.29
 
@@ -96,9 +96,10 @@ CREATE TABLE IF NOT EXISTS `question` (
 --
 
 CREATE TABLE IF NOT EXISTS `repondre` (
-  `idUtilisateur` int(3) NOT NULL,
+  `idUtilisateur` int(3) DEFAULT NULL,
   `idReponse` int(10) NOT NULL,
-  `date` date NOT NULL
+  `date` date NOT NULL,
+  `temps` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

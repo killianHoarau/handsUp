@@ -23,7 +23,6 @@ jQuery(function($) {'use strict',
 			$('#email').hide();
 
 			toggled = true;
-			console.log(toggled);
 		}else {
 			$("#inputLogin").hide();
 			$("#inputEmail").hide();
@@ -34,7 +33,6 @@ jQuery(function($) {'use strict',
 			$('#email').css('display', 'block');
 
 			toggled = false;
-			console.log(toggled);
 		}
 	});
 
@@ -47,6 +45,57 @@ jQuery(function($) {'use strict',
 		$('#login').css('display', 'block');
 		$('#email').css('display', 'block');
 	});
+
+
+	// Page Creation QCM
+		$('#btnMoreReponse').on('click', function(){
+			$(".add-reponse").css('display', 'block');
+			$('#btnMoreReponse').hide();
+			$("#btnLessReponse").css('display', 'block');
+		});
+
+		$('#btnLessReponse').on('click', function(){
+			$(".add-reponse").hide();
+			$('#btnLessReponse').hide();
+			$("#btnMoreReponse").css('display', 'block');
+		});
+
+		var index = 0;
+		$('#btnAddReponse').on('click', function(){
+			index++;
+			console.log(i);
+			var li = document.createElement("li");
+			var libelleReponse = document.getElementsByName('libelleReponse')[0].value;
+			var textReponse = document.createTextNode(libelleReponse);
+			li.appendChild(textReponse);
+
+			var input = document.createElement("input");
+			input.setAttribute("value", libelleReponse);
+			input.setAttribute("name", "reponse"+index);
+			input.setAttribute("type", "hidden");
+			li.appendChild(input);
+
+			if (document.getElementsByName('bonneReponse')[0].checked) {
+				li.className += "bonneReponse";
+			}else {
+				li.className += "mauvaiseReponse";
+			}
+
+			var btn = document.createElement("span");
+			btn.id = "btnDeleteReponse";
+			var i = document.createElement("i");
+			i.className += "fa fa-trash-o fa-lg";
+			btn.appendChild(i);
+			li.appendChild(btn);
+
+			document.getElementById("listeReponses").appendChild(li);
+
+			$(".add-reponse").hide();
+			$('#btnLessReponse').hide();
+			$("#btnMoreReponse").css('display', 'block');
+
+		});
+	//
 
 	//Initiat WOW JS
 	new WOW().init();

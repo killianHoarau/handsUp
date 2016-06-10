@@ -1,8 +1,79 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800);
 
 #market{
-	margin-top: 11%;
+	margin-top: 8%;
 }
+
+/*Page création QCM*/
+.add-question p{
+	margin-top: 5%;
+	font-size: 20px;
+	font-weight: 600;
+	color: #4e4e4e;
+}
+
+.add-question>.msform{
+	margin: 0;
+}
+
+#btnMoreReponse{
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	color: #27AE60 ;
+}
+
+#btnLessReponse{
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	color: #c52d2f;
+	display: none;
+}
+
+#btnDeleteReponse{
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	color: #c52d2f;
+}
+
+.add-reponse{
+	display: none;
+}
+
+.add-reponse input[type="checkbox"]{
+	float: none;
+	width: auto;
+}
+
+.add-reponse .checkbox{
+padding-top: 4px;
+}
+
+#btnAddRepons	e{
+	margin-top: 5px;
+}
+
+#btnValiderQuestion{
+	width: 100%;
+}
+
+.bonneReponse{
+	list-style-image: url(../images/ico/checked.png);
+}
+
+.mauvaiseReponse{
+	list-style-image: url(../images/ico/unchecked.png);
+}
+
+#deleteReponse{
+	list-style: none;
+	padding: 0;
+}
+/**/
+
+
 
 /*Page mon compte*/
 
