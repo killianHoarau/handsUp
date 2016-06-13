@@ -1,3 +1,16 @@
+$(document).ready(function(){
+	$.ajax({
+		url: "../ajax/getCours.php",
+		type: 'POST',
+		async: true,
+		success: function(code_html)
+		{
+			$('#listCours').html(code_html);
+		},
+	});
+});
+
+
 $('#btnSaveInfo').click(function(){
 
 	var login = document.getElementById('inputLogin');
@@ -49,6 +62,4 @@ $('#btnSaveInfo').click(function(){
 			},
 		});
 	}
-
-
 });

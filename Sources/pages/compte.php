@@ -66,19 +66,8 @@
 
     <section id="feature" >
         <div class="container">
-           <div class="center wow fadeInDown">
-				<?php if ($_SESSION["droit"] == 0) { ?>
-					<h2>Voici vos cours</h2>
-	                <p class="lead">A partir d'ici vous pouvez visualiser mais aussi modifier vos cours</p>
-
-					<?php foreach ($cours as $cour) {
-						echo $cour['libelleCours'];
-						echo $cour['descriptionCours'];
-						echo $cour['loginEnseignant'];
-						echo "<br>";
-					}
-				}?>
-
+           <div id='listCours' class="center wow fadeInDown"> 
+				<!--Remplit par ajax/getCours.php -->
             </div>
 
             <div class="row">
