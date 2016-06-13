@@ -26,7 +26,6 @@ $('#btnSaveInfo').click(function(){
 		email.style.border = "1px solid red";
 		var valid = false;
 	}
-
 	if(valid){
 		$.ajax({
 			url: "../ajax/confirmModifCompte.php",

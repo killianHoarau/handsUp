@@ -20,14 +20,13 @@ if ($_SESSION["droit"] == 0) {  // Etudiant
 
 	$query = "SELECT cours.id as 'idCours', libelle, description, login as 'loginEnseignant'  FROM cours, suivre_cours, utilisateur WHERE cours.id = suivre_cours.idCours AND utilisateur.id = cours.idEnseignant AND suivre_cours.idUtilisateur = '$id';";
 	// die(var_dump($query));
-	$cours = array(array());
-	$i = 0;
 
 	$result = $link->query($query);
 	if ($result->num_rows > 0) {
 	?>	
 	<h2>Voici vos cours</h2>
-	<p class="lead">A partir d'ici vous pouvez visualiser mais aussi modifier vos cours</p>
+	<p class="lead">A partir d'ici vous pouvez visualiser vos cours ou vous y désinscrire</p>
+		<div class="table-responsive">
 		<table class="table">
 			<thead>
 				<tr>
@@ -44,23 +43,69 @@ if ($_SESSION["droit"] == 0) {  // Etudiant
 				<td><?php echo $row['libelle']; ?></td>
 				<td><?php echo $row['description']; ?></td>
 				<td><?php echo $row['loginEnseignant']; ?></td>
-				<td style="padding: 0;"><i id="<?php echo $row['idCours']; ?>" class="fa fa-trash-o" style="color: #c52d2f; font-size: 2em;" aria-hidden="true"></i></td>
-				<!--<td style="padding: 0;"><img id="supprimer<?php echo $row['idCours']; ?>" src="../images/ico/trash.png" class='img-responsive' style='height: 30px;' title="Supprimer" alt="Supprimer Cours"/></td>-->
+				<td style="padding: 0; border-top: 0"><i id="<?php echo $row['idCours']; ?>" class="fa fa-trash-o" style="color: #c52d2f; font-size: 2em;" aria-hidden="true"></i></td>
 			</tr>
 	<?php
 		}
 	?>
-			<tbody>
+			</tbody>
 		</table>
+		<div>
 	<?php	
 	}
 	else { ?> <p class="lead">Vous n'êtes inscrit à auncun cours</p> <?php }
 }
-else { 
-	?> <span>Bonjour Professeur</span>
-<?php } ?>
+else { //Enseignant
+	$query = "SELECT * FROM cours where idEnseignant = $id";
+
+	$result = $link->query($query);
+	if ($result->num_rows > 0) {
+	?>	
+	<h2>Voici vos cours</h2>
+	<p class="lead">A partir d'ici vous pouvez visualiser vos cours, les modifier ou en créer de nouveaux</p>
+		<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="center">Cours</th>
+				</tr>
+			</thead>
+			<tbody>
+	<?php
+		while($row = $result->fetch_assoc()){
+		?>
+			<tr id='<?php echo $row['id']; ?>' name="trCours">
+				<td><?php echo $row['libelle']; ?></td>
+				
+			</tr>
+			<tr name="trInfos<?php echo $row['id']; ?>">
+				<td>
+					<div class="col-md-12">
+						<?php echo $row['description']; ?>
+						<i id="<?php echo $row['idCours']; ?>" class="fa fa-trash-o" style="color: #c52d2f; font-size: 2em;" aria-hidden="true"></i>
+					</div>
+				</td>
+			</tr>
+	<?php
+		}
+	?>
+			</tbody>
+		</table>
+		</div>
+<?php }
+} ?>
 
 <script>
+	$(document).ready(function(){
+		$("tr[name^='trInfos']").hide(); //Cache toutes les div dont l'id commence par 'divQuestions'
+		$("tr[name='trCours']").click(function(){
+			var id = this.id;
+			//alert('tr[name="trInfos'+id+"\"]");
+			$('tr[name="trInfos'+id+"\"]").animate({
+								height: 'toggle'
+							});
+		});
+	});
 	//Suppression au click sur la poubelle
 	$( "i" ).click(function(){
 		var ide = this.id;
