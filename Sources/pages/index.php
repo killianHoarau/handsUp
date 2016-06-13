@@ -140,8 +140,13 @@
 			$('#firstConnection').animate({
 								height: 'toggle'
 							});
+			setTimeout(function(){
+				$('#firstConnection').animate({
+								height: 'toggle'
+				});
+				}, 2000);	
 		}
-		else
-			alert("no");
+		//else
+			//alert("no");
 	});
 </script>

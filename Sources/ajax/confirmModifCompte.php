@@ -6,19 +6,17 @@ $login = $_POST['login'];
 $email = $_POST['email'];
 
 $valide = true;
+$erreur = 0;
 $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
-
 //Existence du login en base
 if(!empty($login)){
 	$query = "SELECT * FROM utilisateur WHERE login = '$login';";
 	$result = $link->query($query);
 	if ($result->num_rows > 0) {
 		$row = $result->fetch_assoc();
-		if ($_SESSION["id"] =! $row['id']) {
-			?>
-			<span>Ce login est déja utilisé</span><br>
-			<?php
+		if ($_SESSION["id"] != $row['id']) {
 			$valide = false;
+			$erreur = 1;
 		}
 	}
 	$result->mysqli_free_result;
@@ -30,11 +28,9 @@ if(!empty($email)){
 	$result = $link->query($query);
 	if ($result->num_rows > 0) {
 		$row = $result->fetch_assoc();
-		if ($_SESSION["id"] =! $row['id']){
-			?>
-			<span>Cet email est déja utilisé</span><br>
-			<?php
+		if ($_SESSION["id"] != $row['id']){
 			$valide = false;
+			$erreur = 2;
 		}
 	}
 	$result->mysqli_free_result;
@@ -52,6 +48,6 @@ if($valide)
 	$_SESSION["id"] = $id;
 	$result = $link->query($query);
 }
-
+echo json_encode($valide.$erreur);
 
 ?>
