@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if (!isset($_SESSION['login'])){
+	if (!isset($_SESSION['login']) || $_SESSION['droit'] == 2){
 		header('Location: index.php');
 	}
 	$idCours = $_GET["idCours"];

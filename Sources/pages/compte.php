@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if (!isset($_SESSION['login'])){
+	if (!isset($_SESSION['login']) || $_SESSION['droit'] == 2){
 		header('Location: index.php');
 	}
     $title="Compte ". $_SESSION['login'];
@@ -81,11 +81,11 @@
 				<input type="button" value="Joindre Fichier" class='btn-default' onclick="getfile();" />
 				<button id="btnAddCours" class="next action-button col-md-12" style='width: 100%;'>Ajouter Cours</button>
 			</form>
-			
+
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
 				<button id="annul" class='next action-button' style='width: 100%;'>Ajouter Cours</button>
 			</div>
-<?php } ?>			
+<?php } ?>
 
         </div>
     </section><!--/#feature-->

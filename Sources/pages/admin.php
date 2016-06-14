@@ -1,8 +1,8 @@
 <?php
 	session_start();
-	// if (!isset($_SESSION['login'] == 2)){
-	// 	header('Location: index.php');
-	// }
+	if (($_SESSION['droit'] != 2)){
+		header('Location: index.php');
+	}
 	$title="Administration";
     include("header.php");
 	include("../php/infoAdmin.php");

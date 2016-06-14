@@ -49,13 +49,23 @@
 <?php
                         }
                         else
-                        { ?>
-                            <li><a href="compte.php"><?php echo $_SESSION['login']?></a></li>
+                        {
+							if ($_SESSION['droit'] == 2) {
+?>
+								<li><a href="admin.php">Administration</a></li>
+<?php
+							}else {
+?>
+								<li><a href="compte.php"><?php echo $_SESSION['login']?></a></li>
+<?
+							}
+?>
+
                             <li><a href="../php/deconnexion.php">Deconnexion</a></li>
-<?php                   } ?>                      
+<?php                   } ?>
                 </ul>
             </div>
         </div><!--/.container-->
     </nav><!--/nav-->
-        
+
 </header><!--/header-->
