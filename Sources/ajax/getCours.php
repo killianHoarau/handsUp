@@ -98,8 +98,12 @@ else { //Enseignant
 							</form>
 						<?php }else {
 							?>
-							<!--<form action="../ajax/ajoutCours.php" method="POST" id="formAddCours" enctype="multipart/form-data" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">-->
-							<i id="" class="fa fa-upload fa-lg load" aria-hidden="true"></i>
+							<form action="../ajax/ajoutCours.php" method="POST" id="formAddCours" enctype="multipart/form-data" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
+								<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours">
+								<input type="file" id="Ajouthiddenfile" style="display:none;" name="file" onChange="Ajoutgetvalue();"/>
+								<input type="text" id="Ajoutselectedfile" placeholder="Fichier Selectionné (Facultatif)" disabled="disabled"/>
+								<i id="" class="fa fa-upload fa-lg load" name="ul<?php echo $row['id']; ?>" aria-hidden="true" onclick="Ajoutgetfile();"></i>
+							</form>
 						<?php } ?>
 					</div>
 				</td>
@@ -148,6 +152,12 @@ else { //Enseignant
 		return false;
 	});
 
+	function Ajoutgetfile(){	//Sert à la personnalisation d'un input file
+		document.getElementById('Ajouthiddenfile').click();
+	}
+	function Ajoutgetvalue(){ //Sert à la personnalisation d'un input file
+		document.getElementById('Ajoutselectedfile').value=document.getElementById('Ajouthiddenfile').value;
+	}
 
 	$("i[id^='qcm']").click(function() {
 		document.location.href = "creationQCM.php?idCours="+this.attributes["name"].value;

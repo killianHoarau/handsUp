@@ -2,6 +2,8 @@
 session_start();
 if (isset($_POST['idCours']))
 	$idCours = $_POST['idCours'];
+else
+	$idCours = 0;
 $idEnseignant = $_SESSION["id"];
 $libelle = $_POST['libelle'];
 $description = $_POST['addDescription'];
@@ -25,14 +27,12 @@ if(!empty($_FILES['file']['name']))
 	}
 	move_uploaded_file($file_loc,$folder.$file);
 }
- // echo $file;
-// $sql = "INSERT INTO cours (libelle, description, nomFichier, idEnseignant) 
- //VALUES ('$libelle', '$description', '$file', $idEnseignant)";
- $sql = "UPDATE cours SET nomFichier = '$file' WHERE idCours = $idCours
-		IF @@ROWCOUNT=0
-			INSERT INTO cours (libelle, description, nomFichier, idEnseignant) 
+if($idCours!=0)
+	$sql = "UPDATE cours SET nomFichier = '$file' WHERE id = $idCours";
+else
+	$sql = "INSERT INTO cours (libelle, description, nomFichier, idEnseignant) 
 				VALUES ('$libelle', '$description', '$file', $idEnseignant)";
 echo $sql;
 $result = $link->query($sql);
- header("Location: ../pages/compte.php");
+header("Location: ../pages/compte.php");
 ?>
