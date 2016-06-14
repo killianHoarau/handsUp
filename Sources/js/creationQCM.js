@@ -51,7 +51,7 @@ $('#btnAddReponse').on('click', function(){
 	btn.onclick = function() {
 		$(this).parent().remove();
 	}
-	// btn.id = "btnDeleteReponse";
+	btn.className += "poubelle";
 	var i = document.createElement("i");
 	i.className += "fa fa-trash-o fa-lg";
 	btn.appendChild(i);
@@ -71,12 +71,14 @@ $('#btnAddReponse').on('click', function(){
 $('#btnValiderQuestion').on('click', function(){
 
 	var question = document.getElementsByName('libelleQuestion')[0].value;
+	var idCours = document.getElementsByName('idCours')[0].value;
 
 	$.ajax({
 		url: "../ajax/confirmAjoutQCM.php",
 		type: 'POST',
 		async: true,
 		data : {
+			idCours : idCours,
 			question : question,
 			tabReponses : tabReponses
 		},

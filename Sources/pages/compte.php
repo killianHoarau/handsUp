@@ -16,7 +16,6 @@
 					</button>
 				</h2>
                 <p class="lead">Ici vous pouvez mettre à jour vos information personnel</p>
-
             </div>
 
             <div class="row">
@@ -64,12 +63,20 @@
         </div>
     </section><!--/#feature-->
 
+
     <section id="feature" >
         <div class="container">
-           <div id='listCours' class="center wow fadeInDown"> 
+           <div id='listCours' class="center wow fadeInDown">
 				<!--Remplit par ajax/getCours.php -->
             </div>
+<<<<<<< HEAD
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
+				<button class="next action-button col-md-12" style='width: 100%;'>Ajouter Cours</button>
+			</div>
+
+=======
 			
+>>>>>>> f3df269bb7d240387eb188a9b31db676899d588b
 			<!-- Formulaire de creation de cours et d'upload d'un fichier-->
 			<form action="../ajax/ajoutCours.php" method="POST" id="formAddCours" enctype="multipart/form-data" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
 				<input name="libelle" placeholder="Titre du cours" />
@@ -89,16 +96,26 @@
         </div>
     </section><!--/#feature-->
 
-	<!-- <section id="feature" class="">
-		<fieldset class="msform">
-			<input type="text" name="login" placeholder="Login"/>
-			<input type="email" name="email" placeholder="Email"/>
-			<input type="password" name="mdp" placeholder="Mot De Passe"/>
-			<input type="password" name="cmdp" placeholder="Confirmation"/>
-			<input type="text" name="code" placeholder="Code Etudiant / Enseignant"/>
-			<input id='btnInscription' type="submit" name="next" class="next action-button" value="Inscription"/>
-		</fieldset>
+
+	<!-- pop up modif cours -->
+
+	<!-- <section id="feature">
+		<div class="container">
+			<div class="center wow fadeInDown">
+				 <h2>Modifier le cours</h2>
+			 </div>
+			 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
+				<input name="libelle" value=""/>
+				<textarea name="description" value=""></textarea>
+				<input type="file" id="hiddenfile" style="display:none;" name="file" onChange="getvalue();"/>
+				<input type="text" id="selectedfile" placeholder="Fichier Selectionné (Facultatif)" disabled="disabled"/>
+				<input type="button" value="Joindre Fichier" class='btn-default' onclick="getfile();" />
+				<button id="btn-upload" class='btn btn-default'>Envoyer</button>
+			</div>
+		</div>
 	</section> -->
+
+
 
 <?php
 	$nomScript="modifCompte";

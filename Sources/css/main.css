@@ -31,7 +31,7 @@
 	display: none;
 }
 
-#btnDeleteReponse{
+.poubelle{
 	cursor: pointer;
 	border: none;
 	background-color: transparent;
@@ -80,6 +80,31 @@ padding-top: 4px;
 
 
 /*Page mon compte*/
+
+.td-cour{
+	cursor: pointer;
+}
+
+.load{
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	color: #6495ED;
+}
+
+.plus{
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	color: #27AE60 ;
+}
+
+.edit{
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	color: #F59B00;
+}
 
 .info-perso p{
 	font-size: 16px;

@@ -12,7 +12,7 @@
 	}
 ?>
 <div id="firstConnection" class="row" style="display: block;">
-		<span id="bienvenu" class="popup col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block;">Bienvenu, bon cours !</span>
+		<span id="bienvenu" class="popup col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block;">Bienvenue, bon cours !</span>
 </div>
 
 <section id="main-video" class="row">
@@ -40,14 +40,14 @@
 			<div class="feature-wrap">
 				<i class="fa fa-download"></i>
 				<h2>Récupération</h2>
-				<h3>Fini la fille d'attente devant la photocopieuse, le cours est téléchargeable au format PDF</h3>
+				<h3>Fini la file d'attente devant la photocopieuse, le cours est téléchargeable au format PDF</h3>
 			</div>
 		</div>
 
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
 			<div class="feature-wrap">
 				<i class="fa  fa-question "></i>
-				<h2>Interaction</h2>
+				<h2>Intéraction</h2>
 				<h3>Une baisse d'energie? Faites participer vos élèves en leur donnant des QCM</h3>
 			</div>
 		</div>
@@ -80,7 +80,7 @@
 				</div>
 				<div>
 					<h3 class="media-heading">Pour vous timides</h3>
-					<p>Peur de prendre la parole en public? Utilise le Chat!</p>
+					<p>Peur de prendre la parole en public? Utilisez le Chat!</p>
 				</div>
 			</div>
 		</div>
@@ -91,7 +91,7 @@
 					<img class="img-responsive icoImg" src="../images/ico/livre.png">
 				</div>
 				<div class="media-body">
-					<h3 class="media-heading">Fini le papiers</h3>
+					<h3 class="media-heading">Fini le papier</h3>
 					<p>Maintenant tous vos cours sont sur Hands Up</p>
 				</div>
 			</div>
@@ -144,7 +144,7 @@
 				$('#firstConnection').animate({
 								height: 'toggle'
 				});
-				}, 2000);	
+				}, 2000);
 		}
 		//else
 			//alert("no");

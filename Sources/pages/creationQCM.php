@@ -1,19 +1,20 @@
 <?php
 	session_start();
-	// if (!isset($_SESSION['login'])){
-	// 	header('Location: index.php');
-	// }
+	if (!isset($_SESSION['login'])){
+		header('Location: index.php');
+	}
+	$idCours = $_GET["idCours"];
     $title="Création QCM";
     include("header.php");
 	include("../php/infoCompte.php");
 ?>
 
+<input type="hidden" name="idCours" value="<?php echo $idCours ?>">
 <section id="feature" >
 	<div class="container">
 	   <div class="center wow fadeInDown">
-			<h2>Créer un QCM pour le cours <?php echo "xxx"; ?> </h2>
+			<h2>Créer un QCM pour le cours : <?php echo $libelle; ?> </h2>
 			<p class="lead">Ici vous pouvez créer un QCM et lui ajouter des réponses</p>
-
 		</div>
 
 
@@ -36,6 +37,7 @@
 				<div class="col-md-12 col-sm-12 wow fadeInDown add-question" data-wow-duration="1000ms" data-wow-delay="600ms">
 					<div class="col-md-2"></div>
 					<div class="col-md-3">
+						<!-- Liste des reponses ajouté rempli par JS -->
 						<ul id="listeReponses" name="listeReponses">
 						</ul>
 					</div>
@@ -80,9 +82,11 @@
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
 					<div class="row">
+						<!-- Valider le QCM -> ajax -->
 						<button id='btnValiderQuestion' type="submit" class="next action-button">Valider le QCM</button>
 					</div>
 					<div class="row">
+						<!-- retour à la page compte -->
 						<button id='btnAnnulerQCM' class="next oubli-button">Annuler le QCM</button>
 					</div>
 				</div>
