@@ -57,10 +57,9 @@
 							}else {
 ?>
 								<li><a href="compte.php"><?php echo $_SESSION['login']?></a></li>
-<?
+<?php
 							}
 ?>
-
                             <li><a href="../php/deconnexion.php">Deconnexion</a></li>
 <?php                   } ?>
                 </ul>
