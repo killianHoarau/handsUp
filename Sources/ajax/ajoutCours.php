@@ -29,5 +29,5 @@ $newId = $row['id']+1;
 			// INSERT INTO CNIL_bilan (fichier_joint, annee) VALUES ('$file', $annee)";
 echo $sql;
 $result = $link->query($sql);
- //header("Location: ../bilan.php");
+ header("Location: ../pages/compte.php");
 ?>

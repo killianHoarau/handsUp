@@ -116,8 +116,30 @@ var addCoursToggled = false;
 	}
 		
 $('#annul').click(function(){
-	$('#formAddCours').animate({
-			height: 'toggle'
-		});
-	addCoursToggled = false;
+	if(!addCoursToggled)
+	{
+		var libelle = document.getElementsByName('libelle')[0].value;
+		libelle = '';
+		var addDescription = document.getElementsByName('addDescription')[0].value;
+		addDescription = '';
+		var hiddenfile = document.getElementById('hiddenfile').value;
+		hiddenfile = '';
+		
+		$('#formAddCours').animate({
+				height: 'toggle'
+			});
+		var annul
+		$("#annul").toggleClass('action-button oubli-button');
+		$("#annul").html('Annuler');
+		addCoursToggled = true;
+	}
+	else
+	{
+		$('#formAddCours').animate({
+				height: 'toggle'
+			});
+		$("#annul").toggleClass('oubli-button action-button');
+		$("#annul").html('Ajouter Cours')
+		addCoursToggled = false;
+	}
 });

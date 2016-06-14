@@ -92,7 +92,10 @@ else { //Enseignant
 						<i id="" class="fa fa-pencil-square-o fa-lg edit" aria-hidden="true"></i>
 						<i id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-plus-circle fa-lg plus" aria-hidden="true"></i>
 						<?php if (!empty($row["nomFichier"])) { ?>
-							<i id="" class="fa fa-download fa-lg load" aria-hidden="true"></i>
+							<form action="../ajax/downloadFile.php" method="post">
+								<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours"/>
+								<i id="" class="fa fa-download fa-lg load" name="dl<?php echo $row['id']; ?>" aria-hidden="true"></i>
+							</form>
 						<?php }else { ?>
 							<i id="" class="fa fa-upload fa-lg load" aria-hidden="true"></i>
 						<?php } ?>
@@ -136,6 +139,11 @@ else { //Enseignant
 				$('#listCours').html(code_html);
 			}
 		});
+	});
+	//Telechargement du fichier joint a chaque cours lors du clique sur le <i> download
+	$("i[name^='dl']").click(function(){
+		$(this).closest("form").submit();
+		return false;
 	});
 
 

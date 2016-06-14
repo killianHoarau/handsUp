@@ -69,7 +69,8 @@
            <div id='listCours' class="center wow fadeInDown">
 				<!--Remplit par ajax/getCours.php -->
             </div>
-
+<?php if($_SESSION['droit']==1)
+{ ?>
 			<!-- Formulaire de creation de cours et d'upload d'un fichier-->
 			<form action="../ajax/ajoutCours.php" method="POST" id="formAddCours" enctype="multipart/form-data" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
 				<input name="libelle" placeholder="Titre du cours" />
@@ -82,9 +83,9 @@
 			</form>
 			
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
-				<button id="annul" class='next oubli-button'>Annuler</button>
+				<button id="annul" class='next action-button' style='width: 100%;'>Ajouter Cours</button>
 			</div>
-			
+<?php } ?>			
 
         </div>
     </section><!--/#feature-->
