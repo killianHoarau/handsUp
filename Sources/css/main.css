@@ -4,6 +4,16 @@
 	margin-top: 8%;
 }
 
+/*Page Admin*/
+
+
+.add-code{
+	padding: 0;
+	display: none;
+}
+
+/**/
+
 /*Page création QCM*/
 .add-question p{
 	margin-top: 5%;
@@ -16,14 +26,14 @@
 	margin: 0;
 }
 
-#btnMoreReponse{
+#btnMoreReponse, #btnShowAddCode{
 	cursor: pointer;
 	border: none;
 	background-color: transparent;
 	color: #27AE60 ;
 }
 
-#btnLessReponse{
+#btnLessReponse, #btnHideAddCode{
 	cursor: pointer;
 	border: none;
 	background-color: transparent;
@@ -51,7 +61,7 @@
 padding-top: 4px;
 }
 
-#btnAddRepons	e{
+#btnAddReponse{
 	margin-top: 5px;
 }
 
