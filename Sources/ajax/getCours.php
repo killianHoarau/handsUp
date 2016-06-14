@@ -93,10 +93,12 @@ else { //Enseignant
 						<i id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-plus-circle fa-lg plus" aria-hidden="true"></i>
 						<?php if (!empty($row["nomFichier"])) { ?>
 							<form action="../ajax/downloadFile.php" method="post">
-								<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours"/>
+								<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours">
 								<i id="" class="fa fa-download fa-lg load" name="dl<?php echo $row['id']; ?>" aria-hidden="true"></i>
 							</form>
-						<?php }else { ?>
+						<?php }else {
+							?>
+							<!--<form action="../ajax/ajoutCours.php" method="POST" id="formAddCours" enctype="multipart/form-data" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">-->
 							<i id="" class="fa fa-upload fa-lg load" aria-hidden="true"></i>
 						<?php } ?>
 					</div>
