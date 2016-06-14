@@ -1,17 +1,18 @@
 <?php
 session_start();
 
+$idCours = $_POST['idCours'];
 $libelleQuestion = $_POST['question'];
 $tabReponses = $_POST['tabReponses'];
 
 
 $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 
-$query = "INSERT INTO question (libelle, idCours) VALUES ('$libelleQuestion', 1);";
+$query = "INSERT INTO question (libelle, idCours) VALUES ('$libelleQuestion', $idCours);";
 
 $result = $link->query($query);
 
-$query = "SELECT id FROM question WHERE libelle = '$libelleQuestion' AND idCours = 1";
+$query = "SELECT id FROM question WHERE libelle = '$libelleQuestion' AND idCours = $idCours";
 $result = $link->query($query);
 $row = $result->fetch_assoc();
 

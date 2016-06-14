@@ -3,13 +3,19 @@ session_start();
 $id = $_SESSION["id"];
 $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 
-if(isset($_POST['suppr']))
-{
-	$idCours = $_POST['suppr'];
-	$query = "DELETE FROM suivre_cours
-				WHERE idCours = $idCours
-				AND idUtilisateur = $id;";
-	$result = $link->query($query);
+if(isset($_POST['suppr'])) {
+	if ($_SESSION["droit"] == 0) {
+		$idCours = $_POST['suppr'];
+		$query = "DELETE FROM suivre_cours
+					WHERE idCours = $idCours
+					AND idUtilisateur = $id;";
+		$result = $link->query($query);
+	}else {
+		$idCours = $_POST['suppr'];
+		$query = "DELETE FROM cours	WHERE id = $idCours;";
+		$result = $link->query($query);
+	}
+
 }
 
 
@@ -23,9 +29,9 @@ if ($_SESSION["droit"] == 0) {  // Etudiant
 
 	$result = $link->query($query);
 	if ($result->num_rows > 0) {
-	?>	
+	?>
 	<h2>Voici vos cours</h2>
-	<p class="lead">A partir d'ici vous pouvez visualiser vos cours ou vous y désinscrire</p>
+	<p class="lead">A partir d'ici vous pouvez visualiser vos cours ou vous en désinscrire</p>
 		<div class="table-responsive">
 		<table class="table">
 			<thead>
@@ -40,8 +46,8 @@ if ($_SESSION["droit"] == 0) {  // Etudiant
 		while($row = $result->fetch_assoc()){
 		?>
 			<tr>
-				<td><?php echo $row['libelle']; ?></td>
-				<td><?php echo $row['description']; ?></td>
+				<td><?php echo utf8_encode($row['libelle']); ?></td>
+				<td><?php echo utf8_encode($row['description']); ?></td>
 				<td><?php echo $row['loginEnseignant']; ?></td>
 				<td style="padding: 0; border-top: 0"><i id="<?php echo $row['idCours']; ?>" class="fa fa-trash-o" style="color: #c52d2f; font-size: 2em;" aria-hidden="true"></i></td>
 			</tr>
@@ -51,7 +57,7 @@ if ($_SESSION["droit"] == 0) {  // Etudiant
 			</tbody>
 		</table>
 		<div>
-	<?php	
+	<?php
 	}
 	else { ?> <p class="lead">Vous n'êtes inscrit à auncun cours</p> <?php }
 }
@@ -60,7 +66,7 @@ else { //Enseignant
 
 	$result = $link->query($query);
 	if ($result->num_rows > 0) {
-	?>	
+	?>
 	<h2>Voici vos cours</h2>
 	<p class="lead">A partir d'ici vous pouvez visualiser vos cours, les modifier ou en créer de nouveaux</p>
 		<div class="table-responsive">
@@ -75,14 +81,21 @@ else { //Enseignant
 		while($row = $result->fetch_assoc()){
 		?>
 			<tr id='<?php echo $row['id']; ?>' name="trCours">
-				<td><?php echo $row['libelle']; ?></td>
-				
+				<td class="td-cour"><?php echo utf8_encode($row['libelle']); ?></td>
+
 			</tr>
 			<tr name="trInfos<?php echo $row['id']; ?>">
 				<td>
 					<div class="col-md-12">
-						<?php echo $row['description']; ?>
-						<i id="<?php echo $row['idCours']; ?>" class="fa fa-trash-o" style="color: #c52d2f; font-size: 2em;" aria-hidden="true"></i>
+						<?php echo utf8_encode($row['description']); ?>
+						<i id="<?php echo $row['id']; ?>" class="fa fa-trash-o fa-lg poubelle" aria-hidden="true"></i>
+						<i id="" class="fa fa-pencil-square-o fa-lg edit" aria-hidden="true"></i>
+						<i id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-plus-circle fa-lg plus" aria-hidden="true"></i>
+						<?php if (!empty($row["nomFichier"])) { ?>
+							<i id="" class="fa fa-download fa-lg load" aria-hidden="true"></i>
+						<?php }else { ?>
+							<i id="" class="fa fa-upload fa-lg load" aria-hidden="true"></i>
+						<?php } ?>
 					</div>
 				</td>
 			</tr>
@@ -123,5 +136,10 @@ else { //Enseignant
 				$('#listCours').html(code_html);
 			}
 		});
+	});
+
+
+	$("i[id^='qcm']").click(function() {
+		document.location.href = "creationQCM.php?idCours="+this.attributes["name"].value;
 	});
 </script>
