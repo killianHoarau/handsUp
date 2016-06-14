@@ -79,7 +79,12 @@
 			<div class="col-md-12 col-sm-12 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
-					<button id='btnValiderQuestion' type="submit" class="next action-button">Valider le QCM</button>
+					<div class="row">
+						<button id='btnValiderQuestion' type="submit" class="next action-button">Valider le QCM</button>
+					</div>
+					<div class="row">
+						<button id='btnAnnulerQCM' class="next oubli-button">Annuler le QCM</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -87,6 +92,6 @@
 </section><!--/#feature-->
 
 <?php
-	$nomScript="";
+	$nomScript="creationQCM";
     include("footer.php");
 ?>
