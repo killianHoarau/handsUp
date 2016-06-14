@@ -71,18 +71,18 @@
             </div>
 			
 			<!-- Formulaire de creation de cours et d'upload d'un fichier-->
-			<div id="formAddCours" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
+			<form action="../ajax/ajoutCours.php" method="POST" id="formAddCours" enctype="multipart/form-data" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
 				<input name="libelle" placeholder="Titre du cours" />
 				<textarea name="addDescription" placeholder="Description du cours"></textarea>
 				<!--Personnalisation de l'input file en rusant un peu-->
 				<input type="file" id="hiddenfile" style="display:none;" name="file" onChange="getvalue();"/>
 				<input type="text" id="selectedfile" placeholder="Fichier Selectionné (Facultatif)" disabled="disabled"/>
 				<input type="button" value="Joindre Fichier" class='btn-default' onclick="getfile();" />
-				<button id="annul" class='next oubli-button'>Annuler</button>
-			</div>
+				<button id="btnAddCours" class="next action-button col-md-12" style='width: 100%;'>Ajouter Cours</button>
+			</form>
 			
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
-				<button id="btnAddCours" class="next action-button col-md-12" style='width: 100%;'>Ajouter Cours</button>
+				<button id="annul" class='next oubli-button'>Annuler</button>
 			</div>
 			
 
