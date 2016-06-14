@@ -62,3 +62,38 @@ $('#btnSaveInfo').click(function(){
 		});
 	}
 });
+
+		function getfile(){	//Sert à la personnalisation d'un input file
+			document.getElementById('hiddenfile').click();
+		}
+		function getvalue(){ //Sert à la personnalisation d'un input file
+			document.getElementById('selectedfile').value=document.getElementById('hiddenfile').value;
+		}
+		
+$('#btn-upload').click(function(){
+	var libelle = document.getElementsByName('libelle')[0];
+	var description = document.getElementsByName('description')[0];
+	
+	var valid = true;
+
+	if(libelle.value.length === 0){
+		libelle.style.border = "1px solid red";
+		var valid = false;
+	}
+	if(description.value.length === 0){
+		description.style.border = "1px solid red";
+		var valid = false;
+	}
+	if(valid)
+	{
+		// $.ajax({
+			// url: "../ajax/.php",
+			// type: 'POST',
+			// async: true,
+			// data : {
+				// login : login.value,
+				// email : email.value
+			// },
+			alert("Valid");
+	}
+});

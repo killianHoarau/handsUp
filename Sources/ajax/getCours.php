@@ -97,11 +97,11 @@ else { //Enseignant
 
 <script>
 	$(document).ready(function(){
-		$("tr[name^='trInfos']").hide(); //Cache toutes les div dont l'id commence par 'divQuestions'
+		$("tr[name^='trInfos']> td > div").hide(); //Cache toutes les div dont le name commence par 'trInfos'
 		$("tr[name='trCours']").click(function(){
 			var id = this.id;
 			//alert('tr[name="trInfos'+id+"\"]");
-			$('tr[name="trInfos'+id+"\"]").animate({
+			$('tr[name="trInfos'+id+"\"] > td > div").animate({
 								height: 'toggle'
 							});
 		});

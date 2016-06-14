@@ -59,6 +59,10 @@ padding-top: 4px;
 	width: 100%;
 }
 
+#btnAnnulerQCM{
+	width: 100%;
+}
+
 .bonneReponse{
 	list-style-image: url(../images/ico/checked.png);
 }
