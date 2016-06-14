@@ -146,9 +146,23 @@ padding-top: 4px;
   margin-right: 15px;
 }
 
+#logoMobile{
+  display: none;
+}
+
 @media (max-width: 403px) {
     .icoImg {
         display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    #logoMobile{
+      display: block;
+    }
+
+    #logoFull{
+      display: none;
     }
 }
 

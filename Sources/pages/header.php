@@ -33,7 +33,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php"><img src="../images/logo/headerBlanc.png" id="logo" alt="logo"></a>
+            <a class="navbar-brand" href="index.php"><img src="../images/logo/headerBlanc.png" id="logoFull" alt="logo"></a>
+            <a class="navbar-brand" href="index.php"><img src="../images/logo/HeaderMobileBlanc.png" id="logoMobile" alt="logo"></a>
             </div>
 
             <div class="collapse navbar-collapse navbar-right">
@@ -44,7 +45,7 @@
                         if (!isset($_SESSION['login']))
                         {
 ?>
-							<li><a href="inscriptionConnexion.php">Inscription/Connexion</a></li>
+							<li><a href="inscriptionConnexion.php">Connexion/Inscription</a></li>
 <?php
                         }
                         else
