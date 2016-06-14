@@ -64,46 +64,49 @@ $('#btnSaveInfo').click(function(){
 	}
 });
 var addCoursToggled = false;
-$('#btnAddCours').click(function(){
-	if(!addCoursToggled)	//Si le bandeau est caché, le click le déroule
-	{
-		$('#formAddCours').animate({
-			height: 'toggle'
-		});
-		addCoursToggled = true;
-	}
-	else		//Si le bandeau est déroulé, le bouton bntAddCours devient le bouton d'envoi du formulaire
-	{
-		var libelle = document.getElementsByName('libelle')[0];
-		var description = document.getElementsByName('addDescription')[0];
+// $('#btnAddCours').click(function(){
+	// if(!addCoursToggled)	//Si le bandeau est caché, le click le déroule
+	// {
+		// $('#formAddCours').animate({
+			// height: 'toggle'
+		// });
+		// addCoursToggled = true;
+	// }
+	// else		//Si le bandeau est déroulé, le bouton bntAddCours devient le bouton d'envoi du formulaire
+	// {
+		// var libelle = document.getElementsByName('libelle')[0];
+		// var description = document.getElementsByName('addDescription')[0];
 		
-		var valid = true;
+		// var valid = true;
 
-		if(libelle.value.length === 0){
-			libelle.style.border = "1px solid red";
-			var valid = false;
-		}
-		if(description.value.length === 0){
-			description.style.border = "1px solid red";
-			var valid = false;
-		}
-		if(valid)
-		{
-			var file = document.getElementsByName('file')[0];
-			$.ajax({
-				url: "../ajax/ajoutCours.php",
-				type: 'POST',
-				async: true,
-				data : {
-					libelle : libelle.value,
-					description : description.value,
-					file : file.value
-				},
+		// if(libelle.value.length === 0){
+			// libelle.style.border = "1px solid red";
+			// var valid = false;
+		// }
+		// if(description.value.length === 0){
+			// description.style.border = "1px solid red";
+			// var valid = false;
+		// }
+		// if(valid)
+		// {
+			// var file = document.getElementsByName('file')[0];
+			// $.ajax({
+				// url: "../ajax/ajoutCours.php",
+				// type: 'POST',
+				// async: true,
+				// data : {
+					// libelle : libelle.value,
+					// description : description.value,
+					// file : file.value
+				// },
+				// success : function(code_html){
+					// console.log(code_html);
+				// }
 				//alert("Valid");
-			});
-		}
-	}
-});
+			// });
+		// }
+	// }
+// });
 
 	function getfile(){	//Sert à la personnalisation d'un input file
 		document.getElementById('hiddenfile').click();
