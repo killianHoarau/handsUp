@@ -69,14 +69,7 @@
            <div id='listCours' class="center wow fadeInDown">
 				<!--Remplit par ajax/getCours.php -->
             </div>
-<<<<<<< HEAD
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
-				<button class="next action-button col-md-12" style='width: 100%;'>Ajouter Cours</button>
-			</div>
 
-=======
-			
->>>>>>> f3df269bb7d240387eb188a9b31db676899d588b
 			<!-- Formulaire de creation de cours et d'upload d'un fichier-->
 			<form action="../ajax/ajoutCours.php" method="POST" id="formAddCours" enctype="multipart/form-data" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
 				<input name="libelle" placeholder="Titre du cours" />
