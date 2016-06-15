@@ -23,6 +23,9 @@
 </head><!--/head-->
 
 <body class="homepage">
+<?php
+$link = new mysqli('localhost', 'root', 'mysql', 'handsup');
+?>
 <header id="header">
     <nav class="navbar navbar-inverse">
         <div class="container">
@@ -40,7 +43,7 @@
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
                    <li class="active"><a href="index.php">Accueil</a></li>
-<?php
+<?php	
                         session_start();
                         if (!isset($_SESSION['login']))
                         {
@@ -60,7 +63,8 @@
 <?php
 							}
 ?>
-                            <li><a href="../php/deconnexion.php">Deconnexion</a></li>
+                            <li><a href="./messagerie.php">Messagerie</a></li>
+							<li><a href="../php/deconnexion.php">Deconnexion</a></li>
 <?php                   } ?>
                 </ul>
             </div>
