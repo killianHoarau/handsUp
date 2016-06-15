@@ -124,11 +124,9 @@ $('#annul').click(function(){
 		addDescription = '';
 		var hiddenfile = document.getElementById('hiddenfile').value;
 		hiddenfile = '';
-		
 		$('#formAddCours').animate({
 				height: 'toggle'
 			});
-		var annul
 		$("#annul").toggleClass('action-button oubli-button');
 		$("#annul").html('Annuler');
 		addCoursToggled = true;
