@@ -4,16 +4,26 @@ $id = $_SESSION["id"];
 $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 
 if(isset($_POST['suppr'])) {
+	$idCours = $_POST['suppr'];
 	if ($_SESSION["droit"] == 0) {
-		$idCours = $_POST['suppr'];
 		$query = "DELETE FROM suivre_cours
 					WHERE idCours = $idCours
 					AND idUtilisateur = $id;";
 		$result = $link->query($query);
 	}else {
-		$idCours = $_POST['suppr'];
+		$query = "SELECT nomFichier FROM cours WHERE id=$idCours;";
+		$result = $link->query($query);
+		$row = $result->fetch_assoc();
+		$file = $row['nomFichier'];
 		$query = "DELETE FROM cours	WHERE id = $idCours;";
 		$result = $link->query($query);
+		$list = glob('../coursFichiers/'.$file);
+		for($i=0;$i<count($list);$i++)
+		{
+			unlink($list[$i]);
+		}
+		//unlink($file[0]);
+		//*array_map( "unlink", $file);
 	}
 
 }
@@ -88,7 +98,7 @@ else { //Enseignant
 				<td>
 					<div class="col-md-12">
 						<?php echo utf8_encode($row['description']); ?>
-						<i id="<?php echo $row['id']; ?>" class="fa fa-trash-o fa-lg poubelle" aria-hidden="true"></i>
+						<i id="<?php echo $row['id']; ?>" class="fa fa-trash-o fa-lg poubelle" name="supprimerCours" aria-hidden="true"></i>
 						<i id="" class="fa fa-pencil-square-o fa-lg edit" aria-hidden="true"></i>
 						<i id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-plus-circle fa-lg plus" aria-hidden="true"></i>
 						<?php if (!empty($row["nomFichier"])) { ?>
@@ -98,11 +108,12 @@ else { //Enseignant
 							</form>
 						<?php }else {
 							?>
-							<form action="../ajax/ajoutCours.php" method="POST" id="formAddCours" enctype="multipart/form-data" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
-								<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours">
+							<form action="../ajax/ajoutCours.php" method="POST" id="ajoutPJ" enctype="multipart/form-data" class="wow fadeInDown msform animated">
+								<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours"/>
 								<input type="file" id="Ajouthiddenfile" style="display:none;" name="file" onChange="Ajoutgetvalue();"/>
 								<input type="text" id="Ajoutselectedfile" placeholder="Fichier Selectionné (Facultatif)" disabled="disabled"/>
 								<i id="" class="fa fa-upload fa-lg load" name="ul<?php echo $row['id']; ?>" aria-hidden="true" onclick="Ajoutgetfile();"></i>
+								<input id="submitAddPJ" type="submit" value="Envoyer" class="action-button"/>
 							</form>
 						<?php } ?>
 					</div>
@@ -127,9 +138,10 @@ else { //Enseignant
 								height: 'toggle'
 							});
 		});
+		$('#submitAddPJ').hide();
 	});
 	//Suppression au click sur la poubelle
-	$( "i" ).click(function(){
+	$( "i[name^='supprimerCours']" ).click(function(){
 		var ide = this.id;
 		//alert(id);
 		//On rappelle getCours pour faire la modif et afficher la liste des cours Mise a jour (sans rechargement)
@@ -157,6 +169,7 @@ else { //Enseignant
 	}
 	function Ajoutgetvalue(){ //Sert à la personnalisation d'un input file
 		document.getElementById('Ajoutselectedfile').value=document.getElementById('Ajouthiddenfile').value;
+		$('#submitAddPJ').show();
 	}
 
 	$("i[id^='qcm']").click(function() {
