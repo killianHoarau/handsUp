@@ -7,6 +7,7 @@
     include("header.php");
 	include("../php/infoCompte.php");
 ?>
+
     <section id="feature" >
         <div class="container">
            <div class="center wow fadeInDown">
@@ -89,26 +90,6 @@
 
         </div>
     </section><!--/#feature-->
-
-
-	<!-- pop up modif cours -->
-
-	<!-- <section id="feature">
-		<div class="container">
-			<div class="center wow fadeInDown">
-				 <h2>Modifier le cours</h2>
-			 </div>
-			 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
-				<input name="libelle" value=""/>
-				<textarea name="description" value=""></textarea>
-				<input type="file" id="hiddenfile" style="display:none;" name="file" onChange="getvalue();"/>
-				<input type="text" id="selectedfile" placeholder="Fichier Selectionné (Facultatif)" disabled="disabled"/>
-				<input type="button" value="Joindre Fichier" class='btn-default' onclick="getfile();" />
-				<button id="btn-upload" class='btn btn-default'>Envoyer</button>
-			</div>
-		</div>
-	</section> -->
-
 
 
 <?php

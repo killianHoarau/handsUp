@@ -1,11 +1,40 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800);
 
+
+/*.footer-bas{
+	width: 100%;
+	bottom: 0px;
+	position: absolute;
+}*/
+
 #market{
 	margin-top: 8%;
 }
 
-/*Page Admin*/
 
+.right{
+	text-align: right;
+}
+/*Page cours*/
+
+.title-cours h2{
+	float: left;
+	margin-bottom: 20px;
+	font-size: 36px;
+}
+
+.cours-suivi, .fa-unlock, #btnMoreReponse, #btnShowAddCode{
+	color: #27AE60;
+}
+
+.fa-lock, .poubelle{
+	color: #c52d2f;
+}
+
+/**/
+
+
+/*Page Admin*/
 
 .add-code{
 	padding: 0;
@@ -26,11 +55,10 @@
 	margin: 0;
 }
 
-#btnMoreReponse, #btnShowAddCode{
+#btnMoreReponse, #btnShowAddCode, .poubelle{
 	cursor: pointer;
 	border: none;
 	background-color: transparent;
-	color: #27AE60 ;
 }
 
 #btnLessReponse, #btnHideAddCode{
@@ -39,13 +67,6 @@
 	background-color: transparent;
 	color: #c52d2f;
 	display: none;
-}
-
-.poubelle{
-	cursor: pointer;
-	border: none;
-	background-color: transparent;
-	color: #c52d2f;
 }
 
 .add-reponse{
@@ -65,11 +86,7 @@ padding-top: 4px;
 	margin-top: 5px;
 }
 
-#btnValiderQuestion{
-	width: 100%;
-}
-
-#btnAnnulerQCM{
+#btnAnnulerQCM, #btnValiderQuestion{
 	width: 100%;
 }
 
@@ -219,6 +236,7 @@ body {
   color:#4e4e4e;
   line-height: 22px;
   padding-top: 82px;
+  height: 100%
 }
 
 h1,

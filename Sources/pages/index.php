@@ -1,5 +1,6 @@
 <?php
     $title="Accueil";
+	$home = true;
     include("header.php");
 	if(isset($_GET['email']))
 	{
