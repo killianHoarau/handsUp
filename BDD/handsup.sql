@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 10 Juin 2016 à 15:29
+-- Généré le :  Jeu 16 Juin 2016 à 09:15
 -- Version du serveur :  5.6.30
 -- Version de PHP :  5.3.29
 
@@ -48,7 +48,7 @@ INSERT INTO `code_statut` (`code`, `statut`) VALUES
 CREATE TABLE IF NOT EXISTS `cours` (
   `id` int(5) NOT NULL,
   `libelle` varchar(50) NOT NULL,
-  `description` varchar(500) NOT NULL,
+  `description` varchar(1000) NOT NULL,
   `nomFichier` varchar(20) DEFAULT NULL,
   `idEnseignant` int(3) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
@@ -58,10 +58,10 @@ CREATE TABLE IF NOT EXISTS `cours` (
 --
 
 INSERT INTO `cours` (`id`, `libelle`, `description`, `nomFichier`, `idEnseignant`) VALUES
-(1, 'Géographie', 'Cours de géographie', NULL, 2),
-(2, 'Mathématique', 'Cours de mathématique', NULL, 2),
+(1, 'Géographie', ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis est vitae sem luctus imperdiet. Phasellus lacus augue, elementum non tristique nec, porttitor eget mi. Morbi purus quam, tristique at felis eu, tempor venenatis tellus. Ut at nisl ut libero scelerisque bibendum. Nulla ultricies enim cursus pulvinar maximus. Proin ut placerat quam. Maecenas eget est sed sapien maximus dignissim. Morbi sit amet turpis egestas, viverra tortor et, aliquet est. Fusce pellentesque dapibus sem, id cursus sem rhoncus a. Etiam et nulla risus. Vestibulum non dignissim metus. Maecenas vitae lacus id nisl rhoncus ornare a non ex. Curabitur laoreet tincidunt erat, et mollis arcu lacinia eu. Maecenas nec ante non massa tempus imperdiet sit amet vitae erat. In tincidunt dignissim vestibulum. Etiam faucibus nisl turpis, nec vestibulum ante elementum eu.\r\n\r\nVestibulum posuere libero sem, sit amet egestas arcu vehicula vitae. Donec tincidunt ligula vehicula nisl molestie pulvinar.', '505ft.jpg', 2),
+(2, 'Mathématique', 'Cours de mathématique', 'mon', 2),
 (3, 'Français', 'Cours de français', NULL, 2),
-(4, 'Histoire', 'Cours d''histoire', NULL, 2);
+(4, '', '', '4', 2);
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,10 @@ CREATE TABLE IF NOT EXISTS `message` (
   `id` int(4) NOT NULL,
   `contenu` varchar(500) NOT NULL,
   `idEmetteur` int(3) NOT NULL,
-  `idDestinataire` int(3) NOT NULL
+  `idDestinataire` int(3) NOT NULL,
+  `reponse` tinyint(1) NOT NULL DEFAULT '0',
+  `lu` tinyint(1) NOT NULL DEFAULT '0',
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -87,7 +90,16 @@ CREATE TABLE IF NOT EXISTS `question` (
   `libelle` varchar(500) NOT NULL,
   `verrouille` tinyint(1) NOT NULL DEFAULT '0',
   `idCours` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `question`
+--
+
+INSERT INTO `question` (`id`, `libelle`, `verrouille`, `idCours`) VALUES
+(11, 'Quelle est ta couleur préférée ?', 0, 1),
+(12, 'Quelle est la capitale de la France ?', 1, 1),
+(13, 'De quelle couleur est le ciel ?', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -114,7 +126,18 @@ CREATE TABLE IF NOT EXISTS `reponse` (
   `bonne` tinyint(1) NOT NULL,
   `nomImage` varchar(50) DEFAULT NULL,
   `idQuestion` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `reponse`
+--
+
+INSERT INTO `reponse` (`id`, `libelle`, `bonne`, `nomImage`, `idQuestion`) VALUES
+(2, 'rep 1', 1, NULL, 11),
+(3, 'rep 2', 0, NULL, 11),
+(4, 'Petite reponse', 1, NULL, 12),
+(5, 'Mauvaise reponse', 0, NULL, 12),
+(6, 'Mauvaise reponse 2', 0, NULL, 12);
 
 -- --------------------------------------------------------
 
@@ -132,8 +155,7 @@ CREATE TABLE IF NOT EXISTS `suivre_cours` (
 --
 
 INSERT INTO `suivre_cours` (`idUtilisateur`, `idCours`) VALUES
-(1, 2),
-(1, 3);
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -148,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `email` varchar(50) NOT NULL,
   `statut` tinyint(1) NOT NULL,
   `valide` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `utilisateur`
@@ -156,7 +178,8 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 
 INSERT INTO `utilisateur` (`id`, `login`, `motDePasse`, `email`, `statut`, `valide`) VALUES
 (1, 'jp', 'm', 'jp@m.fr', 0, 1),
-(2, 'MrProf', 'prof', 'prof@test.fr', 1, 1);
+(2, 'MrProf', 'prof', 'prof@test.fr', 1, 1),
+(13, 'admin', 'admin', 'admin@test.fr', 2, 1);
 
 --
 -- Index pour les tables exportées
@@ -211,17 +234,17 @@ ALTER TABLE `cours`
 -- AUTO_INCREMENT pour la table `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT pour la table `reponse`
 --
 ALTER TABLE `reponse`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
