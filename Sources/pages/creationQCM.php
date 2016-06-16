@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if (!isset($_SESSION['login']) || $_SESSION['droit'] == 2){
+	if (!isset($_SESSION['login'])){
 		header('Location: index.php');
 	}
 	$idCours = $_GET["idCours"];
@@ -26,7 +26,7 @@
 						<p>Libelle de la question</p>
 					</div>
 					<div class="col-md-5 msform">
-						<input name="libelleQuestion" placeholder="Libelle" type="text" value="" size="30"/>
+						<input name="libelleQuestion" type="text" value="" size="30"/>
 					</div>
 				</div>
 			</div>
@@ -62,7 +62,6 @@
 			</div>
 		</div>
 
-		<!-- Formulaire d'ajout de réponse -->
 		<div class=" row msform">
 			<div class="col-md-12 col-sm-12 add-reponse" data-wow-duration="1000ms" data-wow-delay="600ms">
 				<div class="col-md-2"></div>

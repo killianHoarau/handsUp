@@ -9,6 +9,7 @@
 
 	<!-- core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/panel.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/animate.min.css" rel="stylesheet">
     <link href="../css/prettyPhoto.css" rel="stylesheet">
@@ -23,9 +24,6 @@
 </head><!--/head-->
 
 <body class="homepage">
-<?php
-$link = new mysqli('localhost', 'root', 'mysql', 'handsup');
-?>
 <header id="header">
     <nav class="navbar navbar-inverse">
         <div class="container">
@@ -43,7 +41,7 @@ $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
                    <li class="active"><a href="index.php">Accueil</a></li>
-<?php	
+<?php
                         session_start();
                         if (!isset($_SESSION['login']))
                         {
@@ -52,23 +50,15 @@ $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 <?php
                         }
                         else
-                        {
-							if ($_SESSION['droit'] == 2) {
-?>
-								<li><a href="admin.php">Administration</a></li>
-<?php
-							}else {
-?>
-								<li><a href="compte.php"><?php echo $_SESSION['login']?></a></li>
-<?php
-							}
-?>
-                            <li><a href="./messagerie.php">Messagerie</a></li>
-							<li><a href="../php/deconnexion.php">Deconnexion</a></li>
-<?php                   } ?>
+                        { 
+?>  
+                            <li><a href="compte.php"><?php echo $_SESSION['login']?></a></li>
+                            <li><a href="../php/deconnexion.php">Deconnexion</a></li>
+<?php                       
+                        }
+?>                      
                 </ul>
             </div>
         </div><!--/.container-->
     </nav><!--/nav-->
-
 </header><!--/header-->

@@ -19,7 +19,7 @@ if(!empty($login)){
 		<?php
 		$valide = false;
 	}
-	$result->mysqli_free_result;
+	if ($result->num_rows > 0) $result->mysqli_free_result;
 }
 
 
@@ -33,7 +33,7 @@ if(!empty($email) && ($valide)){
 		<?php
 		$valide = false;
 	}
-	$result->mysqli_free_result;
+	if ($result->num_rows > 0)$result->mysqli_free_result;
 }
 
 //comparaison des mots de passe
@@ -57,7 +57,7 @@ if(!empty($code) && ($valide)){
 		<?php
 		$valide = false;
 	}
-	$result->mysqli_free_result;
+	if ($result->num_rows>0)$result->mysqli_free_result;
 }
 
 //Si on passe a travers tous les test

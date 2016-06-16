@@ -20,19 +20,4 @@ if ($result->num_rows > 0) {
 	}
 }
 
-$query = "SELECT * FROM code_statut";
-$result = $link->query($query);
-
-$codes = array(array());
-$i = 0;
-
-if ($result->num_rows > 0) {
-	while($row = $result->fetch_assoc()){
-		$codes[$i]['code'] = $row['code'];
-		$codes[$i]['statut'] = $row['statut'];
-	$i++;
-	}
-}
-
-
 ?>

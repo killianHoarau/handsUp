@@ -1,0 +1,24 @@
+.dc-box {
+  float: left;
+  width: 90%;
+  margin: 5%;
+}
+div.dc-single-product-configuration {
+  text-align: center;
+  display: block;
+  background: #151515;
+  color: white;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  padding: 1em;
+}
+div.dc-single-product-configuration:hover{
+  cursor: pointer;
+  background: #c52d2f;
+}
+#dc-config-panel{
+  background-color: #C1B0B1;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  /*display: none;*/
+  padding: 1em;
+}
