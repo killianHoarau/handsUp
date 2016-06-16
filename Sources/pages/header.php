@@ -50,15 +50,22 @@
 <?php
                         }
                         else
-                        { 
-?>  
+                        {
+?>
                             <li><a href="compte.php"><?php echo $_SESSION['login']?></a></li>
                             <li><a href="../php/deconnexion.php">Deconnexion</a></li>
-<?php                       
+<?php
                         }
-?>                      
+?>
                 </ul>
             </div>
         </div><!--/.container-->
     </nav><!--/nav-->
 </header><!--/header-->
+
+
+<!-- Connexion DBB -->
+<?php
+	session_start();
+	$link = new mysqli('localhost', 'root', 'mysql', 'handsup');
+?>
