@@ -43,31 +43,24 @@ if ($_SESSION["droit"] == 0) {  // Etudiant
 	?>
 	<h2>Voici vos cours</h2>
 	<p class="lead">A partir d'ici vous pouvez visualiser vos cours ou vous en désinscrire</p>
-		<div class="table-responsive">
-		<table class="table">
-			<thead>
-				<tr>
-					<th class="center">Cours</th>
-					<th class="center">Description</th>
-					<th class="center">Enseignant</th>
-				</tr>
-			</thead>
-			<tbody>
+	<section id="feature" class="row">
 	<?php
 		while($row = $result->fetch_assoc()){
 		?>
-			<tr>
-				<td><?php echo utf8_encode($row['libelle']); ?></td>
-				<td><?php echo utf8_encode($row['description']); ?></td>
-				<td><?php echo $row['loginEnseignant']; ?></td>
-				<td style="padding: 0; border-top: 0"><i id="<?php echo $row['idCours']; ?>" class="fa fa-trash-o" style="color: #c52d2f; font-size: 2em;" aria-hidden="true"></i></td>
-			</tr>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-box">
+				<div  class="dc-single-product-configuration" name="trCours" id="<?php echo $row['idCours']; ?>">
+					<?php echo utf8_encode($row['libelle']); ?> - <?php echo $row['loginEnseignant']; ?>
+					<i id="<?php echo $row['idCours']; ?>" class="fa fa-trash-o fa-lg poubelle" aria-hidden="true"></i>
+				</div>
+				<div id="dc-config-panel" name="trInfos<?php echo $row['idCours']; ?>">
+					<?php echo utf8_encode($row['description']); ?>
+					<button id="btFermer">Fermer</button>
+				</div>
+			</div>
 	<?php
 		}
 	?>
-			</tbody>
-		</table>
-		<div>
+	</section>
 	<?php
 	}
 	else { ?> <p class="lead">Vous n'êtes inscrit à auncun cours</p> <?php }
