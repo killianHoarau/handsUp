@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
 		$questions[$i]['id'] = $row['id'];
 		$questions[$i]['libelle'] = utf8_encode($row['libelle']);
 		$questions[$i]['verrouille'] = $row['verrouille'];
-		$questions[$i]['num'] = $i+1;
+		$questions[$i]['num'] =$row['numero'];
 
 	$i++;
 	}

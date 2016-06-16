@@ -24,12 +24,8 @@ if ($result->num_rows > 0) {
 	}
 }
 
-$nbrBonneReponse = 0;
-
-foreach ($reponses as $reponse) {
-	if ($reponse["bonne"] == 1) {
-		$nbrBonneReponse++;
-	}
-}
+// $query = "SELECT * FROM repondre WHERE idUtilisateur = $_SESSION['id'];";
+// $result = $link->query($query);
+// $row = $result->fetch_assoc();
 
 ?>
