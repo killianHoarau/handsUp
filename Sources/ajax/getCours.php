@@ -4,16 +4,27 @@ $id = $_SESSION["id"];
 $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 
 if(isset($_POST['suppr'])) {
+	$idCours = $_POST['suppr'];
 	if ($_SESSION["droit"] == 0) {
-		$idCours = $_POST['suppr'];
 		$query = "DELETE FROM suivre_cours
 					WHERE idCours = $idCours
 					AND idUtilisateur = $id;";
 		$result = $link->query($query);
 	}else {
-		$idCours = $_POST['suppr'];
+		$query = "SELECT nomFichier FROM cours WHERE id=$idCours;";
+		$result = $link->query($query);
+		$row = $result->fetch_assoc();
+		$file = $row['nomFichier'];
 		$query = "DELETE FROM cours	WHERE id = $idCours;";
 		$result = $link->query($query);
+		$list = glob('../coursFichiers/'.$file);
+		for($i=0;$i<count($list);$i++)
+		{
+			unlink($list[$i]);
+		}
+		//unlink($file[0]);
+		//*array_map( "unlink", $file);
+
 	}
 
 }
@@ -80,10 +91,20 @@ else { //Enseignant
 					<i id="" class="fa fa-pencil-square-o fa-lg edit" aria-hidden="true"></i>
 					<i id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-plus-circle fa-lg plus" aria-hidden="true"></i>
 					<?php if (!empty($row["nomFichier"])) { ?>
-						<i id="" class="fa fa-download fa-lg load" aria-hidden="true"></i>
-					<?php }else { ?>
-						<i id="" class="fa fa-upload fa-lg load" aria-hidden="true"></i>
-					<?php } ?> 
+						<form action="../ajax/downloadFile.php" method="post">
+							<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours">
+							<i id="" class="fa fa-download fa-lg load" name="dl<?php echo $row['id']; ?>" aria-hidden="true"></i>
+						</form>
+					<?php }else {
+						?>
+						<form action="../ajax/ajoutCours.php" method="POST" id="ajoutPJ" enctype="multipart/form-data" class="wow fadeInDown msform animated">
+							<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours"/>
+							<input type="file" id="Ajouthiddenfile" style="display:none;" name="file" onChange="Ajoutgetvalue();"/>
+							<input type="text" id="Ajoutselectedfile" placeholder="Fichier Selectionné (Facultatif)" disabled="disabled"/>
+							<i id="" class="fa fa-upload fa-lg load" name="ul<?php echo $row['id']; ?>" aria-hidden="true" onclick="Ajoutgetfile();"></i>
+							<input id="submitAddPJ" type="submit" value="Envoyer" class="action-button"/>
+						</form>
+					<?php } ?>
 				</div>
 				<div id="dc-config-panel" name="trInfos<?php echo $row['id']; ?>">
 					<?php echo utf8_encode($row['description']); ?>
@@ -100,42 +121,49 @@ else { //Enseignant
 <script>
 	$(document).ready(function(){
 		$("div[name^='trInfos']").hide(); //Cache toutes les div dont le name commence par 'trInfos'
-		$("div[name='trCours']").click(function(){	
+		$("div[name='trCours']").click(function(){
 			var id = this.id;
 			if ($('div[name="trInfos'+id+'"]').is(":visible")){
 				$('div[name="trInfos'+id+'"]').slideUp(1000);
 			}else{
 				$('div[name="trInfos'+id+'"]').slideDown(1000);
 			}
-			
+
 		});
 	});
 	//Suppression au click sur la poubelle
-	$( "i" ).click(function(){
-		var ide = this.id;
-		//alert(id);
-		//On rappelle getCours pour faire la modif et afficher la liste des cours Mise a jour (sans rechargement)
-		$.ajax({
-			url: "../ajax/getCours.php",
-			type: 'POST',
-			async: true,
-			data : {
-				suppr : ide
-				},
-			success: function(code_html)
-			{
-				$('#listCours').html(code_html);
-			}
+		$( "i[name^='supprimerCours']" ).click(function(){
+			var ide = this.id;
+			//alert(id);
+			//On rappelle getCours pour faire la modif et afficher la liste des cours Mise a jour (sans rechargement)
+			$.ajax({
+				url: "../ajax/getCours.php",
+				type: 'POST',
+				async: true,
+				data : {
+					suppr : ide
+					},
+				success: function(code_html)
+				{
+					$('#listCours').html(code_html);
+				}
+			});
 		});
-	});
+		//Telechargement du fichier joint a chaque cours lors du clique sur le <i> download
+		$("i[name^='dl']").click(function(){
+			$(this).closest("form").submit();
+			return false;
+		});
 
-	/*$('#btFermer').click(function(event){
-			var idUp = 
-			alert(idUp);
-			$('div[name="trInfos'+idUp+'"]').slideUp(1000);
-		});		*/
+		function Ajoutgetfile(){	//Sert à la personnalisation d'un input file
+			document.getElementById('Ajouthiddenfile').click();
+		}
+		function Ajoutgetvalue(){ //Sert à la personnalisation d'un input file
+			document.getElementById('Ajoutselectedfile').value=document.getElementById('Ajouthiddenfile').value;
+			$('#submitAddPJ').show();
+		}
 
-	$("i[id^='qcm']").click(function() {
-		document.location.href = "creationQCM.php?idCours="+this.attributes["name"].value;
-	});
+		$("i[id^='qcm']").click(function() {
+			document.location.href = "creationQCM.php?idCours="+this.attributes["name"].value;
+		});
 </script>

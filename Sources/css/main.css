@@ -5,6 +5,11 @@
 }
 
 /*Page création QCM*/
+
+div.dc-single-product-configuration:hover .poubelle{
+  color: #151515;
+}
+
 .add-question p{
 	margin-top: 5%;
 	font-size: 20px;
@@ -36,10 +41,6 @@
 	border: none;
 	background-color: transparent;
 	color: #c52d2f;
-}
-
-div.dc-single-product-configuration:hover .poubelle{
-  color: #151515;
 }
 
 .add-reponse{
