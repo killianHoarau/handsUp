@@ -42,7 +42,7 @@ if (!empty($idUtilisateur)) {
 }
 
 if (!empty($code)) {
-	//Supprime l'utilisateur
+	//Supprime le code
 	$query = "DELETE FROM code_statut WHERE code = $code;";
 	$result = $link->query($query);
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -51,8 +51,17 @@
                         }
                         else
                         {
+							if ($_SESSION['droit'] == 2) {
 ?>
-                            <li><a href="compte.php"><?php echo $_SESSION['login']?></a></li>
+								<li><a href="admin.php">Administration</a></li>
+<?php
+							}else {
+?>
+								<li><a href="compte.php"><?php echo $_SESSION['login']?></a></li>
+<?php
+							}
+?>
+
                             <li><a href="../php/deconnexion.php">Deconnexion</a></li>
 <?php
                         }

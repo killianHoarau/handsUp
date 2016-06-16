@@ -22,7 +22,7 @@
 	font-size: 36px;
 }
 
-.cours-suivi, .fa-unlock, #btnMoreReponse, #btnShowAddCode{
+.cours-suivi, .fa-unlock, #btnMoreReponse{
 	color: #27AE60;
 }
 
@@ -59,14 +59,14 @@ div.dc-single-product-configuration:hover .poubelle{
 	margin: 0;
 }
 
-#btnMoreReponse{
+#btnMoreReponse, #btnShowAddCode{
 	cursor: pointer;
 	border: none;
 	background-color: transparent;
 	color: #27AE60 ;
 }
 
-#btnLessReponse{
+#btnLessReponse, #btnHideAddCode{
 	cursor: pointer;
 	border: none;
 	background-color: transparent;
