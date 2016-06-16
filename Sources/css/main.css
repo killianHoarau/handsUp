@@ -1,8 +1,46 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800);
 
+/*.footer-bas{
+	width: 100%;
+	bottom: 0px;
+	position: absolute;
+}*/
+
 #market{
 	margin-top: 8%;
 }
+
+
+.right{
+	text-align: right;
+}
+/*Page cours*/
+
+.title-cours h2{
+	float: left;
+	margin-bottom: 20px;
+	font-size: 36px;
+}
+
+.cours-suivi, .fa-unlock, #btnMoreReponse{
+	color: #27AE60;
+}
+
+.fa-lock, .poubelle{
+	color: #c52d2f;
+}
+
+/**/
+
+
+/*Page Admin*/
+
+.add-code{
+	padding: 0;
+	display: none;
+}
+
+/**/
 
 /*Page création QCM*/
 
@@ -21,14 +59,14 @@ div.dc-single-product-configuration:hover .poubelle{
 	margin: 0;
 }
 
-#btnMoreReponse{
+#btnMoreReponse, #btnShowAddCode{
 	cursor: pointer;
 	border: none;
 	background-color: transparent;
 	color: #27AE60 ;
 }
 
-#btnLessReponse{
+#btnLessReponse, #btnHideAddCode{
 	cursor: pointer;
 	border: none;
 	background-color: transparent;
@@ -47,7 +85,7 @@ div.dc-single-product-configuration:hover .poubelle{
 	display: none;
 }
 
-.add-reponse input[type="checkbox"]{
+.add-reponse input[type="checkbox"], .choix-reponse input[type="checkbox"], .choix-reponse input[type="radio"]{
 	float: none;
 	width: auto;
 }

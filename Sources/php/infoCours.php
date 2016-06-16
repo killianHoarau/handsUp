@@ -2,8 +2,6 @@
 $idCours = $_GET["idCours"];
 $suivre = false;
 
-$link = new mysqli('localhost', 'root', 'mysql', 'handsup');
-
 //Contenu du cours
 $query = "SELECT * FROM cours WHERE id = $idCours";
 $result = $link->query($query);
@@ -38,9 +36,9 @@ $i = 0;
 if ($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()){
 		$questions[$i]['id'] = $row['id'];
-		$questions[$i]['libelle'] = $row['libelle'];
+		$questions[$i]['libelle'] = utf8_encode($row['libelle']);
 		$questions[$i]['verrouille'] = $row['verrouille'];
-		$questions[$i]['num'] = $i+1;
+		$questions[$i]['num'] =$row['numero'];
 
 	$i++;
 	}

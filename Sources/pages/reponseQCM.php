@@ -1,13 +1,37 @@
 <?php
 	session_start();
-    $title="Répondre à la question";
+    $title="Répondre au QCM";
     include("header.php");
 	include("../php/infoReponse.php");
-?>
 
+?>
+<input type="hidden" name="idCours" value="<?php echo $question['idCours']; ?>">
+<input type="hidden" name="idQuestion" value="<?php echo $question['id']; ?>">
+<input type="hidden" name="numQuestion" value="<?php echo $question['numero']; ?>">
+
+<section id="feature">
+	<div class="container">
+	   <div class="center wow fadeInDown">
+			<h2><?php echo utf8_encode($question["libelle"]); ?></h2>
+		</div>
+		<div class="msform wow fadeInDown">
+			<ul>
+				<?php foreach ($reponses as $reponse) { ?>
+					<li class="choix-reponse">
+						<label><input type="radio" name="reponse" value="<?php echo $reponse["id"]; ?>"><?php echo $reponse["libelle"]; ?></label>
+					</li>
+				<?php } ?>
+			</ul>
+			<a href="cours.php?idCours=<?php echo $question['idCours']; ?>" class="next oubli-button">Retour au cours</a>
+			<button id='btnValiderSuivant' type="submit" class="next action-button">Valider et passer à la question suivante</button>
+			<button id='btnValiderRetour' type="submit" class="next action-button">Valider et retourner au cours</button>
+
+		</div>
+	</div>
+</section>
 
 
 <?php
-	// $nomScript="reponse.js";
+	$nomScript="reponse";
     include("footer.php");
 ?>

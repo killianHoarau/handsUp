@@ -1,13 +1,14 @@
 <?php
 	session_start();
 	if (!isset($_SESSION['login']) || $_SESSION['droit'] == 2){
+
 		header('Location: index.php');
 	}
     $title="Compte ". $_SESSION['login'];
     include("header.php");
 	include("../php/infoCompte.php");
 ?>
-    <section id="feature" >
+    <section id="feature">
         <div class="container">
            <div class="center wow fadeInDown">
                 <h2>Voici vos informations
@@ -45,7 +46,7 @@
                             		echo "Etudiant";
                             	}else {
                             		echo "Enseignant";
-                            	} 
+                            	}
 ?>
 							</p>
                         </div>
@@ -85,12 +86,12 @@
 				<button id="btnAddCours" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 next action-button" style='width: 100%;'>Ajouter Cours</button>
 				<input type="button" value="Joindre Fichier" class='btn-default' onclick="getfile();" />
 			</form>
-			
+
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
 				<button id="annul" class='next action-button'>Ajouter Cours</button>
 			</div>
 <?php } ?>	
-		
+
 
         </div>
     </section><!--/#feature-->
