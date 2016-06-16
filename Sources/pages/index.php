@@ -97,7 +97,7 @@
 			</div>
 		</div>
 	</div><!--/.row-->
-	</section>
+</section>
 
 	<section id="feature" class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container center wow fadeInDown">
