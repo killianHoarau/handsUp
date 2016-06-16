@@ -16,43 +16,38 @@ if (!empty($idUtilisateur)) {
 
 	$query = "SELECT * FROM utilisateur;";
 	$result = $link->query($query); ?>
-
-	<div class="table-responsive">
-		<table class="table table-striped" id="listUtilisateur">
-			<thead>
-				<tr>
-					<th>Login</th>
-					<th>Email</th>
-					<th>Statut</th>
-					<th>Valide</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php while($row = $result->fetch_assoc()){	?>
-					<tr>
-						<td><?php echo $row["login"]; ?></td>
-						<td><?php echo $row["email"]; ?></td>
-						<td>
-<?php 
-							if($row["statut"]==0) echo "Etudiant";
-							else if($row["statut"]==1) echo "Enseignant";
-							else if($row["statut"]==2) echo "Administrateur";
+	<thead>
+		<tr>
+			<th>Login</th>
+			<th>Email</th>
+			<th>Statut</th>
+			<th>Valide</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php while($row = $result->fetch_assoc()){	?>
+			<tr>
+				<td><?php echo $row["login"]; ?></td>
+				<td><?php echo $row["email"]; ?></td>
+				<td>
+<?php
+					if($row["statut"]==0) echo "Etudiant";
+					else if($row["statut"]==1) echo "Enseignant";
+					else if($row["statut"]==2) echo "Administrateur";
 ?>
-						</td>
-						<td>
-							<?php if ($row["valide"] == 0) {
-								echo "Non";
-							} else {
-								echo "Oui";
-							}?>
-						</td>
-						<td><i class="fa fa-trash-o fa-lg poubelle"  id="deleteUser<?php echo $row['id']; ?>" name="<?php echo $row["id"]; ?>"></i></td>
-					</tr>
-				<?php }?>
-			</tboby>
-		</table>
-	</div>
-<?php	
+				</td>
+				<td>
+					<?php if ($row["valide"] == 0) {
+						echo "Non";
+					} else {
+						echo "Oui";
+					}?>
+				</td>
+				<td><i class="fa fa-trash-o fa-lg poubelle"  id="deleteUser<?php echo $row['id']; ?>" name="<?php echo $row["id"]; ?>"></i></td>
+			</tr>
+		<?php }?>
+	</tboby>
+<?php
 }
 
 if (!empty($code)) {
@@ -63,25 +58,21 @@ if (!empty($code)) {
 	$query = "SELECT * FROM code_statut;";
 	$result = $link->query($query); ?>
 
-	<div class="table-responsive">
-		<table class="table table-striped" id="listCodeAcces">
-			<thead>
-				<tr>
-					<th>Code</th>
-					<th>Statut</th>
-				</tr>
-			</thead>
-			<tboby>
-				<?php while($row = $result->fetch_assoc()){	?>
-					<tr>
-						<td><?php echo $row["code"]; ?></td>
-						<td><?php echo $row["statut"]; ?></td>
-						<td><i class="fa fa-trash-o fa-lg poubelle"  id="deleteCode<?php echo $row['code']; ?>" name="<?php echo $row["code"]; ?>"></i></td>
-					</tr>
-				<?php } ?>
-			</tboby>
-		</table>
-	</div>
+	<thead>
+		<tr>
+			<th>Code</th>
+			<th>Statut</th>
+		</tr>
+	</thead>
+	<tboby>
+		<?php while($row = $result->fetch_assoc()){	?>
+			<tr>
+				<td><?php echo $row["code"]; ?></td>
+				<td><?php echo $row["statut"]; ?></td>
+				<td><i class="fa fa-trash-o fa-lg poubelle"  id="deleteCode<?php echo $row['code']; ?>" name="<?php echo $row["code"]; ?>"></i></td>
+			</tr>
+		<?php } ?>
+	</tboby>
 <?php
 }
 
@@ -95,27 +86,23 @@ if ($ajout) {
 	$query = "SELECT * FROM code_statut;";
 	$result = $link->query($query); ?>
 
-	<div class="table-responsive">
-		<table class="table table-striped" id="listCodeAcces">
-			<thead>
-				<tr>
-					<th>Code</th>
-					<th>Statut</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php while($row = $result->fetch_assoc()){	?>
-					<tr>
-						<td><?php echo $row["code"]; ?></td>
-						<td><?php echo $row["statut"]; ?></td>
-						<td><i class="fa fa-trash-o fa-lg poubelle"  id="deleteCode<?php echo $row['code']; ?>" name="<?php echo $row["code"]; ?>"></i></td>
-					</tr>
-				<?php }
-				?>
-			</tboby>
-		</table>
-	</div>
-<?php	
+	<thead>
+		<tr>
+			<th>Code</th>
+			<th>Statut</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php while($row = $result->fetch_assoc()){	?>
+			<tr>
+				<td><?php echo $row["code"]; ?></td>
+				<td><?php echo $row["statut"]; ?></td>
+				<td><i class="fa fa-trash-o fa-lg poubelle"  id="deleteCode<?php echo $row['code']; ?>" name="<?php echo $row["code"]; ?>"></i></td>
+			</tr>
+		<?php }
+		?>
+	</tboby>
+<?php
 }
 
 
