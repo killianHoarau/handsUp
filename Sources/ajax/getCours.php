@@ -135,6 +135,7 @@ else { //Enseignant
 			}
 		});
 	});
+	//TEST
 	//Suppression au click sur la poubelle
 		$( "i[name^='supprimerCours']" ).click(function(){
 			var ide = this.id;
