@@ -58,4 +58,19 @@ $('#btnValiderSuivant').click(function() {
 	});
 });
 
+$('#btnShowReponse').click(function() {
+	var idQuestion = document.getElementsByName('idQuestion')[0].value;
+	$.ajax({
+		url: "../ajax/showReponse.php",
+		type: 'POST',
+		async: true,
+		data : {
+			idQuestion : idQuestion
+		},
+		success : function(code_html){
+			$('#contentReponse').html(code_html);
+		},
+	});
+});
+
 });

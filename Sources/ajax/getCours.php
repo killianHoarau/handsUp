@@ -84,7 +84,7 @@ else { //Enseignant
 				<div id="dc-config-panel" name="trInfos<?php echo $row['id']; ?>"> 
 					<!--Champs QRCODE -->
 					<input id="text<?php echo $row['id']; ?>" name="linkQR" type="hidden" value="http://localhost/handsup/Sources/pages/cours.php?idCours=<?php echo $row['id'];?>"/>
-					<div id="qrcode<?php echo $row['id']; ?>" class="col-md-12"></div>
+					<div id="qrcode<?php echo $row['id']; ?>" class="col-md-12 petitQR"></div>
 					
 					<!--DESCRIPTION ET BOUTONS-->
 					<div class="col-md-12">
@@ -115,13 +115,14 @@ else { //Enseignant
 				</div>
 			</div>
 	<?php
-		}
-	?>
+		} ?>
+
 	</section>
 <?php }
 } ?>
 <script>
 	$(document).ready(function(){
+		$("#popup").hide();
 		$("input[id^='Ajoutselectedfile']").hide();
 		$("input[id^='submitAddPJ']").hide();
 		$("div[name^='trInfos']").hide(); //Cache toutes les div dont le name commence par 'trInfos'
@@ -152,6 +153,7 @@ else { //Enseignant
 				}
 			});
 		});
+		
 		//Telechargement du fichier joint a chaque cours lors du clique sur le <i> download
 		$("i[name^='dl']").click(function(){
 			$(this).closest("form").submit();
@@ -166,6 +168,7 @@ else { //Enseignant
 			$("input[id^='submitAddPJ']").show();
 			document.getElementById('Ajouthiddenfile'+idPasse+'').click();
 		});
+		
 		//Affiche le fichier selectionne
 		$("input[id^=Ajouthiddenfile]").change(function(){
 			var id = this.id;
@@ -173,11 +176,6 @@ else { //Enseignant
 			$("#Ajoutselectedfile" + idCours).val(this.value);
 		});
 		
-		
-		
-		// function Ajoutgetfile(){	//Sert à la personnalisation d'un input file
-			// document.getElementById('Ajouthiddenfile').click();
-		// }
 		$("i[id^='qcm']").click(function() {
 			document.location.href = "creationQCM.php?idCours="+this.attributes["name"].value;
 		});
@@ -193,9 +191,26 @@ else { //Enseignant
 		for(var i=0; i<tabQR.length; i++)
 		{
 			var id = tabQR[i].id.substring(4);
-			console.log(id);
+			//console.log(id);
 			var qr = new QRCode("qrcode"+id);
-			qr.makeCode($('#text'+id).val());
+			qr.makeCode($('#text'+id).val());	//Créé le QR avec la valeur de l'input text qui est caché
+			$('#qrcode' + id).find("img").css({"width": "30px"});	//Permet d'afficher le QR en petit
+			
+			//Affiche la popup du QRCode en gros pour pouvoir le scanner
+			$('#qrcode' + id).find("img").click(function(){
+				// alert(this.nodeName);
+				var idclicked = this.parentNode.id.substring(6);
+				//alert(idclicked);
+				var imgClone = this.cloneNode(true);
+				imgClone.style.width = "50%";
+				$('#popup').append(imgClone);
+				$('#popup').show();
+			});
 		}
+		
+		$('#closepopup').click(function(){
+			$('#popup').children('img').remove();
+			$('#popup').hide();
+		});
 </script>
 

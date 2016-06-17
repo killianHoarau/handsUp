@@ -69,7 +69,9 @@
 
     <section id="feature" >
         <div class="container">
-
+			<div id="popup" class="dc-box">
+				<i id="closepopup" class="fa fa-times col-xs-12 col-sm-12 col-md-12 col-lg-12" aria-hidden="true"></i>
+			</div>
            <div id='listCours' class="center wow fadeInDown">
 				<!--Remplit par ajax/getCours.php -->
             </div>
@@ -82,7 +84,7 @@
 				<!--<textarea name="addDescription" placeholder="Description du cours"></textarea>
 				Personnalisation de l'input file en rusant un peu-->
 				<input type="file" id="hiddenfile" style="display:none;" name="file" onChange="getvalue();"/>
-				<input type="text" id="selectedfile" placeholder="Fichier Selectionné (Facultatif)" disabled="disabled"/>
+				<input type="text" id="selectedfile" placeholder="Fichier Selectionné (Facultatif : Un fichier peut être uploader une fois le cours créée)" disabled="disabled"/>
 				<button id="btnAddCours" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 next action-button" style='width: 100%;'>Ajouter Cours</button>
 				<input type="button" value="Joindre Fichier" class='btn-default' onclick="getfile();" />
 			</form>
