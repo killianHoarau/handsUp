@@ -3,7 +3,7 @@
     include("header.php");
 	$login = $_SESSION['login'];
 	$id = $_SESSION['id'];
-	$query = "SELECT message.contenu, message.date, message.reponse, message.lu, u1.login as 'emetteur', u2.login as 'destinataire' FROM message, utilisateur u1, utilisateur u2 WHERE message.idEmetteur = u1.id AND message.idDestinataire = u2.id AND idEmetteur = $id OR idDestinataire = $id;";
+	$query = "SELECT message.id, message.contenu, message.date, message.reponse, message.lu, u1.login as 'emetteur', u2.login as 'destinataire' FROM message, utilisateur u1, utilisateur u2 WHERE message.idEmetteur = u1.id AND message.idDestinataire = u2.id AND idEmetteur = $id OR idDestinataire = $id;";
 	//echo $query;
 	$result = $link->query($query);
 ?>
@@ -30,7 +30,7 @@
 				</div>
 				
 				<!--Div deroulé, affiche le message et l'editeur de texte pour repondre-->
-				<div id="<?php echo $row['id']; ?>reponse">
+				<div id="reponse<?php echo $row['id']; ?>">
 					<span name="<?php echo $row['id']; ?>contenu" /><?php echo $row['contenu']; ?></span>
 					<span><?php echo $row['date']; ?><span>
 				</div>
@@ -49,13 +49,19 @@
 ?>
 <script>
 $(document).ready(function(){
-	$("div[id^='reponse']").hide(); //Cache toutes les div dont le name commence par 'trInfos'
+	$("div[id^='reponse']").hide(); //Cache toutes les div dont le name commence 
 });
 	$("div[name='Message']").click(function(){
 		var id = this.id;
 		var emetteur = document.getElementsByName(id+'emetteur')[0].value;
 		var contenu = document.getElementsByName(id+'contenu')[0].value;
-		alert(emetteur);
+		$('#reponse'+id).animate({
+			height: 'toggle'
+		});
+		// $('#formAddCours').animate({
+				// height: 'toggle'
+			// });
+		// alert("div[id='"+id+"reponse']");
 		// $.ajax({
 			// url: "../ajax/repondreMessage.php",
 			// type: 'POST',
@@ -69,8 +75,6 @@ $(document).ready(function(){
 			// },
 	// });
 		//alert()
-		$("div[id="+id+"reponse]").animate({
-			height: 'toggle'
-		});
+		
 	});
 </script>
