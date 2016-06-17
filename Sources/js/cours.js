@@ -1,11 +1,57 @@
 $( document ).ready(function() {
-    if (suivre) {
+
+	if (suivre) {
 		$("#btnSuivreCour").hide();
 		$(".cours-suivi").show();
     }else {
 		$("#btnSuivreCour").show();
 		$(".cours-suivi").hide();
     }
+
+	var theToggle = document.getElementById('toggle');
+
+	// based on Todd Motto functions
+	// http://toddmotto.com/labs/reusable-js/
+
+	// hasClass
+	function hasClass(elem, className) {
+		return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+	}
+	// addClass
+	function addClass(elem, className) {
+	    if (!hasClass(elem, className)) {
+	    	elem.className += ' ' + className;
+	    }
+	}
+	// removeClass
+	function removeClass(elem, className) {
+		var newClass = ' ' + elem.className.replace( /[\t\r\n]/g, ' ') + ' ';
+		if (hasClass(elem, className)) {
+	        while (newClass.indexOf(' ' + className + ' ') >= 0 ) {
+	            newClass = newClass.replace(' ' + className + ' ', ' ');
+	        }
+	        elem.className = newClass.replace(/^\s+|\s+$/g, '');
+	    }
+	}
+	// toggleClass
+	function toggleClass(elem, className) {
+		var newClass = ' ' + elem.className.replace( /[\t\r\n]/g, " " ) + ' ';
+	    if (hasClass(elem, className)) {
+	        while (newClass.indexOf(" " + className + " ") >= 0 ) {
+	            newClass = newClass.replace( " " + className + " " , " " );
+	        }
+	        elem.className = newClass.replace(/^\s+|\s+$/g, '');
+	    } else {
+	        elem.className += ' ' + className;
+	    }
+	}
+
+	theToggle.onclick = function() {
+	   toggleClass(this, 'on');
+	   return false;
+	}
+
+
 });
 
 $('#btnSuivreCour').click(function() {
@@ -33,7 +79,7 @@ $('#btnSuivreCour').click(function() {
 	}
 });
 
-$("button[id^='btnVerouiller']").click(function() {
+$("a[id^='btnVerouiller']").click(function() {
 	var idQuestion = this.attributes["name"].value;
 	var verrouille = document.getElementsByName('verrouille'+idQuestion)[0].value;
 	var verrouillerQuestion = true;
@@ -61,7 +107,7 @@ $("button[id^='btnVerouiller']").click(function() {
 
 });
 
-$("button[id^='btnRepondre']").click(function() {
+$("a[id^='btnRepondre']").click(function() {
 	var idQuestion = this.attributes["name"].value;
 	document.location = "reponseQCM.php?idQuestion="+idQuestion;
 
