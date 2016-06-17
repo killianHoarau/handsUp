@@ -23,8 +23,8 @@
 				<?php } ?>
 			</ul>
 			<a href="cours.php?idCours=<?php echo $question['idCours']; ?>" class="next oubli-button">Retour au cours</a>
-			<button id='btnValiderSuivant' type="submit" class="next action-button">Valider et passer à la question suivante</button>
-			<button id='btnValiderRetour' type="submit" class="next action-button">Valider et retourner au cours</button>
+			<a id='btnValiderSuivant' type="submit" class="next action-button">Valider et passer à la question suivante</a>
+			<a id='btnValiderRetour' type="submit" class="next action-button">Valider et retourner au cours</a>
 
 		</div>
 	</div>

@@ -1,5 +1,13 @@
 $( document ).ready(function() {
 
+	if (suivre) {
+		$("#btnSuivreCour").hide();
+		$(".cours-suivi").show();
+    }else {
+		$("#btnSuivreCour").show();
+		$(".cours-suivi").hide();
+    }
+
 	var theToggle = document.getElementById('toggle');
 
 	// based on Todd Motto functions
@@ -43,13 +51,7 @@ $( document ).ready(function() {
 	   return false;
 	}
 
-    if (suivre) {
-		$("#btnSuivreCour").hide();
-		$(".cours-suivi").show();
-    }else {
-		$("#btnSuivreCour").show();
-		$(".cours-suivi").hide();
-    }
+
 });
 
 $('#btnSuivreCour').click(function() {
@@ -77,7 +79,7 @@ $('#btnSuivreCour').click(function() {
 	}
 });
 
-$("button[id^='btnVerouiller']").click(function() {
+$("a[id^='btnVerouiller']").click(function() {
 	var idQuestion = this.attributes["name"].value;
 	var verrouille = document.getElementsByName('verrouille'+idQuestion)[0].value;
 	var verrouillerQuestion = true;
@@ -105,7 +107,7 @@ $("button[id^='btnVerouiller']").click(function() {
 
 });
 
-$("button[id^='btnRepondre']").click(function() {
+$("a[id^='btnRepondre']").click(function() {
 	var idQuestion = this.attributes["name"].value;
 	document.location = "reponseQCM.php?idQuestion="+idQuestion;
 
