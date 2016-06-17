@@ -104,7 +104,7 @@
 						<h2><?php echo utf8_encode($cour["libelle"]) ?></h2>
 					</p>
 				</div>
-				<div  class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 msform suivre-cours" >
 					<span class="cours-suivi"><i class="fa fa-check-square-o" aria-hidden="true"></i>Cours suivi</span>
 					<button id="btnSuivreCour" name="next" class="next action-button">Suivre</button>
 				</div>
