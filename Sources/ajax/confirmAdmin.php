@@ -1,12 +1,12 @@
 <?php
 session_start();
-
-$idUtilisateur = $_POST['idUtilisateur'];
-$code = $_POST['code'];
-$codeAjout = $_POST['codeAjout'];
-$statut = $_POST['statut'];
-$ajout = $_POST['ajout'];
-
+if(isset($_POST)){
+	$idUtilisateur = $_POST['idUtilisateur'];
+	$code = $_POST['code'];
+	$codeAjout = $_POST['codeAjout'];
+	$statut = $_POST['statut'];
+	$ajout = $_POST['ajout'];
+}
 $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 
 if (!empty($idUtilisateur)) {
