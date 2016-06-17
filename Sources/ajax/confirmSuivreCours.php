@@ -38,21 +38,26 @@ if ($verrouillerQuestion) {
 	}
 
 	foreach ($questions as $question): ?>
-		<li><?php if ($question['verrouille'] == 1): ?>
+		<li id="question-QCM">
+			<?php if ($question['verrouille'] == 1): ?>
 				<i class="fa fa-lock" aria-hidden="true"></i>
 				<input type="hidden" name="verrouille<?php echo $question['id']; ?>" value="1">
 			<?php else: ?>
 				<i class="fa fa-unlock" aria-hidden="true"></i>
 				<input type="hidden" name="verrouille<?php echo $question['id']; ?>" value="0">
 			<?php endif; ?>
-			<button id="<?php if($_SESSION["droit"] == 1){echo 'btnVerouiller'.$question['id'];} ?>" name="<?php echo $question['id']; ?>">QCM <?php echo utf8_encode($question['num']) ?></button>
+			<a id="<?php
+				if($_SESSION['droit'] == 1) echo 'btnVerouiller'.$question['id'];
+				else if($_SESSION['droit'] != 1 && $question['verrouille'] == 0)echo 'btnRepondre'.$question['id'];?>"
+				name="<?php echo $question['id']; ?>" class="a-QCM">QCM <?php echo utf8_encode($question['num']) ?>
+			</a>
 		</li>
 	<?php endforeach;
 }
 ?>
 
 <script>
-$("button[id^='btnVerouiller']").click(function() {
+$("a[id^='btnVerouiller']").click(function() {
 	var idQuestion = this.attributes["name"].value;
 	var verrouille = document.getElementsByName('verrouille'+idQuestion)[0].value;
 	var verrouillerQuestion = true;
