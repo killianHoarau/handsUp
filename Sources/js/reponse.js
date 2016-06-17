@@ -63,7 +63,6 @@ $('#btnValiderSuivant').click(function() {
 
 $('#btnShowReponse').click(function() {
 	var idQuestion = document.getElementsByName('idQuestion')[0].value;
-
 	$.ajax({
 		url: "../ajax/showReponse.php",
 		type: 'POST',
