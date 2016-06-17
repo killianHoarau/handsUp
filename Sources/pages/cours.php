@@ -11,7 +11,7 @@
 			<a href="#menu" id="toggle"><img id="btQCM" src="../images/ico/question.png"></a>
 
 			<div id="menu">
-				<?php if (!empty($questions[0])) { ?>
+				<?php $i=0; if (!empty($questions[0])) { ?>
 						<ul id="listQCM">
 							<?php foreach ($questions as $question): ?>
 								<li id="question-QCM">
@@ -26,8 +26,9 @@
 										if($question['verrouille'] == 0)echo 'btnRepondre'.$question['id'];?>"
 										name="<?php echo $question['id']; ?>" class="a-QCM">QCM <?php echo utf8_encode($question['num']) ?>
 									</a>
+									<input type="hidden" id="ordre<?php echo $i; ?>" value="<?php if($i==0)echo"prems"; ?>"/>
 								</li>
-							<?php endforeach; ?>
+							<?php $i++; endforeach; ?>
 						</ul>
 				<?php } else{echo "Aucun QCM pour ce cours";} ?>
 			</div>
