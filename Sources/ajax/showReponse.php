@@ -11,81 +11,32 @@ $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 
 $query = "SELECT * FROM reponse WHERE idQuestion = $idQuestion AND bonne = 1;";
 $result = $link->query($query);
-$reponse = $result->fetch_assoc();
+$bonneReponse = $result->fetch_assoc();
 
 
 $query = "SELECT count(*) as 'nbr' FROM repondre WHERE date = '$date' AND idReponse IN (SELECT id FROM reponse WHERE idQuestion = $idQuestion) ;";
 $result = $link->query($query);
-$bnrReponse = $result->fetch_assoc();
+$bnrReponseTotal = $result->fetch_assoc();
 
 
-$query = "SELECT count(*) as 'nbr' FROM repondre WHERE date = '$date' AND idReponse IN (SELECT id FROM reponse WHERE idQuestion = $idQuestion AND bonne = 1);";
+$query = "SELECT idReponse, libelle, count(*) as 'nbr' FROM repondre, reponse WHERE repondre.idReponse = reponse.id AND date = '$date' AND idReponse IN (SELECT id FROM reponse WHERE idQuestion = $idQuestion) GROUP BY idReponse;";
 $result = $link->query($query);
-$bnrReponseBonne = $result->fetch_assoc();
 
+$reponses = array(array());
+$i = 0;
 
+if ($result->num_rows > 0) {
+	while($row = $result->fetch_assoc()){
+		$reponses[$i]['id'] = $row['idReponse'];
+		$reponses[$i]['libelle'] = $row['libelle'];
+		$reponses[$i]['nbrReponse'] = $row['nbr'];
+		$reponses[$i]['pourcentage'] = ($row['nbr'] * 100) / $bnrReponseTotal["nbr"];
+		$i++;
+	}
+}
 
+$retour = array($reponses, $bonneReponse["libelle"], $bnrReponseTotal["nbr"]);
 
+// echo $retour;
+echo json_encode($retour);
 ?>
-<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-
-
-
-<script type="text/javascript">
-$(function () {
-
-    $(document).ready(function () {
-
-        // Build the chart
-        $('#container').highcharts({
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            title: {
-                text: 'Browser market shares January, 2015 to May, 2015'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                name: 'Brands',
-                colorByPoint: true,
-                data: [{
-                    name: 'Microsoft Internet Explorer',
-                    y: 56.33
-                }, {
-                    name: 'Chrome',
-                    y: 24.03,
-                    sliced: true,
-                    selected: true
-                }, {
-                    name: 'Firefox',
-                    y: 10.38
-                }, {
-                    name: 'Safari',
-                    y: 4.77
-                }, {
-                    name: 'Opera',
-                    y: 0.91
-                }, {
-                    name: 'Proprietary or Undetectable',
-                    y: 0.2
-                }]
-            }]
-        });
-    });
-});
-</script>
