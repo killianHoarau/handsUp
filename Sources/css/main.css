@@ -10,11 +10,8 @@
 	margin-top: 8%;
 }
 
-/*Page cours*/
 
-.fa-lock, .fa-unlock{
-	cursor: pointer;
-}
+/*Page cours*/
 
 .title-cours h2{
 	float: left;

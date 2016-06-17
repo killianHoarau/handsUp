@@ -79,7 +79,7 @@ $('#btnSuivreCour').click(function() {
 	}
 });
 
-$("i[id^='btnVerouiller']").click(function() {
+$("a[id^='btnVerouiller']").click(function() {
 	var idQuestion = this.attributes["name"].value;
 	var verrouille = document.getElementsByName('verrouille'+idQuestion)[0].value;
 	var verrouillerQuestion = true;

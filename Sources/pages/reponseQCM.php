@@ -4,10 +4,6 @@
     include("header.php");
 	include("../php/infoReponse.php");
 
-	if ($question["verrouille"] == 1) {
-		header('Location: index.php');
-	}
-
 ?>
 <input type="hidden" name="idCours" value="<?php echo $question['idCours']; ?>">
 <input type="hidden" name="idQuestion" value="<?php echo $question['id']; ?>">
@@ -38,12 +34,12 @@
 			</div>
 			<div id="contentReponse">
 				<?php foreach ($reponses as $reponse) { ?>
-					<div class="row">
-						<div  class="checkbox checkbox-info checkbox-circle">
-							<input type="radio" id="radio_<?php echo $reponse["id"]; ?>" name="reponse" value="<?php echo $reponse["id"]; ?>">
-							<label for="radio_<?php echo $reponse["id"]; ?>"><?php echo $reponse["libelle"]; ?></label>
-						</div>
+				<div class="row">
+					<div  class="checkbox checkbox-info checkbox-circle">
+						<input type="radio" id="radio_<?php echo $reponse["id"]; ?>" name="reponse" value="<?php echo $reponse["id"]; ?>">
+						<label for="radio_<?php echo $reponse["id"]; ?>"><?php echo $reponse["libelle"]; ?></label>
 					</div>
+				</div>
 				<?php } ?>
 			</div>
 			<div id="reponse"></div>
@@ -53,19 +49,15 @@
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 				<a href="cours.php?idCours=<?php echo $question['idCours']; ?>" class="next oubli-button">Anuler</a>
 			</div>
-			<?php if ($_SESSION["droit"] == 1): ?>
-				<a id='btnShowReponse' type="submit" class="next action-button">Afficher la réponse</a>
-			<?php else: ?>
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<a id='btnValiderRetour' type="submit" class="next action-button">Valider</a>
-				</div>
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<a class="next action-blue" <?php if($_GET['ordre']=="prems") { ?>
-															data-toggle="modal" data-target="#myModal"
-												<?php }else {?> id='btnValiderSuivant' <?php } ?>
-					>Suivante</a>
-				</div>
-			<?php endif; ?>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<a class="next action-blue" <?php if($_GET['ordre']=="prems") { ?>
+														data-toggle="modal" data-target="#myModal"
+											<?php }else {?> id='btnValiderSuivant' <?php } ?>
+				>Suivante</a>
+			</div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<a id='btnValiderRetour' class="next action-button">Valider</a>
+			</div>
 		</div>
 	</div>
 </section>
@@ -75,5 +67,3 @@
 	$nomScript="reponse";
     include("footer.php");
 ?>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
