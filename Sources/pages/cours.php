@@ -16,15 +16,14 @@
 							<?php foreach ($questions as $question): ?>
 								<li id="question-QCM">
 									<?php if ($question['verrouille'] == 1): ?>
-										<i class="fa fa-lock" aria-hidden="true"></i>
+										<i id="<?php if($_SESSION['droit'] == 1) echo 'btnVerouiller'.$question['id']; ?>" name="<?php echo $question['id']; ?>" class="fa fa-lock" aria-hidden="true"></i>
 										<input type="hidden" name="verrouille<?php echo $question['id']; ?>" value="1">
 									<?php else: ?>
-										<i class="fa fa-unlock" aria-hidden="true"></i>
+										<i id="<?php if($_SESSION['droit'] == 1) echo 'btnVerouiller'.$question['id']; ?>" name="<?php echo $question['id']; ?>" name="<?php echo $question['id']; ?>" class="fa fa-unlock" aria-hidden="true"></i>
 										<input type="hidden" name="verrouille<?php echo $question['id']; ?>" value="0">
 									<?php endif; ?>
-									<a id="<?php
-										if($_SESSION['droit'] == 1) echo 'btnVerouiller'.$question['id'];
-										else if($_SESSION['droit'] != 1 && $question['verrouille'] == 0)echo 'btnRepondre'.$question['id'];?>"
+									<a id="<?php										
+										if($question['verrouille'] == 0)echo 'btnRepondre'.$question['id'];?>"
 										name="<?php echo $question['id']; ?>" class="a-QCM">QCM <?php echo utf8_encode($question['num']) ?>
 									</a>
 								</li>
@@ -71,43 +70,43 @@
       /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
       /* Important styles */
 	#toggle {
-	  display: block;
-	  width: 28px;
-	  height: 30px;
-	  margin: 30px auto 10px;
+	  	display: block;
+	  	width: 28px;
+	  	height: 30px;
+	  	margin: 30px auto 10px;
 	}
 	#toggle.on + #menu {
-	  opacity: 1;
-	  visibility: visible;
+	  	opacity: 1;
+	  	visibility: visible;
 	}
 
 	/* menu appearance*/
 	#menu {
-	  position: relative;
-	  color: #999;
-	  width: 200px;
-	  padding: 10px;
-	  margin: auto;
-	  font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
-	  text-align: center;
-	  border-radius: 4px;
-	  background: white;
-	  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
-	  /* just for this demo */
-	  opacity: 0;
-	  visibility: hidden;
-	  transition: opacity .4s;
-	  z-index: 10;
+		position: relative;
+	  	color: #999;
+	  	width: 200px;
+	  	padding: 10px;
+	  	margin: auto;
+	  	font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+	  	text-align: center;
+	  	border-radius: 4px;
+	  	background: white;
+	  	box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+	  	/* just for this demo */
+	  	opacity: 0;
+	  	visibility: hidden;
+	  	transition: opacity .4s;
+	  	z-index: 10;
 	}
 	#menu:after {
-	  position: absolute;
-	  top: -15px;
-	  left: 95px;
-	  content: "";
-	  display: block;
-	  border-left: 15px solid transparent;
-	  border-right: 15px solid transparent;
-	  border-bottom: 20px solid white;
+	  	position: absolute;
+	  	top: -15px;
+	  	left: 95px;
+	  	content: "";
+	  	display: block;
+	  	border-left: 15px solid transparent;
+	  	border-right: 15px solid transparent;
+	  	border-bottom: 20px solid white;
 	}
 	ul, li, li a {
 	  list-style: none;
@@ -115,11 +114,11 @@
 	  padding: 10px;
 	}
 	#question-QCM a {
-	  cursor: pointer;
-	  padding: 5px;
-	  color: #888;
-	  text-decoration: none;
-	  transition: all .2s;
+		cursor: pointer;
+	  	color: #888;
+	  	text-decoration: none;
+	  	transition: all .2s;
+	 	padding-left: 15px;
 	}
 	#question-QCM:hover, #question-QCM:focus, #question-QCM:hover > i.fa-lock, #question-QCM:focus > i.fa-lock{
 		background: #c52d2f;
