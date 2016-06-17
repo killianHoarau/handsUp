@@ -19,16 +19,17 @@
 	   		<div class="center">
 				<h2><?php echo utf8_encode($question["libelle"]); ?></h2>
 			</div>
-<?php
-			foreach ($reponses as $reponse) {
-?>
-			<div id="contentReponse" class="row">
-				<div  class="checkbox checkbox-info checkbox-circle">
-					<input type="radio" id="radio_<?php echo $reponse["id"]; ?>" name="reponse" value="<?php echo $reponse["id"]; ?>">
-					<label for="radio_<?php echo $reponse["id"]; ?>"><?php echo $reponse["libelle"]; ?></label>
-				</div>
+			<div id="contentReponse">
+				<?php foreach ($reponses as $reponse) { ?>
+					<div class="row">
+						<div  class="checkbox checkbox-info checkbox-circle">
+							<input type="radio" id="radio_<?php echo $reponse["id"]; ?>" name="reponse" value="<?php echo $reponse["id"]; ?>">
+							<label for="radio_<?php echo $reponse["id"]; ?>"><?php echo $reponse["libelle"]; ?></label>
+						</div>
+					</div>
+				<?php } ?>
 			</div>
-<?php } ?>
+
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 msform wow fadeInDown">
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -55,3 +56,5 @@
 	$nomScript="reponse";
     include("footer.php");
 ?>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>

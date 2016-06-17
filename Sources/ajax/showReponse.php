@@ -1,5 +1,4 @@
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
 
 <?php
 
@@ -11,23 +10,19 @@ $date = Date("Y-m-d");
 $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 
 $query = "SELECT * FROM reponse WHERE idQuestion = $idQuestion AND bonne = 1;";
-
 $result = $link->query($query);
 $reponse = $result->fetch_assoc();
 
-$reponse['libelle']."<br>";
 
 $query = "SELECT count(*) as 'nbr' FROM repondre WHERE date = '$date' AND idReponse IN (SELECT id FROM reponse WHERE idQuestion = $idQuestion) ;";
 $result = $link->query($query);
 $bnrReponse = $result->fetch_assoc();
 
-$bnrReponse["nbr"];
 
 $query = "SELECT count(*) as 'nbr' FROM repondre WHERE date = '$date' AND idReponse IN (SELECT id FROM reponse WHERE idQuestion = $idQuestion AND bonne = 1);";
 $result = $link->query($query);
 $bnrReponseBonne = $result->fetch_assoc();
 
-$bnrReponseBonne["nbr"];
 
 
 
