@@ -35,6 +35,12 @@ $tabTitre = array();
 					<input type="hidden" value="<?php echo $row['emetteur']; ?>" name="<?php echo $row['id']; ?>emetteur" />
 					<input type="hidden" value="<?php echo $row['titre']; ?>" name="<?php echo $row['id']; ?>titre" />
 					<input type="hidden" value="<?php echo $row['destinataire']; ?>" name="<?php echo $row['id']; ?>destinataire" />
+					
+				</div>
+				
+				<!--Div deroulé, affiche le message et l'editeur de texte pour repondre-->
+				<div id="<?php echo $row['id']; ?>reponse">
+					<span name="<?php echo $row['id']; ?>contenu" /><?php echo $row['contenu']; ?></span>
 				</div>
 <?php		} ?>
 		</div>
@@ -42,28 +48,37 @@ $tabTitre = array();
 	
 	<div id="form">
 		<input type="text" value="<?php echo $row['emmetteur']; ?>" name="reponseTo">
-		<input type="text" value="<?php echo "Re : ".$row['titre']; ?>" name="reponseTitre">
-		
+		<input type="text" value="<?php echo "Re : ".$row['titre']; ?>" name="reponseTitre">		
 	</div>
-	
 </section>
 
 <?php
 	include("footer.php");
 ?>
 <script>
+$(document).ready(function(){
+	$("div[id^='reponse']").hide(); //Cache toutes les div dont le name commence par 'trInfos'
+});
 	$("div[name='Message']").click(function(){
 		var id = this.id;
-		
-		$.ajax({
-			url: "../ajax/repondreMessage.php",
-			type: 'POST',
-			async: true,
-			data : {
-				login : login.value,
-				email : email.value
-			},
-			success : function(code_html){
-			}
+		var emetteur = document.getElementsByName(id+'emetteur')[0].value;
+		var contenu = document.getElementsByName(id+'contenu')[0].value;
+		alert(emetteur);
+		// $.ajax({
+			// url: "../ajax/repondreMessage.php",
+			// type: 'POST',
+			// async: true,
+			// data : {
+				// login : login.value,
+				// email : email.value
+			// },
+			// success : function(code_html){
+				
+			// },
+	// });
+		//alert()
+		$("div[id="+id+"reponse]").animate({
+			height: 'toggle'
+		});
 	});
 </script>

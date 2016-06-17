@@ -139,7 +139,7 @@ else { //Enseignant
 		$( "i[name^='supprimerCours']" ).click(function(){
 			var ide = this.id;
 			//alert(ide);
-			//On rappelle getCours pour faire la modif et afficher la liste des cours Mise a jour (sans rechargement)
+			//On rappelle getCours pour faire la modif et afficher la liste des cours mis à jour (sans rechargement)
 			$.ajax({
 				url: "../ajax/getCours.php",
 				type: 'POST',
