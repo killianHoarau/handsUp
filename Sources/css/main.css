@@ -13,6 +13,10 @@
 
 /*Page cours*/
 
+.fa-lock, .fa-unlock{
+	cursor: pointer;
+}
+
 .title-cours h2{
 	float: left;
 	margin-bottom: 20px;
