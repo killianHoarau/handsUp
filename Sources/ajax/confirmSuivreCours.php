@@ -40,14 +40,15 @@ if ($verrouillerQuestion) {
 	foreach ($questions as $question): ?>
 		<li id="question-QCM">
 			<?php if ($question['verrouille'] == 1): ?>
-				<i id="<?php if($_SESSION['droit'] == 1) echo 'btnVerouiller'.$question['id']; ?>" name="<?php echo $question['id']; ?>" class="fa fa-lock" aria-hidden="true"></i>
+				<i class="fa fa-lock" aria-hidden="true"></i>
 				<input type="hidden" name="verrouille<?php echo $question['id']; ?>" value="1">
 			<?php else: ?>
-				<i id="<?php if($_SESSION['droit'] == 1) echo 'btnVerouiller'.$question['id']; ?>" name="<?php echo $question['id']; ?>" class="fa fa-unlock" aria-hidden="true"></i>
+				<i class="fa fa-unlock" aria-hidden="true"></i>
 				<input type="hidden" name="verrouille<?php echo $question['id']; ?>" value="0">
 			<?php endif; ?>
 			<a id="<?php
-				if($question['verrouille'] == 0)echo 'btnRepondre'.$question['id'];?>"
+				if($_SESSION['droit'] == 1) echo 'btnVerouiller'.$question['id'];
+				else if($_SESSION['droit'] != 1 && $question['verrouille'] == 0)echo 'btnRepondre'.$question['id'];?>"
 				name="<?php echo $question['id']; ?>" class="a-QCM">QCM <?php echo utf8_encode($question['num']) ?>
 			</a>
 		</li>
@@ -56,7 +57,7 @@ if ($verrouillerQuestion) {
 ?>
 
 <script>
-$("i[id^='btnVerouiller']").click(function() {
+$("a[id^='btnVerouiller']").click(function() {
 	var idQuestion = this.attributes["name"].value;
 	var verrouille = document.getElementsByName('verrouille'+idQuestion)[0].value;
 	var verrouillerQuestion = true;
@@ -81,12 +82,6 @@ $("i[id^='btnVerouiller']").click(function() {
 			// alert(code_html);
 		},
 	});
-
-});
-
-$("a[id^='btnRepondre']").click(function() {
-	var idQuestion = this.attributes["name"].value;
-	document.location = "reponseQCM.php?idQuestion="+idQuestion;
 
 });
 </script>
