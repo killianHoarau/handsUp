@@ -15,6 +15,7 @@
     <link href="../css/prettyPhoto.css" rel="stylesheet">
     <link href="../css/formulaires.css" rel="stylesheet">
     <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/awesome-bootstrap-checkbox.css" rel="stylesheet">
     <link href="../css/responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="../js/html5shiv.js"></script>
