@@ -108,7 +108,8 @@ $("a[id^='btnVerouiller']").click(function() {
 });
 
 $("a[id^='btnRepondre']").click(function() {
+	var ordre = document.getElementById("ordre0").value;
 	var idQuestion = this.attributes["name"].value;
-	document.location = "reponseQCM.php?idQuestion="+idQuestion;
+	document.location = "reponseQCM.php?idQuestion="+idQuestion+"&ordre="+ordre;
 
 });

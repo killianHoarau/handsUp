@@ -1,0 +1,2 @@
+<span>Vous pouvez activer votre compte en cliquant sur le lien suivant</span><br>
+<b><a href='http://localhost/handsup/Sources/pages/index.php?email='<?php echo $_GET['email']?>'>Valider mon inscription</a></b>

@@ -30,7 +30,6 @@ $('#btnValiderSuivant').click(function() {
 	var idQuestion = document.getElementsByName('idQuestion')[0].value;
 	var numQuestion = document.getElementsByName('numQuestion')[0].value;
 	var reponses = document.getElementsByName('reponse');
-
 	for (var i = 0; i < reponses.length; i++) {
 		if (reponses[i].checked) {
 			var idReponse = reponses[i].value;

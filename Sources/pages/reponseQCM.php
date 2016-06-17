@@ -8,7 +8,24 @@
 <input type="hidden" name="idCours" value="<?php echo $question['idCours']; ?>">
 <input type="hidden" name="idQuestion" value="<?php echo $question['id']; ?>">
 <input type="hidden" name="numQuestion" value="<?php echo $question['numero']; ?>">
-
+ <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Attention!</h4>
+        </div>
+        <div class="modal-body">
+          <p>La question actuelle sera validée avant de passer à la suivante.</p>
+        </div>
+        <div class="modal-footer msform">
+    	  <a   class="next action-button" <?php if($_GET['ordre']=="prems") { ?> id='btnValiderSuivant' <?php } ?> >Continuer</a>
+    	  <a data-dismiss="modal" class="plusieursBtn next oubli-button">Anuler</a>
+        </div>
+      </div>
+    </div>
+  </div>
 <section id="feature">
 	<div class="container">
 	   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown">
@@ -27,14 +44,17 @@
 <?php } ?>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 msform wow fadeInDown">
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 				<a href="cours.php?idCours=<?php echo $question['idCours']; ?>" class="next oubli-button">Anuler</a>
 			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<a id='btnValiderRetour' type="submit" class="next action-button">Valider</a>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<a class="next action-blue" <?php if($_GET['ordre']=="prems") { ?>
+														data-toggle="modal" data-target="#myModal"
+											<?php }else {?> id='btnValiderSuivant' <?php } ?>
+				>Suivante</a>
 			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<a id='btnValiderSuivant' type="submit" class="next action-blue">Valider et Suivante</a>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<a id='btnValiderRetour' class="next action-button">Valider</a>
 			</div>
 		</div>
 	</div>

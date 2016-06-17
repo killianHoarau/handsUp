@@ -1,0 +1,126 @@
+
+.msform {
+	margin: 50px 0 auto;
+	text-align: center;
+	position: relative;
+}
+.msform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+
+	/*stacking fieldsets above each other*/
+	position: relative;
+}
+/*Hide all except first fieldset*/
+.msform fieldset:not(:first-of-type) {
+	display: none;
+}
+
+/*inputs*/
+.msform input, .msform textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	color: #2C3E50;
+	font-size: 13px;
+}
+
+/*buttons*/
+.msform .oubli-button{
+	width: 100px;
+	background: #c52d2f;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+.msform .oubli-button:hover, .msform .oubli-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #c52d2f;
+}
+
+.msform .action-button  {
+	width: 100px;
+	background: #27AE60;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+
+.msform .action-blue  {
+	width: 100px;
+	background: #5b74de;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+button#annul {
+    width: 100%;
+}
+.msform .action-button:hover, .msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #5b74de;
+}
+input.next.action-button.recupererBnt {
+    width: auto;
+}
+.msform .action-blue:hover, .msform .action-blue:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #5b74de;
+}
+input.next.action-blue.recupererBnt {
+    width: auto;
+}
+.titleprghp {
+background:#c52d2f;
+height: 46px;
+color: white;
+font-size: 23px;
+height: 46px;
+line-height: 40px;
+padding: 0 0 0 20px;
+}
+
+.formConnexion
+{
+	padding-top: 20%;
+}
+form#ajoutPJ{
+display:inline-block;
+}
+form#ajoutPJ>input{
+width: auto;
+}
+div#formCompteOublie
+{
+	margin-bottom: 50px;
+	margin-top: 5px;
+}
+span.popup{
+	background: #27AE60;
+	text-align: center;
+	color: #fff;
+}
+span.popupW{
+	background: #c67476;
+	text-align: center;
+	color: #fff;
+	animation: ease;
+}
