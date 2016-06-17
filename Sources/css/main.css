@@ -10,6 +10,7 @@
 	margin-top: 8%;
 }
 
+
 /*Page cours*/
 
 .title-cours h2{
@@ -197,6 +198,29 @@ padding-top: 4px;
 	opacity: 0.7;
 }
 
+/*-------------------QR CODE----------------------*/
+div.petitQR > img:hover{
+	cursor: pointer;
+	width: 40px;
+}
+i#closepopup{
+	cursor: pointer;
+}
+div#popup{
+position: fixed;
+    top: 15%;
+	left: 0;
+	z-index: 100;
+	background-color: rgba(128, 128, 128, 0.38);
+	padding-bottom: 50px;
+}
+div#popup *{
+	margin: 0 auto;
+}
+i.fa.fa-times{
+	font-size: 50px;
+	text-align: right;
+}
 /**/
 
 #header{
@@ -236,6 +260,11 @@ padding-top: 4px;
     #logoFull{
       display: none;
     }
+}
+@media screen and (min-width: 1700px){
+	div#popup{
+		top: 0;
+	}
 }
 
 .logoFooter{

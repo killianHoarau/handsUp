@@ -135,12 +135,11 @@ else { //Enseignant
 			}
 		});
 	});
-	//TEST
 	//Suppression au click sur la poubelle
 		$( "i[name^='supprimerCours']" ).click(function(){
 			var ide = this.id;
 			//alert(ide);
-			//On rappelle getCours pour faire la modif et afficher la liste des cours mis à jour (sans rechargement)
+			//On rappelle getCours pour faire la modif et afficher la liste des cours Mise a jour (sans rechargement)
 			$.ajax({
 				url: "../ajax/getCours.php",
 				type: 'POST',
