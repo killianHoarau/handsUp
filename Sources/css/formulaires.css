@@ -61,6 +61,9 @@
 	padding: 10px 5px;
 	margin: 10px 5px;
 }
+button#annul {
+    width: 100%;
+}
 .msform .action-button:hover, .msform .action-button:focus {
 	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
@@ -80,6 +83,12 @@ padding: 0 0 0 20px;
 .formConnexion
 {
 	padding-top: 20%;
+}
+form#ajoutPJ{
+display:inline-block;
+}
+form#ajoutPJ>input{
+width: auto;
 }
 div#formCompteOublie
 {
