@@ -5,6 +5,7 @@ $(document).ready(function(){
 
 	$('#btnValiderRetour').click(function() {
 		var idCours = document.getElementsByName('idCours')[0].value;
+		var idQuestion = document.getElementsByName('idQuestion')[0].value;
 		var reponses = document.getElementsByName('reponse');
 		for (var i = 0; i < reponses.length; i++) {
 			if (reponses[i].checked) {
@@ -18,10 +19,17 @@ $(document).ready(function(){
 			async: true,
 			data : {
 				idReponse : idReponse,
+				idCours : idCours,
+				idQuestion : idQuestion,
 				compteur : compteur
 			},
 			success : function(code_html){
-				document.location = "cours.php?idCours="+idCours;
+				if (code_html == "verrouille") {
+					$('.error').show();
+				}else {
+					document.location = "cours.php?idCours="+idCours;
+				}
+
 			},
 		});
 	});
@@ -49,9 +57,15 @@ $(document).ready(function(){
 				numQuestion : numQuestion
 			},
 			success : function(code_html){
-				if (code_html) {
+
+				if (code_html.indexOf('verrouille') != -1) {
+					$('.error').show();
+					$('#myModal').hide();
+					$('.modal-backdrop').hide();
+				}else if (code_html && code_html.indexOf('verrouille') == -1) {
 					document.location = "reponseQCM.php?idQuestion="+code_html;
 				}else{
+						console.log(code_html + 3);
 					document.location = "cours.php?idCours="+idCours;
 				}
 

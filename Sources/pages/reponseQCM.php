@@ -9,9 +9,11 @@
 	}
 
 ?>
+<!-- Input hidden -->
 <input type="hidden" name="idCours" value="<?php echo $question['idCours']; ?>">
 <input type="hidden" name="idQuestion" value="<?php echo $question['id']; ?>">
 <input type="hidden" name="numQuestion" value="<?php echo $question['numero']; ?>">
+
  <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog modal-sm">
@@ -30,6 +32,12 @@
       </div>
     </div>
   </div>
+
+<!-- Erreur -->
+<section id="feature" class="error">
+	<p>Cette question a été vérrouillée, vous ne pouvez plus y répondre.</p>
+</section>
+
 <section id="feature">
 	<div class="container">
 	   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown">

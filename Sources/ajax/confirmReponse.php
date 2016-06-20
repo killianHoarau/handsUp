@@ -15,10 +15,6 @@ $compteur = $_POST['compteur'];
 $date = Date("Y-m-d");
 
 
-$query = "INSERT INTO repondre VALUES ($idUtilisateur, $idReponse, '$date', $compteur);";
-$result = $link->query($query);
-
-
 $query = "SELECT * FROM question WHERE idCours = $idCours";
 $result = $link->query($query);
 
@@ -32,10 +28,14 @@ if ($result->num_rows > 0) {
 		$questions[$i]['verrouille'] = $row['verrouille'];
 		$questions[$i]['num'] = $row['numero'];
 
+		if ($row['id'] == $idQuestion) {
+			$verrouille = $row['verrouille'];
+		}
 	$i++;
 	}
 }
 
+//Recherche de la question suivante
 foreach ($questions as $question) {
 	if ($question['num'] == ($numQuestion + 1)) {
 		if ($question['verrouille'] == 0) {
@@ -43,5 +43,15 @@ foreach ($questions as $question) {
 		}
 	}
 }
+
+
+if ($verrouille) {
+	echo "verrouille";
+}else {
+	//Insertion de la réponse en base
+	$query = "INSERT INTO repondre VALUES ($idUtilisateur, $idReponse, '$date', $compteur);";
+	$result = $link->query($query);
+}
+
 
 ?>

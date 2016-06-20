@@ -1,15 +1,14 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800);
 
-/*.footer-bas{
-	width: 100%;
-	bottom: 0px;
-	position: absolute;
-}*/
-
 #market{
 	margin-top: 8%;
 }
 
+.error{
+	display: none;
+	color: #c52d2f;
+	text-align: center;
+}
 
 /*Page cours*/
 
