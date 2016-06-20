@@ -18,7 +18,9 @@ div#content{
 #market{
 	margin-top: 8%;
 }
-
+section{
+	padding: 20px 0;
+}
 .error{
 	display: none;
 	color: #c52d2f;
@@ -262,7 +264,9 @@ i.fa.fa-times{
 #logoMobile{
   display: none;
 }
-
+.logoFooter{
+  width: 15%;
+}
 @media (max-width: 403px) {
     .icoImg {
         display: none;
@@ -273,6 +277,9 @@ i.fa.fa-times{
     #logoMobile{
       display: block;
     }
+	.logoFooter{
+		width: 45%;
+	}
 
     #logoFull{
       display: none;
@@ -284,9 +291,7 @@ i.fa.fa-times{
 	}
 }
 
-.logoFooter{
-  width: 15%;
-}
+
 /*************************
 *******Typography******
 **************************/
@@ -663,6 +668,7 @@ input.search-form:hover {
 
 #feature {
   background: #f2f2f2;
+  padding-top: 20px;
   padding-bottom: 40px;
   position: relative;
 }
