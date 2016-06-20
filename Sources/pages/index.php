@@ -24,7 +24,7 @@
 <section id="feature" class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container center wow fadeInDown">
         <h2>Pour vous les profs</h2>
-        <p class="lead">Gràce à nous fini le papier, les cours rébarbatif et sans energie!!!</p>
+        <p class="lead">Grâce à nous fini le papier, les cours rébarbatifs et sans energie!!!</p>
 	</div>
 
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row features">
@@ -57,7 +57,7 @@
 <section id="services" class="row service-item">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container center wow fadeInDown">
 		<h2>Mais aussi pour vous étudiants</h2>
-		<p class="lead">Finis les cours des années 50 à la craie, plus de cahier A4 96 pages ... <br>Place au cours 2.0</p>
+		<p class="lead">Fini les cours des années 50 à la craie, plus de cahier A4 96 pages ... <br>Place au cours 2.0</p>
 	</div>
 
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
@@ -101,8 +101,8 @@
 
 	<section id="feature" class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container center wow fadeInDown">
-        <h2>Télécharger un lecteur de QR code</h2>
-        <p class="lead">Accéder directement à un cours via le QR code fourni par l'enseignant</p>
+        <h2>Téléchargez un lecteur de QR code</h2>
+        <p class="lead">Accédez directement à un cours via le QR code fourni par l'enseignant</p>
 	</div>
 
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row features">

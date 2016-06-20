@@ -86,12 +86,13 @@ $(document).ready(function(){
 				var retour = JSON.parse(code_html);
 				var reponses = retour[0];
 
-				$('#reponse').html(retour[1]);
+				$('#contentReponse').hide();
+				$('#bntReponse').hide();
+
+				$('#reponse').show();
+				$('#reponse').html('Réponse: '+ retour[1]);
 
 				$('#diagramme').show();
-
-				$('#contentReponse').hide();
-
 				$('#diagramme').highcharts({
 		            chart: {
 		                plotBackgroundColor: null,
@@ -109,9 +110,13 @@ $(document).ready(function(){
 		                pie: {
 		                    allowPointSelect: true,
 		                    cursor: 'pointer',
-		                    dataLabels: {
-		                        enabled: false
-		                    },
+							dataLabels: {
+			                    enabled: true,
+			                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+			                    style: {
+			                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+			                    }
+                			},
 		                    showInLegend: true
 		                }
 		            },

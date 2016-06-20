@@ -21,10 +21,22 @@ div#content{
 section{
 	padding: 20px 0;
 }
+
+/*Page reponse*/
+
+#reponse{
+	display: none;
+	text-align: center;
+}
+
 .error{
 	display: none;
 	color: #c52d2f;
 	text-align: center;
+}
+
+.boutons-reponse{
+	width: 100% !important;
 }
 
 /*Page cours*/
