@@ -25,7 +25,8 @@
 </head><!--/head-->
 
 <body class="homepage">
-<header id="header">
+<div id="wrapper" class="row">
+<div id="header">
     <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
@@ -71,8 +72,8 @@
             </div>
         </div><!--/.container-->
     </nav><!--/nav-->
-</header><!--/header-->
-
+</div><!--/header-->
+<div id="content">
 
 <!-- Connexion DBB -->
 <?php

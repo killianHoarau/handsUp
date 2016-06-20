@@ -61,7 +61,7 @@ if ($_SESSION["droit"] == 0) {  // Etudiant
 	</section>
 	<?php
 	}
-	else { ?> <p class="lead">Vous n'êtes inscrit à auncun cours</p> <?php }
+	else { ?> <p class="lead">Vous n'êtes inscrit à aucun cours</p> <?php }
 }
 else { //Enseignant
 	$query = "SELECT * FROM cours where idEnseignant = $id";
