@@ -1,11 +1,15 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800);
-
-/*.footer-bas{
-	width: 100%;
-	bottom: 0px;
-	position: absolute;
-}*/
-
+html{
+	height: 100%;
+	background-color: #f2f2f2;
+}
+#wrapper{
+	position: relative;
+	min-height: 100%;
+}
+div#content{
+	margin-bottom: 131px; /*hauteur du footer */
+}
 #market{
 	margin-top: 8%;
 }
@@ -272,15 +276,14 @@ i.fa.fa-times{
 }
 
 .logoFooter{
-  width: 35%;
-  height: 35%;
+  width: 15%;
 }
 /*************************
 *******Typography******
 **************************/
 
 body {
-  background: #fff;
+  height: 100%;
   font-family: 'Open Sans', sans-serif;
   color:#4e4e4e;
   line-height: 22px;
@@ -1642,9 +1645,9 @@ ul.social_icons li  a i{
 
 .footer {
   background: none repeat scroll 0 0 #2E2E2E;
-  border-top: 5px solid #C52D2F;
-  height: 84px;
-  margin-top: 110px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }
 
 .footer_left {
