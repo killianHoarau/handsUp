@@ -81,35 +81,37 @@ else { //Enseignant
 					<?php echo utf8_encode($row['libelle']); ?>
 				</div>
 				<!--DIV INFO-->
-				<div id="dc-config-panel" name="trInfos<?php echo $row['id']; ?>"> 
+				<div id="dc-config-panel" name="trInfos<?php echo $row['id']; ?>">
 					<!--Champs QRCODE -->
 					<input id="text<?php echo $row['id']; ?>" name="linkQR" type="hidden" value="http://localhost/handsup/Sources/pages/cours.php?idCours=<?php echo $row['id'];?>"/>
 					<div id="qrcode<?php echo $row['id']; ?>" class="col-md-12 petitQR"></div>
-					
+
 					<!--DESCRIPTION ET BOUTONS-->
 					<div class="col-md-12">
-					<?php echo utf8_encode($row['description']); ?>
-					<i id="<?php echo $row['id']; ?>" class="fa fa-trash-o fa-lg poubelle" name="supprimerCours" aria-hidden="true"></i>
-					<i id="" class="fa fa-pencil-square-o fa-lg edit" aria-hidden="true"></i>
-					<i id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-plus-circle fa-lg plus" aria-hidden="true"></i>
-					<!--DOWNLOAD-->
-<?php				 if (!empty($row["nomFichier"])) { ?>
-						<form action="../ajax/downloadFile.php" method="post">
-							<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours">
-							<i id="" class="fa fa-download fa-lg load" name="dl<?php echo $row['id']; ?>" aria-hidden="true"></i>
-						</form>
-						
-					<!--UPLOAD-->
-<?php 				}else {
-						?>
-						<form action="../ajax/ajoutCours.php" method="POST" id="ajoutPJ" enctype="multipart/form-data" class="wow fadeInDown msform animated">
-							<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours"/>
-							<input type="file" id="Ajouthiddenfile<?php echo $row['id']; ?>" style="display:none;" name="file"/><!--onChange="Ajoutgetvalue();"-->
-							<input type="text" id="Ajoutselectedfile<?php echo $row['id']; ?>" placeholder="Fichier Selectionné" disabled="disabled"/>
-							<i id="" class="fa fa-upload fa-lg load" name="ul<?php echo $row['id']; ?>" aria-hidden="true" ></i><!--onclick="Ajoutgetfile();"-->
-							<input id="submitAddPJ<?php echo $row['id']; ?>" type="submit" value="Envoyer" class="action-button"/>
-						</form>
-<?php				 } ?>
+						<?php echo utf8_encode($row['description']); ?>
+						<i id="stat<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-bar-chart" aria-hidden="true"></i>
+						<i id="<?php echo $row['id']; ?>" class="fa fa-trash-o fa-lg poubelle" name="supprimerCours" aria-hidden="true"></i>
+						<i id="" class="fa fa-pencil-square-o fa-lg edit" aria-hidden="true"></i>
+						<i id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-plus-circle fa-lg plus" aria-hidden="true"></i>
+
+						<!--DOWNLOAD-->
+	<?php				 if (!empty($row["nomFichier"])) { ?>
+							<form action="../ajax/downloadFile.php" method="post">
+								<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours">
+								<i id="" class="fa fa-download fa-lg load" name="dl<?php echo $row['id']; ?>" aria-hidden="true"></i>
+							</form>
+
+						<!--UPLOAD-->
+	<?php 				}else {
+							?>
+							<form action="../ajax/ajoutCours.php" method="POST" id="ajoutPJ" enctype="multipart/form-data" class="wow fadeInDown msform animated">
+								<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours"/>
+								<input type="file" id="Ajouthiddenfile<?php echo $row['id']; ?>" style="display:none;" name="file"/><!--onChange="Ajoutgetvalue();"-->
+								<input type="text" id="Ajoutselectedfile<?php echo $row['id']; ?>" placeholder="Fichier Selectionné" disabled="disabled"/>
+								<i id="" class="fa fa-upload fa-lg load" name="ul<?php echo $row['id']; ?>" aria-hidden="true" ></i><!--onclick="Ajoutgetfile();"-->
+								<input id="submitAddPJ<?php echo $row['id']; ?>" type="submit" value="Envoyer" class="action-button"/>
+							</form>
+	<?php				 } ?>
 					</div>
 					<button name="btnFermer">Fermer</button>
 				</div>
@@ -153,7 +155,7 @@ else { //Enseignant
 				}
 			});
 		});
-		
+
 		//Telechargement du fichier joint a chaque cours lors du clique sur le <i> download
 		$("i[name^='dl']").click(function(){
 			$(this).closest("form").submit();
@@ -168,24 +170,24 @@ else { //Enseignant
 			$("input[id^='submitAddPJ']").show();
 			document.getElementById('Ajouthiddenfile'+idPasse+'').click();
 		});
-		
+
 		//Affiche le fichier selectionne
 		$("input[id^=Ajouthiddenfile]").change(function(){
 			var id = this.id;
 			var idCours = id.substring(15);
 			$("#Ajoutselectedfile" + idCours).val(this.value);
 		});
-		
+
 		$("i[id^='qcm']").click(function() {
 			document.location.href = "creationQCM.php?idCours="+this.attributes["name"].value;
 		});
-		
+
 		$('button[name="btnFermer"]').click(function(){
 			var name = this.parentNode.getAttribute("name");
 			name = name.substring(7);
 			$('div[name="trInfos'+name+'"]').slideUp(name);
 		});
-		
+
 		//Créé le QR code pour chaque cours
 		var tabQR = document.getElementsByName('linkQR');
 		for(var i=0; i<tabQR.length; i++)
@@ -195,7 +197,7 @@ else { //Enseignant
 			var qr = new QRCode("qrcode"+id);
 			qr.makeCode($('#text'+id).val());	//Créé le QR avec la valeur de l'input text qui est caché
 			$('#qrcode' + id).find("img").css({"width": "30px"});	//Permet d'afficher le QR en petit
-			
+
 			//Affiche la popup du QRCode en gros pour pouvoir le scanner
 			$('#qrcode' + id).find("img").click(function(){
 				// alert(this.nodeName);
@@ -207,10 +209,9 @@ else { //Enseignant
 				$('#popup').show();
 			});
 		}
-		
+
 		$('#closepopup').click(function(){
 			$('#popup').children('img').remove();
 			$('#popup').hide();
 		});
 </script>
-

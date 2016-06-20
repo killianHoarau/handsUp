@@ -18,10 +18,25 @@ div#content{
 	margin-top: 8%;
 }
 
+/*Page reponse*/
+
+#reponse{
+	display: none;
+	text-align: center;
+}
+
 .error{
 	display: none;
 	color: #c52d2f;
 	text-align: center;
+}
+
+.boutons-reponse{
+	width: 100% !important;
+}
+
+.title-reponse{
+	margin-top: 20px;
 }
 
 /*Page cours*/

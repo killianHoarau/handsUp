@@ -34,22 +34,16 @@
 			</div>
 		</div>
 
-		<div  class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-			<div class="row">
-				<div  class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-					<p>
-						<h2><?php echo utf8_encode($cour["libelle"]) ?></h2>
-					</p>
-				</div>
-				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 msform suivre-cours" >
+		<div  class="col-xs-8 col-sm-8 col-md- col-lg-">
+			<div class="row center">
+				<h2><?php echo utf8_encode($cour["libelle"]) ?></h2>
+				<div class="msform suivre-cours" >
 					<span class="cours-suivi"><i class="fa fa-check-square-o" aria-hidden="true"></i>Cours suivi</span>
 					<button id="btnSuivreCour" name="next" class="next action-button">Suivre</button>
 				</div>
 			</div>
 			<div class="row">
-				<div  class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-					<?php echo utf8_encode($cour["description"]) ?>
-				</div>
+				<?php echo utf8_encode($cour["description"]) ?>
 			</div>
 
 
@@ -109,10 +103,12 @@
 	  	border-right: 15px solid transparent;
 	  	border-bottom: 20px solid white;
 	}
+	#listQCM, #listQCM li{
+		padding: 10px;
+	}
 	ul, li, li a {
 	  list-style: none;
 	  margin: 0;
-	  padding: 10px;
 	}
 	#question-QCM a {
 		cursor: pointer;

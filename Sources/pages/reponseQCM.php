@@ -40,41 +40,58 @@
 
 <section id="feature">
 	<div class="container">
-	   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown">
-	   		<div class="center">
+	   <div class="wow fadeInDown">
+	   		<div class="row center title-reponse">
 				<h2><?php echo utf8_encode($question["libelle"]); ?></h2>
 			</div>
-			<div id="contentReponse">
-				<?php foreach ($reponses as $reponse) { ?>
-					<div class="row">
-						<div  class="checkbox checkbox-info checkbox-circle">
-							<input type="radio" id="radio_<?php echo $reponse["id"]; ?>" name="reponse" value="<?php echo $reponse["id"]; ?>">
-							<label for="radio_<?php echo $reponse["id"]; ?>"><?php echo $reponse["libelle"]; ?></label>
+			<div id="contentReponse" class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<?php foreach ($reponses as $reponse) { ?>
+						<div class="row">
+							<div  class="checkbox checkbox-info checkbox-circle">
+								<input type="radio" id="radio_<?php echo $reponse["id"]; ?>" name="reponse" value="<?php echo $reponse["id"]; ?>">
+								<label for="radio_<?php echo $reponse["id"]; ?>"><?php echo $reponse["libelle"]; ?></label>
+							</div>
 						</div>
-					</div>
-				<?php } ?>
+					<?php } ?>
+				</div>
 			</div>
+
+			<!-- Reponse affichée -->
 			<div id="reponse"></div>
 			<div id="diagramme" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 		</div>
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 msform wow fadeInDown">
-			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-				<a href="cours.php?idCours=<?php echo $question['idCours']; ?>" class="next oubli-button">Anuler</a>
+
+		<div class="msform wow fadeInDown">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<div id="bntReponse">
+					<?php if ($_SESSION["droit"] == 1): ?>
+						<div class="row">
+							<button id='btnShowReponse' class=" boutons-reponse next action-button">Afficher la réponse</button>
+						</div>
+					<?php else: ?>
+						<div class="row">
+							<button id=' btnValiderRetour' class=" boutons-reponse next action-button">Valider</button>
+						</div>
+
+						<div class="row">
+							<button class="boutons-reponse next action-blue" <?php if($_GET['ordre']=="prems") { ?> data-toggle="modal" data-target="#myModal" <?php }else {?> id='btnValiderSuivant' <?php } ?>>
+								Suivante
+							</button>
+						</div>
+
+					<?php endif; ?>
+				</div>
+				<div class="row">
+					<button class="boutons-reponse next oubli-button" onclick="window.location.href='cours.php?idCours=<?php echo $question['idCours']; ?>'">Anuler</button>
+				</div>
 			</div>
-			<?php if ($_SESSION["droit"] == 1): ?>
-				<a id='btnShowReponse' type="submit" class="next action-button">Afficher la réponse</a>
-			<?php else: ?>
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<a id='btnValiderRetour' type="submit" class="next action-button">Valider</a>
-				</div>
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					<a class="next action-blue" <?php if($_GET['ordre']=="prems") { ?>
-															data-toggle="modal" data-target="#myModal"
-												<?php }else {?> id='btnValiderSuivant' <?php } ?>
-					>Suivante</a>
-				</div>
-			<?php endif; ?>
+
 		</div>
+
+		<div id="nbrRep" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 	</div>
 </section>
 
