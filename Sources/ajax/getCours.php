@@ -77,43 +77,64 @@ else { //Enseignant
 		?>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-box">
 				<!--DIV COURS-->
-				<div  class="dc-single-product-configuration" name="trCours" id="<?php echo $row['id']; ?>">
+				<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-single-product-configuration" name="trCours" id="<?php echo $row['id']; ?>">
 					<?php echo utf8_encode($row['libelle']); ?>
 				</div>
 				<!--DIV INFO-->
-				<div id="dc-config-panel" name="trInfos<?php echo $row['id']; ?>">
-					<!--Champs QRCODE -->
-					<input id="text<?php echo $row['id']; ?>" name="linkQR" type="hidden" value="http://localhost/handsup/Sources/pages/cours.php?idCours=<?php echo $row['id'];?>"/>
-					<div id="qrcode<?php echo $row['id']; ?>" class="col-md-12 petitQR"></div>
-
-					<!--DESCRIPTION ET BOUTONS-->
-					<div class="col-md-12">
-						<?php echo utf8_encode($row['description']); ?>
-						<i id="stat<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-bar-chart" aria-hidden="true"></i>
-						<i id="<?php echo $row['id']; ?>" class="fa fa-trash-o fa-lg poubelle" name="supprimerCours" aria-hidden="true"></i>
-						<i id="" class="fa fa-pencil-square-o fa-lg edit" aria-hidden="true"></i>
-						<i id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-plus-circle fa-lg plus" aria-hidden="true"></i>
-
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="dc-config-panel" name="trInfos<?php echo $row['id']; ?>">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+							<div class="col-xs-0 col-sm-0 col-md-1 col-lg-1"></div>
+							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+								<!--Champs QRCODE -->
+								<input id="text<?php echo $row['id']; ?>" name="linkQR" type="hidden" value="http://localhost/handsup/Sources/pages/cours.php?idCours=<?php echo $row['id'];?>"/>
+								<div id="qrcode<?php echo $row['id']; ?>" class="petitQR"></div>					
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+								<i id="stat<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-bar-chart stats fa-3x" aria-hidden="true"></i>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+								<i id="<?php echo $row['id']; ?>" class="fa fa-trash-o poubelle fa-3x" name="supprimerCours" aria-hidden="true"></i>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+								<i id="" class="fa fa-pencil-square-o edit fa-3x" aria-hidden="true"></i>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+								<div id="logoCQMfull">
+									<img id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="icoQCM" src="../images/ico/qcm.png"/>
+								</div>
+								<div id="logoCQMmobile" hidden>
+									<img id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="icoQCM" src="../images/ico/qcmSmall.png"/>
+								</div>
+							</div>
+							<div class="col-xs-0 col-sm-0 col-md-1 col-lg-1"></div>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+							<!--DESCRIPTION ET BOUTONS-->						
+							<?php echo utf8_encode($row['description']); ?>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<!--DOWNLOAD-->
 	<?php				 if (!empty($row["nomFichier"])) { ?>
 							<form action="../ajax/downloadFile.php" method="post">
 								<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours">
-								<i id="" class="fa fa-download fa-lg load" name="dl<?php echo $row['id']; ?>" aria-hidden="true"></i>
+								<i id="" class="fa fa-download fa-lg load fa-3x" name="dl<?php echo $row['id']; ?>" aria-hidden="true"></i>
 							</form>
 
 						<!--UPLOAD-->
 	<?php 				}else {
 							?>
-							<form action="../ajax/ajoutCours.php" method="POST" id="ajoutPJ" enctype="multipart/form-data" class="wow fadeInDown msform animated">
+							<form action="../ajax/ajoutCours.php" method="POST" id="ajoutPJ" enctype="multipart/form-data" class="wow fadeInDown msform animated compteForm">
 								<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours"/>
 								<input type="file" id="Ajouthiddenfile<?php echo $row['id']; ?>" style="display:none;" name="file"/><!--onChange="Ajoutgetvalue();"-->
-								<input type="text" id="Ajoutselectedfile<?php echo $row['id']; ?>" placeholder="Fichier Selectionné" disabled="disabled"/>
-								<i id="" class="fa fa-upload fa-lg load" name="ul<?php echo $row['id']; ?>" aria-hidden="true" ></i><!--onclick="Ajoutgetfile();"-->
-								<input id="submitAddPJ<?php echo $row['id']; ?>" type="submit" value="Envoyer" class="action-button"/>
+								<input type="text" id="Ajoutselectedfile<?php echo $row['id']; ?>" placeholder="Fichier Selectionné" disabled="disabled" style="display: none;"/>
+								<i id="" class="fa fa-upload fa-lg load fa-3x" name="ul<?php echo $row['id']; ?>" aria-hidden="true" ></i><!--onclick="Ajoutgetfile();"-->
+								<input id="submitAddPJ<?php echo $row['id']; ?>" type="submit" value="Envoyer" class="action-button" style="display: none;"/>
 							</form>
 	<?php				 } ?>
 					</div>
-					<button name="btnFermer">Fermer</button>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 msform"><button class="next oubli-button" name="btnFermer">Fermer</button></div>
 				</div>
 			</div>
 	<?php
@@ -124,9 +145,8 @@ else { //Enseignant
 } ?>
 <script>
 	$(document).ready(function(){
-		$("#popup").hide();
-		$("input[id^='Ajoutselectedfile']").hide();
-		$("input[id^='submitAddPJ']").hide();
+		//$("input[id^='Ajoutselectedfile']").hide();
+		//$("input[id^='submitAddPJ']").hide();
 		$("div[name^='trInfos']").hide(); //Cache toutes les div dont le name commence par 'trInfos'
 		$("div[name='trCours']").click(function(){
 			var id = this.id;
@@ -183,7 +203,7 @@ else { //Enseignant
 		});
 
 		$('button[name="btnFermer"]').click(function(){
-			var name = this.parentNode.getAttribute("name");
+			var name = this.parentNode.parentNode.getAttribute("name");
 			name = name.substring(7);
 			$('div[name="trInfos'+name+'"]').slideUp(name);
 		});
@@ -196,7 +216,7 @@ else { //Enseignant
 			//console.log(id);
 			var qr = new QRCode("qrcode"+id);
 			qr.makeCode($('#text'+id).val());	//Créé le QR avec la valeur de l'input text qui est caché
-			$('#qrcode' + id).find("img").css({"width": "30px"});	//Permet d'afficher le QR en petit
+			$('#qrcode' + id).find("img").css({"width": "40px"});	//Permet d'afficher le QR en petit
 
 			//Affiche la popup du QRCode en gros pour pouvoir le scanner
 			$('#qrcode' + id).find("img").click(function(){

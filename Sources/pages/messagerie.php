@@ -17,7 +17,7 @@
 				$idConversation = $row['id'];
 				$query = "SELECT * FROM message_prive WHERE idConversation = $idConversation ORDER BY date DESC;";
 				$res = $link->query($query);
-				while($message = $res->fetch_assoc())
+				while($message = $res->fetch_assoc())	//Et chaque Message
 				{
 					if($message['lu']==0)
 					{?>	<!-- Changer la classe de la div si le message n'est pas lu (genre txt en gras) -->
@@ -36,7 +36,8 @@
 						<span name="<?php echo $row['id']; ?>contenu" /><?php echo $message['contenu']; ?></span>
 						<span><?php echo $row['date']; ?><span>
 					</div>
-			<?php		} }?>
+<?php			} 
+			} ?>
 		</div>
 	</div>
 	

@@ -3,6 +3,42 @@
   width: 90%;
   margin: 5%;
 }
+.icoQCM{
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    #logoCQMmobile{
+      display: block;
+    }
+    #logoCQMfull{
+      display: none;
+    }
+}
+/*-------------------QR CODE----------------------*/
+.petitQR > img {display: inline;}
+div.petitQR > img:hover{
+  cursor: pointer;
+}
+i#closepopup{
+  cursor: pointer;
+}
+div#popup{
+position: fixed;
+    top: 15%;
+  left: 0;
+  z-index: 100;
+  background-color: rgba(128, 128, 128, 0.38);
+  padding-bottom: 50px;
+}
+div#popup *{
+  margin: 0 auto;
+}
+i.fa.fa-times{
+  font-size: 50px;
+  text-align: right;
+}
+/**/
 div.dc-single-product-configuration {
   text-align: center;
   display: block;
@@ -17,8 +53,7 @@ div.dc-single-product-configuration:hover{
   background: #c52d2f;
 }
 #dc-config-panel{
-  background-color: #C1B0B1;
+  background-color: #eee9e9;
   box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-  /*display: none;*/
   padding: 1em;
 }

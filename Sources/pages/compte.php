@@ -67,7 +67,7 @@
 
     <section id="feature" >
         <div class="container">
-			<div id="popup" class="dc-box">
+			<div id="popup" class="dc-box" style="display: none;">
 				<i id="closepopup" class="fa fa-times col-xs-12 col-sm-12 col-md-12 col-lg-12" aria-hidden="true"></i>
 			</div>
            <div id='listCours' class="center wow fadeInDown">
@@ -76,9 +76,9 @@
 			<?php if($_SESSION['droit']==1)
 { ?>
 			<!-- Formulaire de creation de cours et d'upload d'un fichier-->
-			<form action="../ajax/ajoutCours.php" method="POST" id="formAddCours" enctype="multipart/form-data" class="wow fadeInDown msform animated">
+			<form action="../ajax/ajoutCours.php" method="POST" id="formAddCours" hidden enctype="multipart/form-data" class="wow fadeInDown msform animated">
 				<input name="libelle" placeholder="Titre du cours" />
-				<textarea cols="80" class="ckeditor" id="editeur" name="addDescription" rows="10" placeholder="Description du cours"></textarea>
+				<textarea cols="80" class="ckeditor" id="editeur" name="addDescription" rows="10"></textarea>
 				<!--<textarea name="addDescription" placeholder="Description du cours"></textarea>
 				Personnalisation de l'input file en rusant un peu-->
 				<input type="file" id="hiddenfile" style="display:none;" name="file" onChange="getvalue();"/>
@@ -88,7 +88,7 @@
 			</form>
 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
-				<button id="annul" class='next action-button'>Ajouter Cours</button>
+				<button id="annul" class='next action-button'>Créer Un Cours</button>
 			</div>
 <?php } ?>
 
