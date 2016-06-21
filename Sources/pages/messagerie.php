@@ -3,48 +3,38 @@
     include("header.php");
 	$login = $_SESSION['login'];
 	$id = $_SESSION['id'];
-	$query = "SELECT distinct id FROM conversation WHERE utilisateur0 = $id or utilisateur1 = $id";
-	//echo $query;
-	$result = $link->query($query);
+	
+	//Récupère l'ensemble des utilisateur pour l'envoi d'un nouveau message par un prof
+	$query = "SELECT u.id, u.login FROM utilisateur u";
+	$resUsers = $link->query($query); 
 ?>
+<input id="idenCours" type='hidden' value="<?php echo $id; ?>" />
 <section id="feature">
 	<div class="container">
 		<div class="center wow fadeInDown animated">
 			<h2>Vos messages</h2>
-<?php
-			while($row=$result->fetch_assoc())	//Pour chaque Conversation
-			{  
-				$idConversation = $row['id'];
-				$query = "SELECT * FROM message_prive WHERE idConversation = $idConversation ORDER BY date DESC;";
-				$res = $link->query($query);
-				while($message = $res->fetch_assoc())	//Et chaque Message
-				{
-					if($message['lu']==0)
-					{?>	<!-- Changer la classe de la div si le message n'est pas lu (genre txt en gras) -->
-						<div id=<?php echo $message['id']; ?> class="nonLu" name="Message">
-	<?php 			} else{?>
-						<div id=<?php echo $message['id']; ?> class="Lu" name="Message">
-	<?php			}?>	
-						<span><?php echo $row['idEmetteur']; ?></span>
-						<span><?php echo $message['titre']; ?></span>
-						<span><?php echo $message['date']; ?></span>
-						
-					</div>
-					
-					<!--Div deroulé, affiche le message et l'editeur de texte pour repondre-->
-					<div id="reponse<?php echo $row['id']; ?>">
-						<span name="<?php echo $row['id']; ?>contenu" /><?php echo $message['contenu']; ?></span>
-						<span><?php echo $row['date']; ?><span>
-					</div>
-<?php			} 
-			} ?>
+			
+			<!-- Nouveau message -->
+			<i id="btnEdit" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+			<div id="newMessage" enctype="multipart/form-data" class="wow fadeInDown msform animated animated" style="display: block; visibility: visible; animation-name: fadeInDown;">
+				<select id="selectDestinataire" class="selectpicker" data-live-search="true" multiple title="Choisir destinataire(s)" data-width="100%">
+<?php				 while($user = $resUsers->fetch_assoc())
+					 {
+						?><option value="<?php echo $user['id']; ?>"><?php echo $user['login']; ?></option>
+<?php				} ?>
+				</select>
+				<input name="titre" placeholder="Objet"/>	
+				<textarea cols="80" class="ckeditor" id="editeur" name="editor1" rows="10"></textarea>
+				<button id="envoyerMessage" class="next action-button" style="width: 100%;">Envoyer</button>
+			</div>
+			
+			<!-- Affiche chaque conversation -->
+			<div id="list-message">
+			</div>
+			
 		</div>
 	</div>
 	
-	<div id="form">
-		<input type="text" value="<?php echo $row['emmetteur']; ?>" name="reponseTo">
-		<input type="text" value="<?php echo "Re : ".$row['titre']; ?>" name="reponseTitre">		
-	</div>
 </section>
 
 <?php
@@ -52,32 +42,58 @@
 ?>
 <script>
 $(document).ready(function(){
-	$("div[id^='reponse']").hide(); //Cache toutes les div dont le name commence 
 });
-	$("div[name='Message']").click(function(){
-		var id = this.id;
-		var emetteur = document.getElementsByName(id+'emetteur')[0].value;
-		var contenu = document.getElementsByName(id+'contenu')[0].value;
-		$('#reponse'+id).animate({
-			height: 'toggle'
-		});
+	// $("i[name='deployerConversation']").click(function(){
+		// var idConversation = this.id;
+		// var messages = document.getElementsByName('Message'+idConversation);
+		// for(var i=1; i<messages.length; i++)
+		// {
+			// if (messages[i].classList){
+			  // messages[i].classList.add("fadeInUp");
+			  // messages[i].classList.add("animated");
+			// }
+			// else
+			  // messages[i].className += ' ' + "fadeInUp" + ' '+ "animated";
+			// messages[i].style.display = '';
+		// }
+	// });
 		// $('#formAddCours').animate({
 				// height: 'toggle'
 			// });
 		// alert("div[id='"+id+"reponse']");
-		// $.ajax({
-			// url: "../ajax/repondreMessage.php",
-			// type: 'POST',
-			// async: true,
-			// data : {
-				// login : login.value,
-				// email : email.value
-			// },
-			// success : function(code_html){
-				
-			// },
-	// });
-		//alert()
 		
+	//Rempli la liste des conversations et des messages
+	var id = document.getElementById('idenCours').value;
+	$.ajax({
+		url: "../ajax/getMessage.php",
+		type: 'POST',
+		async: true,
+		data : {
+			id : id
+		},
+		success : function(code_html){
+			$('#list-message').html(code_html);
+		},
+});
+
+	$('#envoyerMessage').click(function(){
+		var id = document.getElementById('idenCours').value;							//Recupère l'id de l'utilisateur connécté
+		var titre = document.getElementsByName('titre')[0].value;						//Recupère l'objet du message
+		var contenu = CKEDITOR.instances['editeur'].getData();							//Recupère le contenu du message
+		var tabDestinataire = $('#selectDestinataire').val();							//Recupère la liste des idDestinataires
+		$.ajax({
+			url: "../ajax/ajoutMessage.php",
+			type: 'POST',
+			async: true,
+			data : {
+				id : id,
+				titre : titre,
+				contenu : contenu,
+				tabDestinataire : tabDestinataire
+			},
+			success : function(code_html){
+				$('#list-message').html(code_html);
+			},
+		});
 	});
 </script>
