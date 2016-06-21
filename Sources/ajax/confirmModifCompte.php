@@ -40,13 +40,13 @@ if(!empty($email)){
 if($valide)
 {
 	//Modification en base
-	$query = "UPDATE utilisateur SET login = '$login', email = '$email' WHERE id = '$id'";
+	$query = "UPDATE utilisateur SET login = '$login', email = '$email' WHERE id = $id";
+	$result = $link->query($query);
 
-	// die(var_dump($query));
 	$_SESSION["login"] = $login;
 	$_SESSION["email"] = $email;
 	$_SESSION["id"] = $id;
-	$result = $link->query($query);
+
 }
 echo json_encode($valide.$erreur);
 

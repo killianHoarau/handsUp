@@ -1,13 +1,30 @@
 <?php
-	session_start();
+	$title="Compte ". $_SESSION['login'];
+	include("header.php");
 	if (!isset($_SESSION['login']) || $_SESSION['droit'] == 2){
-
 		header('Location: index.php');
 	}
-    $title="Compte ". $_SESSION['login'];
-    include("header.php");
 	include("../php/infoCompte.php");
 ?>
+<!-- Modal -->
+<div class="modal fade"  id="myModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	    	<input type="hidden" id="valId" value=""/>
+	      <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      <h4 class="modal-title">Attention!</h4>
+	    </div>
+	    <div class="modal-body">
+	      <p>Voulez-vous vraiment supprimer ce cours?</p>
+	    </div>
+	    <div class="modal-footer msform">
+		  <a data-dismiss="modal" class="next oubli-button">Annuler</a>
+		  <a data-dismiss="modal" class="next action-button" name="supprimerCours">Confimer</a>
+	    </div>
+	  </div>
+	</div>
+</div>
     <section id="feature">
         <div class="container">
            <div class="center wow fadeInDown">
@@ -78,9 +95,9 @@
 			<?php if($_SESSION['droit']==1)
 { ?>
 			<!-- Formulaire de creation de cours et d'upload d'un fichier-->
-			<form action="../ajax/ajoutCours.php" method="POST" id="formAddCours" enctype="multipart/form-data" class="wow fadeInDown msform animated">
+			<form action="../ajax/ajoutCours.php" method="POST" id="formAddCours" hidden enctype="multipart/form-data" class="wow fadeInDown msform animated">
 				<input name="libelle" placeholder="Titre du cours" />
-				<textarea cols="80" class="ckeditor" id="editeur" name="addDescription" rows="10" placeholder="Description du cours"></textarea>
+				<textarea cols="80" class="ckeditor" id="editeur" name="addDescription" rows="10"></textarea>
 				<!--<textarea name="addDescription" placeholder="Description du cours"></textarea>
 				Personnalisation de l'input file en rusant un peu-->
 				<input type="file" id="hiddenfile" style="display:none;" name="file" onChange="getvalue();"/>
@@ -90,9 +107,9 @@
 			</form>
 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
-				<button id="annul" class='next action-button'>Ajouter Cours</button>
+				<button id="annul" class='next action-button'>Créer Un Cours</button>
 			</div>
-<?php } ?>	
+<?php } ?>
 
 
         </div>

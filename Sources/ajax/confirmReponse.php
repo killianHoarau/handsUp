@@ -12,7 +12,17 @@ $idQuestion = $_POST["idQuestion"];
 $idCours = $_POST["idCours"];
 $idReponse = $_POST['idReponse'];
 $compteur = $_POST['compteur'];
+$adresseIP = $_POST["adresseIP"];
 $date = Date("Y-m-d");
+$dejaRep = false;
+
+
+//Test deja rep
+$query = "SELECT * FROM repondre WHERE idReponse IN (SELECT id FROM reponse WHERE idQuestion = $idQuestion) AND date = '$date' AND adresseIP = '$adresseIP'";
+$result = $link->query($query);
+if ($result->num_rows > 0) {
+	$dejaRep = true;
+}
 
 
 $query = "SELECT * FROM question WHERE idCours = $idCours";
@@ -39,7 +49,7 @@ if ($result->num_rows > 0) {
 foreach ($questions as $question) {
 	if ($question['num'] == ($numQuestion + 1)) {
 		if ($question['verrouille'] == 0) {
-			echo $question['id'];
+			// echo $question['id'];
 		}
 	}
 }
@@ -47,10 +57,18 @@ foreach ($questions as $question) {
 
 if ($verrouille) {
 	echo "verrouille";
+}elseif ($dejaRep) {
+	echo "dejaRep";
 }else {
 	//Insertion de la réponse en base
-	$query = "INSERT INTO repondre VALUES ($idUtilisateur, $idReponse, '$date', $compteur);";
-	$result = $link->query($query);
+	if ($idUtilisateur) {
+		$query = "INSERT INTO repondre VALUES ('$adresseIP', $idUtilisateur, $idReponse, '$date', $compteur);";
+		$result = $link->query($query);
+	}else {
+		$query = "INSERT INTO repondre (adresseIP, idReponse, date, temps) VALUES ('$adresseIP', $idReponse, '$date', $compteur);";
+		$result = $link->query($query);
+	}
+
 }
 
 

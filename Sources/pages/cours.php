@@ -1,8 +1,8 @@
 <?php
-	session_start();
-    $title="Cours";
-    include("header.php");
+	$title="Cours";
+	include("header.php");
 	include("../php/infoCours.php");
+
 ?>
 
 <section id="feature" class="row">
@@ -35,14 +35,14 @@
 		</div>
 
 		<div  class="col-xs-8 col-sm-8 col-md- col-lg-">
-			<div class="row center">
+			<div class="row center wow fadeInDown">
 				<h2><?php echo utf8_encode($cour["libelle"]) ?></h2>
 				<div class="msform suivre-cours" >
-					<span class="cours-suivi"><i class="fa fa-check-square-o" aria-hidden="true"></i>Cours suivi</span>
-					<button id="btnSuivreCour" name="next" class="next action-button">Suivre</button>
+					<span class="cours-suivi" style="display:none;"><i class="fa fa-check-square-o" aria-hidden="true"></i>Cours suivi</span>
+					<button id="btnSuivreCour" name="next" class="next action-button" style="display:none;">Suivre</button>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row wow fadeInDown">
 				<?php echo utf8_encode($cour["description"]) ?>
 			</div>
 

@@ -34,8 +34,11 @@
   </div>
 
 <!-- Erreur -->
-<section id="feature" class="error">
+<section id="feature" class="verrouille">
 	<p>Cette question a été vérrouillée, vous ne pouvez plus y répondre.</p>
+</section>
+<section id="feature" class="dejaRep">
+	<p>Vous avez déja répondu à cette question, cliquez sur Annuler pour retourner au cours.</p>
 </section>
 
 <section id="feature">
@@ -73,7 +76,7 @@
 						</div>
 					<?php else: ?>
 						<div class="row">
-							<button id=' btnValiderRetour' class=" boutons-reponse next action-button">Valider</button>
+							<button id='btnValiderRetour' class=" boutons-reponse next action-button">Valider</button>
 						</div>
 
 						<div class="row">
@@ -95,10 +98,10 @@
 	</div>
 </section>
 
-
+<script type="text/javascript">
+	adresseIP = '<?php echo $_SERVER["REMOTE_ADDR"]; ?>';
+</script>
 <?php
 	$nomScript="reponse";
     include("footer.php");
 ?>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>

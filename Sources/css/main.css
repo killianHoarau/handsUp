@@ -1,6 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800);
 
-
+.compteForm{
+  margin: 0px 0 auto;
+}
 
 html{
 	height: 100%;
@@ -29,7 +31,7 @@ section{
 	text-align: center;
 }
 
-.error{
+.verrouille, .dejaRep{
 	display: none;
 	color: #c52d2f;
 	text-align: center;
@@ -58,11 +60,11 @@ section{
 .fa-lock, .poubelle{
 	color: #c52d2f;
 }
+.stats{cursor: pointer; color: blue;}
 
 .suivre-cours{
 	margin: 0;
 }
-
 /**/
 
 
@@ -230,30 +232,7 @@ padding-top: 4px;
 	opacity: 0.7;
 }
 
-/*-------------------QR CODE----------------------*/
-div.petitQR > img:hover{
-	cursor: pointer;
-	width: 40px;
-}
-i#closepopup{
-	cursor: pointer;
-}
-div#popup{
-position: fixed;
-    top: 15%;
-	left: 0;
-	z-index: 100;
-	background-color: rgba(128, 128, 128, 0.38);
-	padding-bottom: 50px;
-}
-div#popup *{
-	margin: 0 auto;
-}
-i.fa.fa-times{
-	font-size: 50px;
-	text-align: right;
-}
-/**/
+
 
 #header{
   position: fixed;

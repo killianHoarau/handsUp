@@ -1,11 +1,9 @@
 $( document ).ready(function() {
 
 	if (suivre) {
-		$("#btnSuivreCour").hide();
 		$(".cours-suivi").show();
     }else {
 		$("#btnSuivreCour").show();
-		$(".cours-suivi").hide();
     }
 
 	var theToggle = document.getElementById('toggle');
@@ -50,8 +48,6 @@ $( document ).ready(function() {
 	   toggleClass(this, 'on');
 	   return false;
 	}
-
-
 });
 
 $('#btnSuivreCour').click(function() {
