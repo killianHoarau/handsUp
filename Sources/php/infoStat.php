@@ -64,7 +64,7 @@ if ($result->num_rows > 0) {
 			if ($resultReponses->num_rows > 0) {
 				while($row = $resultReponses->fetch_assoc()){
 					$questions[$i]['reponses'][$j]['id'] = $row['idReponse'];
-					$questions[$i]['reponses'][$j]['libelle'] = $row['libelle'];
+					$questions[$i]['reponses'][$j]['libelle'] = utf8_encode($row['libelle']);
 					$questions[$i]['reponses'][$j]['nbrReponse'] = $row['nbr'];
 					$questions[$i]['reponses'][$j]['pourcentage'] = ($row['nbr'] * 100) / $questions[$i]['reponses']['bnrReponseTotal'];
 					$j++;

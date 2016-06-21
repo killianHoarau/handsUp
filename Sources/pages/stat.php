@@ -16,23 +16,25 @@
 		</div>
 		<?php foreach ($questions as $question): ?>
 			<div class="row center">
-				<p>QCM <?php echo $question['num'] ?></p>
-				<input type="hidden" name="befor10<?php echo $question['id'] ?>" value="<?php echo $question['befor10'] ?>">
-				<input type="hidden" name="befor30<?php echo $question['id'] ?>" value="<?php echo $question['befor30'] ?>">
-				<input type="hidden" name="after30<?php echo $question['id'] ?>" value="<?php echo $question['after30'] ?>">
+				<p>QCM <?php echo $question['num']; ?></p>
+				<input type="hidden" name="befor10<?php echo $question['id']; ?>" value="<?php echo $question['befor10']; ?>">
+				<input type="hidden" name="befor30<?php echo $question['id']; ?>" value="<?php echo $question['befor30']; ?>">
+				<input type="hidden" name="after30<?php echo $question['id']; ?>" value="<?php echo $question['after30']; ?>">
 				<div class="col-md-6">
 					<div id="<?php echo $question['id']; ?>" name="grapheTemps"></div>
 				</div>
 				<div class="col-md-6">
-					<div id="<?php echo $question['num']; ?>" name="grapheReponse"></div>
+					<div id="rep<?php echo $question['num']; ?>" name="grapheReponse"></div>
 				</div>
 			</div>
 		<?php endforeach; ?>
 	</div>
 </section>
 
+<?php $n = json_encode($questions);?>;
+
 <script type="text/javascript">
-	tab = '<?php echo json_encode($questions);?>';
+<? echo "var tab = $n" ?>
 </script>
 
 <?php

@@ -62,7 +62,7 @@ $(document).ready(function(){
 	    });
 	}
 
-	retour = JSON.parse(tab);
+	retour = tab;
 
 	for (var i = 0; i < tabReponses.length; i++) {
 	    // Create the chart
@@ -103,6 +103,7 @@ $(document).ready(function(){
 	            innerSize: '50%',
 				data: (function () {
 					var data = [];
+
 					if (Object.keys(retour[i].reponses).length > 1) {
 						for(var k = 0; k < Object.keys(retour[i].reponses).length - 1; k += 1) {
 							data.push([
@@ -116,9 +117,5 @@ $(document).ready(function(){
 				}())
 	        }]
 	    });
-
 	}
-
-
-
 });
