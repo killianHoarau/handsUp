@@ -161,6 +161,7 @@ else { //Enseignant
 			}
 		});
 	});
+<<<<<<< HEAD
 	//Suppression au click sur la poubelle
 		$( "[name='supprimerCours']" ).click(function(){
 			var ide = document.getElementById("valId").value;
@@ -244,5 +245,10 @@ else { //Enseignant
 		$('#closepopup').click(function(){
 			$('#popup').children('img').remove();
 			$('#popup').hide();
+		});
+
+		//Redirection vers la page de stat global
+		$("i[id^='stat']").click(function(){
+			document.location.href = "stat.php?idCours="+this.attributes["name"].value;
 		});
 </script>

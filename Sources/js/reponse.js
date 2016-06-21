@@ -7,6 +7,7 @@ $(document).ready(function(){
 		var idCours = document.getElementsByName('idCours')[0].value;
 		var idQuestion = document.getElementsByName('idQuestion')[0].value;
 		var reponses = document.getElementsByName('reponse');
+
 		for (var i = 0; i < reponses.length; i++) {
 			if (reponses[i].checked) {
 				var idReponse = reponses[i].value;
@@ -21,11 +22,15 @@ $(document).ready(function(){
 				idReponse : idReponse,
 				idCours : idCours,
 				idQuestion : idQuestion,
-				compteur : compteur
+				compteur : compteur,
+				adresseIP : adresseIP
 			},
 			success : function(code_html){
+				// console.log(code_html);
 				if (code_html == "verrouille") {
-					$('.error').show();
+					$('.verrouille').show();
+				}else if (code_html == "dejaRep") {
+					$('.dejaRep').show();
 				}else {
 					document.location = "cours.php?idCours="+idCours;
 				}
@@ -39,6 +44,7 @@ $(document).ready(function(){
 		var idQuestion = document.getElementsByName('idQuestion')[0].value;
 		var numQuestion = document.getElementsByName('numQuestion')[0].value;
 		var reponses = document.getElementsByName('reponse');
+
 		for (var i = 0; i < reponses.length; i++) {
 			if (reponses[i].checked) {
 				var idReponse = reponses[i].value;
@@ -54,18 +60,22 @@ $(document).ready(function(){
 				compteur : compteur,
 				idCours : idCours,
 				idQuestion : idQuestion,
-				numQuestion : numQuestion
+				numQuestion : numQuestion,
+				adresseIP : adresseIP
 			},
 			success : function(code_html){
-
+				// console.log(code_html);
 				if (code_html.indexOf('verrouille') != -1) {
-					$('.error').show();
+					$('.verrouille').show();
 					$('#myModal').hide();
 					$('.modal-backdrop').hide();
-				}else if (code_html && code_html.indexOf('verrouille') == -1) {
+				}else if (code_html.indexOf('dejaRep') != -1) {
+					$('.verrouille').show();
+					$('#myModal').hide();
+					$('.modal-backdrop').hide();
+				}else if (code_html && code_html.indexOf('verrouille') == -1 && code_html.indexOf('dejaRep') == -1) {
 					document.location = "reponseQCM.php?idQuestion="+code_html;
 				}else{
-						console.log(code_html + 3);
 					document.location = "cours.php?idCours="+idCours;
 				}
 
@@ -83,6 +93,7 @@ $(document).ready(function(){
 				idQuestion : idQuestion
 			},
 			success : function(code_html){
+				// console.log(code_html);
 				var retour = JSON.parse(code_html);
 				var reponses = retour[0];
 

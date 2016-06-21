@@ -1,11 +1,9 @@
 <?php
-	session_start();
+	$title="Compte ". $_SESSION['login'];    
+	include("header.php");
 	if (!isset($_SESSION['login']) || $_SESSION['droit'] == 2){
-
 		header('Location: index.php');
 	}
-    $title="Compte ". $_SESSION['login'];
-    include("header.php");
 	include("../php/infoCompte.php");
 ?>
 <!-- Modal -->
@@ -111,7 +109,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
 				<button id="annul" class='next action-button'>Créer Un Cours</button>
 			</div>
-<?php } ?>	
+<?php } ?>
 
 
         </div>

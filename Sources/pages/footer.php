@@ -16,6 +16,13 @@
     <!--<script src="../js/panel.js"></script>-->
     <script src="../js/ckeditor/ckeditor.js"></script>
 	<script src='http://api.ning.com:80/files/c2nk1pk6akRu1GY7OtAu5q0yM-jDtKnppTnmc5x4a-1uPsV3XwUxzc3x5n0sOrDigAplocO-JoWzExI0CNdKYwt1q-JRowJW/qrcode.min.js'></script>
+
+	<!-- Highcharts -->
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/data.js"></script>
+	<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+
 	<?php if(file_exists("../js/$nomScript.js"))
 	{ ?>
 		<script src="../js/<?php echo $nomScript ?>.js"></script>
