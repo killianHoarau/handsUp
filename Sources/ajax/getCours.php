@@ -107,9 +107,9 @@ else { //Enseignant
 							<form action="../ajax/ajoutCours.php" method="POST" id="ajoutPJ" enctype="multipart/form-data" class="wow fadeInDown msform animated">
 								<input type="hidden" value="<?php echo $row['id']; ?>" name="idCours"/>
 								<input type="file" id="Ajouthiddenfile<?php echo $row['id']; ?>" style="display:none;" name="file"/><!--onChange="Ajoutgetvalue();"-->
-								<input type="text" id="Ajoutselectedfile<?php echo $row['id']; ?>" placeholder="Fichier Selectionné" disabled="disabled"/>
+								<input type="text" id="Ajoutselectedfile<?php echo $row['id']; ?>" placeholder="Fichier Selectionné" disabled="disabled" style="display: none;"/>
 								<i id="" class="fa fa-upload fa-lg load" name="ul<?php echo $row['id']; ?>" aria-hidden="true" ></i><!--onclick="Ajoutgetfile();"-->
-								<input id="submitAddPJ<?php echo $row['id']; ?>" type="submit" value="Envoyer" class="action-button"/>
+								<input id="submitAddPJ<?php echo $row['id']; ?>" type="submit" value="Envoyer" class="action-button" style="display: none;"/>
 							</form>
 	<?php				 } ?>
 					</div>
@@ -124,9 +124,8 @@ else { //Enseignant
 } ?>
 <script>
 	$(document).ready(function(){
-		$("#popup").hide();
-		$("input[id^='Ajoutselectedfile']").hide();
-		$("input[id^='submitAddPJ']").hide();
+		//$("input[id^='Ajoutselectedfile']").hide();
+		//$("input[id^='submitAddPJ']").hide();
 		$("div[name^='trInfos']").hide(); //Cache toutes les div dont le name commence par 'trInfos'
 		$("div[name='trCours']").click(function(){
 			var id = this.id;

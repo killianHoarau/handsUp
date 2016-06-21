@@ -69,7 +69,7 @@
 
     <section id="feature" >
         <div class="container">
-			<div id="popup" class="dc-box">
+			<div id="popup" class="dc-box" style="display: none;">
 				<i id="closepopup" class="fa fa-times col-xs-12 col-sm-12 col-md-12 col-lg-12" aria-hidden="true"></i>
 			</div>
            <div id='listCours' class="center wow fadeInDown">
