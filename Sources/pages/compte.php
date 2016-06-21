@@ -1,5 +1,5 @@
 <?php
-	$title="Compte ". $_SESSION['login'];    
+	$title="Compte ". $_SESSION['login'];
 	include("header.php");
 	if (!isset($_SESSION['login']) || $_SESSION['droit'] == 2){
 		header('Location: index.php');
@@ -11,7 +11,7 @@
 	<div class="modal-dialog modal-sm">
 	  <div class="modal-content">
 	    <div class="modal-header">
-	    	<input type="text" id="valId" value=""/>
+	    	<input type="hidden" id="valId" value=""/>
 	      <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      <h4 class="modal-title">Attention!</h4>
 	    </div>
