@@ -92,7 +92,7 @@ else { //Enseignant
 							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
 								<!--Champs QRCODE -->
 								<input id="text<?php echo $row['id']; ?>" name="linkQR" type="hidden" value="http://localhost/handsup/Sources/pages/cours.php?idCours=<?php echo $row['id'];?>"/>
-								<div id="qrcode<?php echo $row['id']; ?>" class="petitQR"></div>					
+								<div id="qrcode<?php echo $row['id']; ?>" class="petitQR"></div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
 								<i id="stat<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-bar-chart stats fa-3x" aria-hidden="true"></i>
@@ -114,7 +114,7 @@ else { //Enseignant
 							<div class="col-xs-0 col-sm-0 col-md-1 col-lg-1"></div>
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
-							<!--DESCRIPTION ET BOUTONS-->						
+							<!--DESCRIPTION ET BOUTONS-->
 							<?php echo utf8_encode($row['description']); ?>
 						</div>
 					</div>
@@ -161,6 +161,7 @@ else { //Enseignant
 			}
 		});
 	});
+	
 	//Suppression au click sur la poubelle
 		$( "[name='supprimerCours']" ).click(function(){
 			var ide = document.getElementById("valId").value;
@@ -208,7 +209,7 @@ else { //Enseignant
 			$("#Ajoutselectedfile" + idCours).val(this.value);
 		});
 
-		$("i[id^='qcm']").click(function() {
+		$("img[id^='qcm']").click(function() {
 			document.location.href = "creationQCM.php?idCours="+this.attributes["name"].value;
 		});
 

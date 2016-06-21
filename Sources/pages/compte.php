@@ -1,5 +1,5 @@
 <?php
-	$title="Compte ". $_SESSION['login'];    
+	$title="Compte ". $_SESSION['login'];
 	include("header.php");
 	if (!isset($_SESSION['login']) || $_SESSION['droit'] == 2){
 		header('Location: index.php');
