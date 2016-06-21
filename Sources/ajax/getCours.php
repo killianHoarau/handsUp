@@ -115,7 +115,7 @@ else { //Enseignant
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
 							<!--DESCRIPTION ET BOUTONS-->
-							<?php echo utf8_encode($row['description']); ?>
+							<?php echo utf8_encode($row['description']); ?> 
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
