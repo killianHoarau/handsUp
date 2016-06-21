@@ -6,6 +6,25 @@
 	}
 	include("../php/infoCompte.php");
 ?>
+<!-- Modal -->
+<div class="modal fade"  id="myModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	    	<input type="text" id="valId" value=""/>
+	      <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      <h4 class="modal-title">Attention!</h4>
+	    </div>
+	    <div class="modal-body">
+	      <p>Voulez-vous vraiment supprimer ce cours?</p>
+	    </div>
+	    <div class="modal-footer msform">
+		  <a data-dismiss="modal" class="next oubli-button">Annuler</a>
+		  <a data-dismiss="modal" class="next action-button" name="supprimerCours">Confimer</a>
+	    </div>
+	  </div>
+	</div>
+</div>
     <section id="feature">
         <div class="container">
            <div class="center wow fadeInDown">

@@ -46,13 +46,17 @@ if ($_SESSION["droit"] == 0) {  // Etudiant
 		while($row = $result->fetch_assoc()){
 		?>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-box">
-				<div  class="dc-single-product-configuration" name="trCours" id="<?php echo $row['idCours']; ?>">
+				<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-single-product-configuration" name="trCours" id="<?php echo $row['idCours']; ?>">
 					<?php echo utf8_encode($row['libelle']); ?> - <?php echo $row['loginEnseignant']; ?>
-					<i id="<?php echo $row['idCours']; ?>" class="fa fa-trash-o fa-lg poubelle" aria-hidden="true"></i>
+					<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr<?php echo $row['idCours']; ?>" class="fa fa-trash-o poubelle fa-2x"  aria-hidden="true"></i>
 				</div>
-				<div id="dc-config-panel" name="trInfos<?php echo $row['idCours']; ?>">
-					<?php echo utf8_encode($row['description']); ?>
-					<button id="btFermer">Fermer</button>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="dc-config-panel" name="trInfos<?php echo $row['idCours']; ?>">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<?php echo utf8_encode($row['description']); ?>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 msform">
+						<button class="next oubli-button" name="btnFermer">Fermer</button>
+					</div>
 				</div>
 			</div>
 	<?php
@@ -94,7 +98,7 @@ else { //Enseignant
 								<i id="stat<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-bar-chart stats fa-3x" aria-hidden="true"></i>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-								<i id="<?php echo $row['id']; ?>" class="fa fa-trash-o poubelle fa-3x" name="supprimerCours" aria-hidden="true"></i>
+								<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr<?php echo $row['id']; ?>" class="fa fa-trash-o poubelle fa-3x"  aria-hidden="true"></i>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
 								<i id="" class="fa fa-pencil-square-o edit fa-3x" aria-hidden="true"></i>
@@ -157,9 +161,10 @@ else { //Enseignant
 			}
 		});
 	});
-		//Suppression au click sur la poubelle
-		$( "i[name^='supprimerCours']" ).click(function(){
-			var ide = this.id;
+<<<<<<< HEAD
+	//Suppression au click sur la poubelle
+		$( "[name='supprimerCours']" ).click(function(){
+			var ide = document.getElementById("valId").value;
 			//alert(ide);
 			//On rappelle getCours pour faire la modif et afficher la liste des cours Mise a jour (sans rechargement)
 			$.ajax({
@@ -174,6 +179,13 @@ else { //Enseignant
 					$('#listCours').html(code_html);
 				}
 			});
+		});
+
+		$( "i[name^='confSupr']" ).click(function(){
+			var ide = this.id;
+			valID= ide.split("confSupr");
+			document.getElementById("valId").value= valID[1]; 
+			alert(valID[1]);
 		});
 
 		//Telechargement du fichier joint a chaque cours lors du clique sur le <i> download
