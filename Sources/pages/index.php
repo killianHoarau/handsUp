@@ -9,7 +9,7 @@
 			WHERE email = '$email'";
 		//echo $query;
 		$result = $link->query($query);
-	}
+	}	
 ?>
 <div id="firstConnection" class="row" style="display: block;">
 		<span id="bienvenu" class="popup col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block;">Bienvenue, bon cours !</span>

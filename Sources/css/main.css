@@ -29,7 +29,7 @@ section{
 	text-align: center;
 }
 
-.error{
+.verrouille, .dejaRep{
 	display: none;
 	color: #c52d2f;
 	text-align: center;
@@ -62,7 +62,6 @@ section{
 .suivre-cours{
 	margin: 0;
 }
-
 /**/
 
 
