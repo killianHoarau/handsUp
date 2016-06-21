@@ -11,7 +11,7 @@
 	<div class="modal-dialog modal-sm">
 	  <div class="modal-content">
 	    <div class="modal-header">
-	    	<input type="text" id="valId" value=""/>
+	    	<input type="hidden" id="valId" value=""/>
 	      <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      <h4 class="modal-title">Attention!</h4>
 	    </div>

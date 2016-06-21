@@ -161,7 +161,6 @@ else { //Enseignant
 			}
 		});
 	});
-<<<<<<< HEAD
 	//Suppression au click sur la poubelle
 		$( "[name='supprimerCours']" ).click(function(){
 			var ide = document.getElementById("valId").value;
@@ -185,7 +184,6 @@ else { //Enseignant
 			var ide = this.id;
 			valID= ide.split("confSupr");
 			document.getElementById("valId").value= valID[1]; 
-			alert(valID[1]);
 		});
 
 		//Telechargement du fichier joint a chaque cours lors du clique sur le <i> download
