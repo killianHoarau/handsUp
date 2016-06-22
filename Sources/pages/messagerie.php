@@ -23,11 +23,10 @@
 						?><option value="<?php echo $user['id']; ?>"><?php echo $user['login']; ?></option>
 <?php				} ?>
 				</select>
-				<input name="titre" placeholder="Objet"/>	
+				<input name="titre" id="newObject" placeholder="Objet"/>	
 				<textarea cols="80" class="ckeditor" id="editeur" name="editor1" rows="10"></textarea>
 				<button id="envoyerMessage" class="next action-button" style="width: 100%;">Envoyer</button>
 			</div>
-			
 			<!-- Affiche chaque conversation -->
 			<div id="list-message">
 			</div>
@@ -86,7 +85,7 @@ $(document).ready(function(){
 				tabDestinataire : tabDestinataire
 			},
 			success : function(code_html){
-				
+
 				$('#list-message').html(code_html);
 			},
 		});
