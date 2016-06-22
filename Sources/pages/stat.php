@@ -31,10 +31,10 @@
 	</div>
 </section>
 
-<?php $n = json_encode($questions);?>;
+<?php $n = json_encode($questions);?>
 
 <script type="text/javascript">
-<? echo "var tab = $n" ?>
+<?php echo "var tab = $n" ?>
 </script>
 
 <?php

@@ -12,7 +12,7 @@
 				</div>
 			</div>
 			<div id="statutConnexion" class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-				<span id="connectVide" class='popupW col-xs-12 col-sm-12 col-md-12 col-lg-12'>Veuillez remplir les champs en rouge</span>
+				<span id="connectVide" class='popupW col-xs-12 col-sm-12 col-md-12 col-lg-12'>Veuillez remplir les champs vident merci.</span>
 			</div>
 			
 				<div id="Connect" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform">
@@ -27,9 +27,9 @@
 				
 				<div id='formCompteOublie' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 msform wow fadeInDown formCompteOublie'>
 					<fieldset>
-								<input name='emailR' placeholder="Email"/>
-								<div class="col-lg-6"><input id='btnRecuperation' type="submit" class="next action-button" value="Envoyer" /></div>
-								<div class="col-lg-6"><button id='btnAnnul' class="next oubli-button">Annuler</button></div>
+						<input name='emailR' placeholder="Email"/>
+						<div class="col-lg-6"><input id='btnRecuperation' type="submit" class="next action-button" value="Envoyer" /></div>
+						<div class="col-lg-6"><button id='btnAnnul' class="next oubli-button">Annuler</button></div>
 					</fieldset>
 				</div>
 		</div>
@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			<div id="statutInscription" class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-				<span id="erreurVide" class='popupW col-xs-12 col-sm-12 col-md-12 col-lg-12'>Veuillez remplir les champs en rouge</span>
+				<span id="erreurVide" class='popupW col-xs-12 col-sm-12 col-md-12 col-lg-12'>Veuillez remplir les champs vident merci.</span>
 			</div>
 			<div id="signIn" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform">
 				<!-- fieldsets -->

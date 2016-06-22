@@ -3,17 +3,17 @@
     include("header.php");
 	$login = $_SESSION['login'];
 	$id = $_SESSION['id'];
-
+	
 	//Récupère l'ensemble des utilisateur pour l'envoi d'un nouveau message par un prof
 	$query = "SELECT u.id, u.login FROM utilisateur u";
-	$resUsers = $link->query($query);
+	$resUsers = $link->query($query); 
 ?>
 <input id="idenCours" type='hidden' value="<?php echo $id; ?>" />
 <section id="feature">
 	<div class="container">
 		<div class="center wow fadeInDown animated">
 			<h2>Vos messages</h2>
-
+			
 			<!-- Nouveau message -->
 			<i id="btnEdit" class="fa fa-pencil-square-o" aria-hidden="true"></i>
 			<div id="newMessage" enctype="multipart/form-data" class="wow fadeInDown msform animated animated" style="display: block; visibility: visible; animation-name: fadeInDown;">
@@ -23,18 +23,18 @@
 						?><option value="<?php echo $user['id']; ?>"><?php echo $user['login']; ?></option>
 <?php				} ?>
 				</select>
-				<input name="titre" placeholder="Objet"/>
+				<input name="titre" placeholder="Objet"/>	
 				<textarea cols="80" class="ckeditor" id="editeur" name="editor1" rows="10"></textarea>
 				<button id="envoyerMessage" class="next action-button" style="width: 100%;">Envoyer</button>
 			</div>
-
+			
 			<!-- Affiche chaque conversation -->
 			<div id="list-message">
 			</div>
-
+			
 		</div>
 	</div>
-
+	
 </section>
 
 <?php
@@ -61,7 +61,7 @@ $(document).ready(function(){
 				// height: 'toggle'
 			// });
 		// alert("div[id='"+id+"reponse']");
-
+		
 	//Rempli la liste des conversations et des messages
 	var id = document.getElementById('idenCours').value;
 	$.ajax({
@@ -75,6 +75,7 @@ $(document).ready(function(){
 			$('#list-message').html(code_html);
 		},
 });
+
 	$('#envoyerMessage').click(function(){
 		var id = document.getElementById('idenCours').value;							//Recupère l'id de l'utilisateur connécté
 		var titre = document.getElementsByName('titre')[0].value;						//Recupère l'objet du message
