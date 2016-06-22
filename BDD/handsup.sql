@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.5
+-- version 4.3.1
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mar 21 Juin 2016 à 17:09
--- Version du serveur :  5.6.30
--- Version de PHP :  5.3.29
+-- Généré le :  Mer 22 Juin 2016 à 09:28
+-- Version du serveur :  5.6.22
+-- Version de PHP :  5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `handsup`
+-- Base de données :  `handsupElise`
 --
 
 -- --------------------------------------------------------
@@ -48,11 +48,24 @@ INSERT INTO `code_statut` (`code`, `statut`, `utilise`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `conversation`
+--
+
+CREATE TABLE IF NOT EXISTS `conversation` (
+`id` int(3) NOT NULL,
+  `utilisateur0` int(3) NOT NULL,
+  `utilisateur1` int(3) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `cours`
 --
 
 CREATE TABLE IF NOT EXISTS `cours` (
-  `id` int(5) NOT NULL,
+`id` int(5) NOT NULL,
   `libelle` varchar(50) NOT NULL,
   `description` varchar(3000) NOT NULL,
   `nomFichier` varchar(20) DEFAULT NULL,
@@ -71,17 +84,18 @@ INSERT INTO `cours` (`id`, `libelle`, `description`, `nomFichier`, `idEnseignant
 -- --------------------------------------------------------
 
 --
--- Structure de la table `message`
+-- Structure de la table `message_prive`
 --
 
-CREATE TABLE IF NOT EXISTS `message` (
-  `id` int(4) NOT NULL,
-  `contenu` varchar(500) NOT NULL,
+CREATE TABLE IF NOT EXISTS `message_prive` (
+`id` int(10) NOT NULL,
   `idEmetteur` int(3) NOT NULL,
   `idDestinataire` int(3) NOT NULL,
-  `reponse` tinyint(1) NOT NULL DEFAULT '0',
-  `lu` tinyint(1) NOT NULL DEFAULT '0',
-  `date` date NOT NULL
+  `titre` varchar(100) NOT NULL,
+  `contenu` varchar(1000) NOT NULL,
+  `date` date NOT NULL,
+  `lu` tinyint(1) NOT NULL,
+  `idConversation` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -91,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `message` (
 --
 
 CREATE TABLE IF NOT EXISTS `question` (
-  `id` int(10) NOT NULL,
+`id` int(10) NOT NULL,
   `libelle` varchar(500) NOT NULL,
   `verrouille` tinyint(1) NOT NULL DEFAULT '0',
   `idCours` int(5) NOT NULL,
@@ -147,7 +161,7 @@ INSERT INTO `repondre` (`adresseIP`, `idUtilisateur`, `idReponse`, `date`, `temp
 --
 
 CREATE TABLE IF NOT EXISTS `reponse` (
-  `id` int(10) NOT NULL,
+`id` int(10) NOT NULL,
   `libelle` varchar(50) NOT NULL,
   `bonne` tinyint(1) NOT NULL,
   `nomImage` varchar(50) DEFAULT NULL,
@@ -199,7 +213,7 @@ INSERT INTO `suivre_cours` (`idUtilisateur`, `idCours`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id` int(4) NOT NULL,
+`id` int(4) NOT NULL,
   `login` varchar(20) NOT NULL,
   `motDePasse` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -227,68 +241,90 @@ INSERT INTO `utilisateur` (`id`, `login`, `motDePasse`, `email`, `statut`, `vali
 -- Index pour la table `code_statut`
 --
 ALTER TABLE `code_statut`
-  ADD PRIMARY KEY (`code`);
+ ADD PRIMARY KEY (`code`);
+
+--
+-- Index pour la table `conversation`
+--
+ALTER TABLE `conversation`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `cours`
 --
 ALTER TABLE `cours`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `message_prive`
+--
+ALTER TABLE `message_prive`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `question`
 --
 ALTER TABLE `question`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `repondre`
 --
 ALTER TABLE `repondre`
-  ADD PRIMARY KEY (`adresseIP`,`idReponse`,`date`);
+ ADD PRIMARY KEY (`adresseIP`,`idReponse`,`date`);
 
 --
 -- Index pour la table `reponse`
 --
 ALTER TABLE `reponse`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `suivre_cours`
 --
 ALTER TABLE `suivre_cours`
-  ADD PRIMARY KEY (`idUtilisateur`,`idCours`);
+ ADD PRIMARY KEY (`idUtilisateur`,`idCours`);
 
 --
 -- Index pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
 --
 
 --
+-- AUTO_INCREMENT pour la table `conversation`
+--
+ALTER TABLE `conversation`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT pour la table `cours`
 --
 ALTER TABLE `cours`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `message_prive`
+--
+ALTER TABLE `message_prive`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `reponse`
 --
 ALTER TABLE `reponse`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
