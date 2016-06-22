@@ -16,7 +16,7 @@
 		</div>
 		<?php foreach ($questions as $question): ?>
 			<div class="row center">
-				<p>QCM <?php echo $question['num']; ?></p>
+				<p>QCM<?php echo $question['num']; ?>: <?php echo $question['libelle']; ?></p>
 				<input type="hidden" name="befor10<?php echo $question['id']; ?>" value="<?php echo $question['befor10']; ?>">
 				<input type="hidden" name="befor30<?php echo $question['id']; ?>" value="<?php echo $question['befor30']; ?>">
 				<input type="hidden" name="after30<?php echo $question['id']; ?>" value="<?php echo $question['after30']; ?>">

@@ -8,7 +8,13 @@ $tabReponses = $_POST['tabReponses'];
 
 $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 
-$query = "INSERT INTO question (libelle, idCours) VALUES ('$libelleQuestion', $idCours);";
+//Recherche du numéro
+$query = "SELECT count(*) as 'nbr' FROM question WHERE idCours = $idCours;";
+$result = $link->query($query);
+$row = $result->fetch_assoc();
+$nbrQuestion = $row['nbr'] + 1;
+
+$query = "INSERT INTO question (libelle, idCours, numero) VALUES ('$libelleQuestion', $idCours, $nbrQuestion);";
 
 $result = $link->query($query);
 
