@@ -45,20 +45,21 @@
 			while($row=$result->fetch_assoc())	//Pour chaque Conversation
 			{  
 				$idConversation = $row['id'];
-				$query = "SELECT m.*, u1.login as Emetteur, u2.login as Destinataire FROM message_prive m, utilisateur u1, utilisateur u2 WHERE idConversation = $idConversation AND m.idEmetteur = u1.id AND m.idDestinataire = u2.id ORDER BY date DESC;";
+				$query = "SELECT m.*, u1.login as Emetteur, u2.login as Destinataire FROM message_prive m, utilisateur u1, utilisateur u2 WHERE idConversation = $idConversation AND m.idEmetteur = u1.id AND m.idDestinataire = u2.id ORDER BY date DESC, m.id DESC;";
 				$res = $link->query($query);
-			?>	<div name="conversation" class="row"> 
-					<div name="correspondant">
-						<span><?php echo $row['login']; ?></span>
+			?>	
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-box">
+				<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-single-product-configuration" name="trCours" id="testId">
+					test
+					<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr" class="fa fa-trash-o poubelle fa-2x"  aria-hidden="true"></i>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="dc-config-panel" name="trInfos">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						messages
 					</div>
-					<div name="messages" class="row">
-<?php				while($messages = $res->fetch_assoc())	//Et pour chaque message
-					{ ?>
-							<span class="col-md-6 col-xs-12"><?php echo "Emetteur : ".$messages['Emetteur']; ?></span>
-							<span class="col-md-6 col-xs-12"><?php echo "Destinataire : ".$messages['Destinataire']; ?></span>
-							<span class="col-md-12 col-xs-12"><?php echo $messages['titre']; ?></span>
-							<span class="col-md-12 col-xs-12"><?php echo $messages['contenu']; ?></span>
-<?php				} ?>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 msform">
+						<button class="next oubli-button" name="btnFermer">Fermer</button>
 					</div>
 				</div>
+			</div>
 <?php		} ?>
