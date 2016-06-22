@@ -6,18 +6,7 @@
 .icoQCM{
   cursor: pointer;
 }
-i.fa.fa-file-text-o.grand{
-	cursor: pointer;
-	color: rgb(161, 0, 241);
-	font-size: 3em;
-	margin-bottom: 10px;
-}
-i.fa.fa-file-text-o.petit{
-	cursor: pointer;
-	color: #27AE60;
-	font-size: 2em;
-	float: right;
-}
+
 @media (max-width: 1024px) {
     #logoCQMmobile{
       display: block;

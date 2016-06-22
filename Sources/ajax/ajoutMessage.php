@@ -49,16 +49,35 @@
 				$res = $link->query($query);
 			?>	
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-box">
-				<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-single-product-configuration" name="trCours" id="testId">
-					test
-					<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr" class="fa fa-trash-o poubelle fa-2x"  aria-hidden="true"></i>
+				<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-single-product-configuration" name="trCours" id="<?php echo $row['id'];?>">
+					<?php echo $row['login'];?>
+					<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr<?php echo $row['id'];?>" class="fa fa-trash-o poubelle fa-2x"  aria-hidden="true"></i>
 				</div>
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="dc-config-panel" name="trInfos">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						messages
+
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="dc-config-panel" name="trInfos<?php echo $row['id'];?>">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 contentMessage" id="mess">
+<?php				while($messages = $res->fetch_assoc())	//Et pour chaque message
+					{ ?>
+						<ol class="chat">
+							<div class="day"><time><?php echo date("d-m-Y", strtotime($messages['date'])); ?></time></div>
+									<li class="<?php if($_SESSION['login']==$messages['Emetteur']) echo "self"; 
+													 else echo "other";
+												?>">
+									<div class="msg">
+										<h5><?php echo $messages['titre']; ?>:</h5>
+										<p><?php echo $messages['contenu']; ?></p>
+									</div>
+								</li>
+							</ol>
+<?php				} ?>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 msform">
-						<button class="next oubli-button" name="btnFermer">Fermer</button>
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							<button id="envoyerMessage" name="btnRepondre" id="<?php echo "eeeé".$row['id']; ?>" class="next action-button">Repondre</button>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">						
+							<button class="next oubli-button" name="btnFermer">Fermer</button>
+						</div>
 					</div>
 				</div>
 			</div>
