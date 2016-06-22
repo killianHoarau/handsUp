@@ -42,26 +42,20 @@
 ?>
 <script>
 $(document).ready(function(){
+	$('#newMessage').hide();
 });
-	// $("i[name='deployerConversation']").click(function(){
-		// var idConversation = this.id;
-		// var messages = document.getElementsByName('Message'+idConversation);
-		// for(var i=1; i<messages.length; i++)
-		// {
-			// if (messages[i].classList){
-			  // messages[i].classList.add("fadeInUp");
-			  // messages[i].classList.add("animated");
-			// }
-			// else
-			  // messages[i].className += ' ' + "fadeInUp" + ' '+ "animated";
-			// messages[i].style.display = '';
-		// }
-	// });
-		// $('#formAddCours').animate({
-				// height: 'toggle'
-			// });
-		// alert("div[id='"+id+"reponse']");
-		
+	var toggled = false;
+	$("i[id='btnEdit']").click(function(){
+		if(toggled){
+			$('#newMessage').hide();
+			toggled = false;
+		}
+		else{
+			$('#newMessage').show();
+			toggled = true;
+		}
+	});
+	
 	//Rempli la liste des conversations et des messages
 	var id = document.getElementById('idenCours').value;
 	$.ajax({
