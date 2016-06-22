@@ -31,7 +31,7 @@ if(isset($_POST['suppr'])) {
 
 
 
-if ($_SESSION["droit"] == 0) {  // Etudiant
+if ($_SESSION["droit"] == 0) {  //Etudiant
 
 	$query = "SELECT cours.id as 'idCours', libelle, description, login as 'loginEnseignant'  FROM cours, suivre_cours, utilisateur WHERE cours.id = suivre_cours.idCours AND utilisateur.id = cours.idEnseignant AND suivre_cours.idUtilisateur = '$id';";
 	// die(var_dump($query));
@@ -48,7 +48,8 @@ if ($_SESSION["droit"] == 0) {  // Etudiant
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-box">
 				<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-single-product-configuration" name="trCours" id="<?php echo $row['idCours']; ?>">
 					<?php echo utf8_encode($row['libelle']); ?> - <?php echo $row['loginEnseignant']; ?>
-					<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr<?php echo $row['idCours']; ?>" class="fa fa-trash-o poubelle fa-2x"  aria-hidden="true"></i>
+					<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr<?php echo $row['idCours']; ?>" class="fa fa-trash-o poubellePetit fa-2x"  aria-hidden="true"></i>
+					<i id="goCours<?php echo $row['idCours']; ?>" name="<?php echo $row['idCours']; ?>" class="fa fa-file-text-o petit" aria-hidden="true"></i>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="dc-config-panel" name="trInfos<?php echo $row['idCours']; ?>">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -88,7 +89,6 @@ else { //Enseignant
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="dc-config-panel" name="trInfos<?php echo $row['id']; ?>">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
-							<div class="col-xs-0 col-sm-0 col-md-1 col-lg-1"></div>
 							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
 								<!--Champs QRCODE -->
 								<input id="text<?php echo $row['id']; ?>" name="linkQR" type="hidden" value="http://localhost/handsup/Sources/pages/cours.php?idCours=<?php echo $row['id'];?>"/>
@@ -111,7 +111,9 @@ else { //Enseignant
 									<img id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="icoQCM" src="../images/ico/qcmSmall.png"/>
 								</div>
 							</div>
-							<div class="col-xs-0 col-sm-0 col-md-1 col-lg-1"></div>
+							<div class="col-xs-4 col-sm-12 col-md-2 col-lg-2">
+								<i id="goCours<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-file-text-o grand" aria-hidden="true"></i>
+							</div>
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
 							<!--DESCRIPTION ET BOUTONS-->
@@ -249,5 +251,9 @@ else { //Enseignant
 		//Redirection vers la page de stat global
 		$("i[id^='stat']").click(function(){
 			document.location.href = "stat.php?idCours="+this.attributes["name"].value;
+		});
+		//Redirection vers la page du cours
+		$("i[id^='goCours']").click(function(){
+			document.location.href = "cours.php?idCours="+this.attributes["name"].value;
 		});
 </script>

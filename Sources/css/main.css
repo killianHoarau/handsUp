@@ -79,7 +79,7 @@ section{
 
 /*Page création QCM*/
 
-div.dc-single-product-configuration:hover .poubelle{
+div.dc-single-product-configuration:hover .poubelle .poubellePetit{
   color: #151515;
 }
 
@@ -114,6 +114,13 @@ div.dc-single-product-configuration:hover .poubelle{
 	border: none;
 	background-color: transparent;
 	color: #c52d2f;
+}
+.poubellePetit{
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	color: #c52d2f;
+	float: left;
 }
 
 .add-reponse{
