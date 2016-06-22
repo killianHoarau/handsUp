@@ -26,7 +26,7 @@
 	</div>
 </div>
     <section id="feature">
-        <div class="container">
+        <div class="container pageCours">
            <div class="center wow fadeInDown">
                 <h2>Voici vos informations
 					<button id="btnEdit">
@@ -72,10 +72,10 @@
             </div>
 
 			<div class=" row msform">
-				<div class="col-lg-6">
+				<div class="col-xs-6 col-lg-6">
 					<button id='btnSaveInfo' name="next" class="next action-button">Valider</button>
 				</div>
-				<div class="col-lg-6">
+				<div class="col-xs-6 col-lg-6">
 					<button id="btnCancelInfo" class="next oubli-button">Annuler</button>
 				</div>
 
@@ -85,7 +85,7 @@
 
 
     <section id="feature" >
-        <div class="container">
+        <div class="container pageCours">
 			<div id="popup" class="dc-box" style="display: none;">
 				<i id="closepopup" class="fa fa-times col-xs-12 col-sm-12 col-md-12 col-lg-12" aria-hidden="true"></i>
 			</div>
@@ -111,28 +111,24 @@
 			</div>
 <?php } ?>
 
-
         </div>
+
+		<div id="contourForm">
+			<div id="formModifCours">
+				<i id="closeModif" class="fa fa-times col-xs-12 col-sm-12 col-md-12 col-lg-12" aria-hidden="true"></i>
+				<div class="container msform">
+					<input type="hidden" id="idCoursModif">
+					<input id="modifLibelle" placeholder="Titre du cours"/>
+					<textarea cols="80" class="ckeditor" id="editeur2" name="modifDescription" rows="10"></textarea>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 msform">
+						<button id="btnValiderModif" class='next action-button'>Modifier</button>
+					</div>
+				</div>
+			</div>
+		</div>
     </section><!--/#feature-->
 
 
-	<!-- pop up modif cours -->
-
-	<!-- <section id="feature">
-		<div class="container">
-			<div class="center wow fadeInDown">
-				 <h2>Modifier le cours</h2>
-			 </div>
-			 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform animated">
-				<input name="libelle" value=""/>
-				<textarea name="description" value=""></textarea>
-				<input type="file" id="hiddenfile" style="display:none;" name="file" onChange="getvalue();"/>
-				<input type="text" id="selectedfile" placeholder="Fichier Selectionné (Facultatif)" disabled="disabled"/>
-				<input type="button" value="Joindre Fichier" class='btn-default' onclick="getfile();" />
-				<button id="btn-upload" class='btn btn-default'>Envoyer</button>
-			</div>
-		</div>
-	</section> -->
 
 
 

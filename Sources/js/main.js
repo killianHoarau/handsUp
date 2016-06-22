@@ -46,6 +46,33 @@ jQuery(function($) {'use strict',
 		$('#email').css('display', 'block');
 	});
 
+	$('#closeModif').click(function() {
+		$('#contourForm').hide();
+	});
+
+	$('#btnValiderModif').click(function() {
+		var libelle = $('#modifLibelle').val();
+		var description = CKEDITOR.instances['editeur2'].getData();
+		var idCoursModif = $('#idCoursModif').val();
+		// console.log(description);
+
+		$.ajax({
+			url: "../ajax/confirmModifCompte.php",
+			type: 'POST',
+			async: true,
+			data : {
+				libelle : libelle,
+				description : description,
+				idCoursModif : idCoursModif,
+				modifCours : true
+				},
+			success: function(code_html){
+				$('#contourForm').hide();
+				$('#listCours').html(code_html);
+			}
+		});
+	});
+
 
 	//Initiat WOW JS
 	new WOW().init();

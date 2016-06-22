@@ -81,29 +81,29 @@ else { //Enseignant
 		?>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-box">
 				<!--DIV COURS-->
-				<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-single-product-configuration" name="trCours" id="<?php echo $row['id']; ?>">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-single-product-configuration" title="monLibelle" value="<?php echo $row['libelle']; ?>" name="trCours" id="<?php echo $row['id']; ?>">
 					<?php echo utf8_encode($row['libelle']); ?>
 				</div>
 				<!--DIV INFO-->
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="dc-config-panel" name="trInfos<?php echo $row['id']; ?>">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+						<div class="row margin-cours">
 							<div class="col-xs-0 col-sm-0 col-md-1 col-lg-1"></div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+							<div class="col-xs-4 col-sm-12 col-md-2 col-lg-2">
 								<!--Champs QRCODE -->
 								<input id="text<?php echo $row['id']; ?>" name="linkQR" type="hidden" value="http://localhost/handsup/Sources/pages/cours.php?idCours=<?php echo $row['id'];?>"/>
 								<div id="qrcode<?php echo $row['id']; ?>" class="petitQR"></div>
 							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+							<div class="col-xs-4 col-sm-12 col-md-2 col-lg-2">
 								<i id="stat<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-bar-chart stats fa-3x" aria-hidden="true"></i>
 							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+							<div class="col-xs-4 col-sm-12 col-md-2 col-lg-2">
 								<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr<?php echo $row['id']; ?>" class="fa fa-trash-o poubelle fa-3x"  aria-hidden="true"></i>
 							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-								<i id="" class="fa fa-pencil-square-o edit fa-3x" aria-hidden="true"></i>
+							<div class="col-xs-4 col-sm-12 col-md-2 col-lg-2">
+								<i id="modif<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-pencil-square-o edit fa-3x" aria-hidden="true"></i>
 							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+							<div class="col-xs-4 col-sm-12 col-md-2 col-lg-2">
 								<div id="logoCQMfull">
 									<img id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="icoQCM" src="../images/ico/qcm.png"/>
 								</div>
@@ -113,9 +113,9 @@ else { //Enseignant
 							</div>
 							<div class="col-xs-0 col-sm-0 col-md-1 col-lg-1"></div>
 						</div>
-						<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12">
+						<div class="row margin-cours" id="desc<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>">
 							<!--DESCRIPTION ET BOUTONS-->
-							<?php echo utf8_encode($row['description']); ?> 
+							<?php echo utf8_encode($row['description']); ?>
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -147,6 +147,7 @@ else { //Enseignant
 	</section>
 <?php }
 } ?>
+
 <script>
 	$(document).ready(function(){
 		//$("input[id^='Ajoutselectedfile']").hide();
@@ -161,93 +162,108 @@ else { //Enseignant
 			}
 		});
 	});
-	
+
 	//Suppression au click sur la poubelle
-		$( "[name='supprimerCours']" ).click(function(){
-			var ide = document.getElementById("valId").value;
-			//alert(ide);
-			//On rappelle getCours pour faire la modif et afficher la liste des cours Mise a jour (sans rechargement)
-			$.ajax({
-				url: "../ajax/getCours.php",
-				type: 'POST',
-				async: true,
-				data : {
-					suppr : ide
-					},
-				success: function(code_html)
-				{
-					$('#listCours').html(code_html);
-				}
-			});
+	$( "[name='supprimerCours']" ).click(function(){
+		var ide = document.getElementById("valId").value;
+		//alert(ide);
+		//On rappelle getCours pour faire la modif et afficher la liste des cours Mise a jour (sans rechargement)
+		$.ajax({
+			url: "../ajax/getCours.php",
+			type: 'POST',
+			async: true,
+			data : {
+				suppr : ide
+				},
+			success: function(code_html)
+			{
+				$('#listCours').html(code_html);
+			}
 		});
+	});
 
-		$( "i[name^='confSupr']" ).click(function(){
-			var ide = this.id;
-			valID= ide.split("confSupr");
-			document.getElementById("valId").value= valID[1]; 
+	$( "i[name^='confSupr']" ).click(function(){
+		var ide = this.id;
+		valID= ide.split("confSupr");
+		document.getElementById("valId").value= valID[1];
+	});
+
+	//Telechargement du fichier joint a chaque cours lors du clique sur le <i> download
+	$("i[name^='dl']").click(function(){
+		$(this).closest("form").submit();
+		return false;
+	});
+
+	//Upload du fichier pour un cours qui n'en a pas deja
+	$("i[name^='ul']").click(function(){
+		var name = this.getAttribute("name");
+		var idPasse = name.substring(2);
+		$("input[id='Ajoutselectedfile" + idPasse +"']").show();
+		$("input[id^='submitAddPJ']").show();
+		document.getElementById('Ajouthiddenfile'+idPasse+'').click();
+	});
+
+	//Affiche le fichier selectionne
+	$("input[id^=Ajouthiddenfile]").change(function(){
+		var id = this.id;
+		var idCours = id.substring(15);
+		$("#Ajoutselectedfile" + idCours).val(this.value);
+	});
+
+	$("img[id^='qcm']").click(function() {
+		document.location.href = "creationQCM.php?idCours="+this.attributes["name"].value;
+	});
+
+	$('button[name="btnFermer"]').click(function(){
+		var name = this.parentNode.parentNode.getAttribute("name");
+		name = name.substring(7);
+		$('div[name="trInfos'+name+'"]').slideUp(name);
+	});
+
+	//Créé le QR code pour chaque cours
+	var tabQR = document.getElementsByName('linkQR');
+	for(var i=0; i<tabQR.length; i++)
+	{
+		var id = tabQR[i].id.substring(4);
+		//console.log(id);
+		var qr = new QRCode("qrcode"+id);
+		qr.makeCode($('#text'+id).val());	//Créé le QR avec la valeur de l'input text qui est caché
+		$('#qrcode' + id).find("img").css({"width": "40px"});	//Permet d'afficher le QR en petit
+
+		//Affiche la popup du QRCode en gros pour pouvoir le scanner
+		$('#qrcode' + id).find("img").click(function(){
+			// alert(this.nodeName);
+			var idclicked = this.parentNode.id.substring(6);
+			//alert(idclicked);
+			var imgClone = this.cloneNode(true);
+			imgClone.style.width = "50%";
+			$('#popup').append(imgClone);
+			$('#popup').show();
 		});
+	}
 
-		//Telechargement du fichier joint a chaque cours lors du clique sur le <i> download
-		$("i[name^='dl']").click(function(){
-			$(this).closest("form").submit();
-			return false;
-		});
+	$('#closepopup').click(function(){
+		$('#popup').children('img').remove();
+		$('#popup').hide();
+	});
 
-		//Upload du fichier pour un cours qui n'en a pas deja
-		$("i[name^='ul']").click(function(){
-			var name = this.getAttribute("name");
-			var idPasse = name.substring(2);
-			$("input[id='Ajoutselectedfile" + idPasse +"']").show();
-			$("input[id^='submitAddPJ']").show();
-			document.getElementById('Ajouthiddenfile'+idPasse+'').click();
-		});
+	//Redirection vers la page de stat global
+	$("i[id^='stat']").click(function(){
+		document.location.href = "stat.php?idCours="+this.attributes["name"].value;
+	});
 
-		//Affiche le fichier selectionne
-		$("input[id^=Ajouthiddenfile]").change(function(){
-			var id = this.id;
-			var idCours = id.substring(15);
-			$("#Ajoutselectedfile" + idCours).val(this.value);
-		});
-
-		$("img[id^='qcm']").click(function() {
-			document.location.href = "creationQCM.php?idCours="+this.attributes["name"].value;
-		});
-
-		$('button[name="btnFermer"]').click(function(){
-			var name = this.parentNode.parentNode.getAttribute("name");
-			name = name.substring(7);
-			$('div[name="trInfos'+name+'"]').slideUp(name);
-		});
-
-		//Créé le QR code pour chaque cours
-		var tabQR = document.getElementsByName('linkQR');
-		for(var i=0; i<tabQR.length; i++)
-		{
-			var id = tabQR[i].id.substring(4);
-			//console.log(id);
-			var qr = new QRCode("qrcode"+id);
-			qr.makeCode($('#text'+id).val());	//Créé le QR avec la valeur de l'input text qui est caché
-			$('#qrcode' + id).find("img").css({"width": "40px"});	//Permet d'afficher le QR en petit
-
-			//Affiche la popup du QRCode en gros pour pouvoir le scanner
-			$('#qrcode' + id).find("img").click(function(){
-				// alert(this.nodeName);
-				var idclicked = this.parentNode.id.substring(6);
-				//alert(idclicked);
-				var imgClone = this.cloneNode(true);
-				imgClone.style.width = "50%";
-				$('#popup').append(imgClone);
-				$('#popup').show();
-			});
+	//Affiche le popup modif cours
+	$("i[id^='modif']").click(function(){
+		trCours = document.getElementsByName('trCours');
+		for (var i = 0; i < trCours.length; i++) {
+			if (trCours[i].title == 'monLibelle' && trCours[i].id == this.attributes['name'].value) {
+				document.getElementById('modifLibelle').value = trCours[i].attributes['value'].value;
+			}
 		}
+		CKEDITOR.instances['editeur2'].setData(document.getElementById("desc"+this.attributes['name'].value).textContent);
+		document.getElementById('idCoursModif').value = this.attributes['name'].value;
+		$('#contourForm').show();
 
-		$('#closepopup').click(function(){
-			$('#popup').children('img').remove();
-			$('#popup').hide();
-		});
 
-		//Redirection vers la page de stat global
-		$("i[id^='stat']").click(function(){
-			document.location.href = "stat.php?idCours="+this.attributes["name"].value;
-		});
+	});
 </script>

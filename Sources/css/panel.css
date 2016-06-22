@@ -16,7 +16,7 @@
     }
 }
 /*-------------------QR CODE----------------------*/
-.petitQR > img {display: inline;}
+.petitQR > img {display: inline !important;}
 div.petitQR > img:hover{
   cursor: pointer;
 }

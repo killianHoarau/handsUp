@@ -8,12 +8,12 @@
 
 	include("../php/infoStat.php");
 ?>
-
 <section id="feature">
 	<div class="container">
 	   <div class="center wow fadeInDown">
 			<h2>Statistiques du cours <?php echo utf8_encode($cour['libelle']); ?></h2>
 		</div>
+
 		<?php foreach ($questions as $question): ?>
 			<div class="row center">
 				<p>QCM<?php echo $question['num']; ?>: <?php echo $question['libelle']; ?></p>
@@ -28,13 +28,18 @@
 				</div>
 			</div>
 		<?php endforeach; ?>
+		<div class="col-lg-3 msform">
+			<button id="annul" class="next oubli-button">Retour</button>
+		</div>
 	</div>
+
+
 </section>
 
-<?php $n = json_encode($questions);?>;
+<?php $n = json_encode($questions);?>
 
 <script type="text/javascript">
-<? echo "var tab = $n" ?>
+<?php echo "var tab = $n" ?>
 </script>
 
 <?php

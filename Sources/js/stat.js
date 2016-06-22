@@ -16,7 +16,6 @@ $(document).ready(function(){
 				title: {
 	                text: 'Temps en seconde'
 	            }
-
 	        },
 	        yAxis: {
 	            title: {
@@ -48,15 +47,18 @@ $(document).ready(function(){
 	            data: [{
 	                name: '0 - 10',
 	                y: parseFloat(document.getElementsByName('befor10'+tabTemps[i].id)[0].value),
-	                drilldown: '0 - 10'
+	                drilldown: '0 - 10',
+					color: '#00688b'
 	            }, {
 	                name: '10 - 30',
 	                y: parseFloat(document.getElementsByName('befor30'+tabTemps[i].id)[0].value),
-	                drilldown: '10 - 30'
+	                drilldown: '10 - 30',
+					color: '#a23a72'
 	            }, {
 	                name: ' > 30',
 	                y:  parseFloat(document.getElementsByName('after30'+tabTemps[i].id)[0].value),
-	                drilldown: ' > 30'
+	                drilldown: ' > 30',
+					color: '#8fbc8f'
 	            }]
 	        }]
 	    });
@@ -118,4 +120,9 @@ $(document).ready(function(){
 	        }]
 	    });
 	}
+
+	$('#annul').click(function() {
+		document.location.href="compte.php";
+	});
+
 });

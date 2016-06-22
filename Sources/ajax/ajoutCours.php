@@ -34,5 +34,16 @@ else
 				VALUES ('$libelle', '$description', '$file', $idEnseignant)";
 echo $sql;
 $result = $link->query($sql);
+
+
+//SUIVRE LE COURS
+$query = "SELECT id FROM cours WHERE idEnseignant =$idEnseignant and libelle = '$libelle';";
+$result = $link->query($sql);
+$row = $result->fetch_assoc();
+$idNewCours = $row['id'];
+
+$query="INSERT INTO suivre_cours VALUES ($idEnseignant, $idNewCours)";
+$result = $link->query($sql);
+
 header("Location: ../pages/compte.php");
 ?>

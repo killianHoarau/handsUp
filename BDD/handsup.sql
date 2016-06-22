@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.1
+-- version 4.4.15.5
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 22 Juin 2016 à 09:28
--- Version du serveur :  5.6.22
--- Version de PHP :  5.6.3
+-- Généré le :  Mer 22 Juin 2016 à 15:13
+-- Version du serveur :  5.6.30
+-- Version de PHP :  5.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `handsupElise`
+-- Base de données :  `handsup`
 --
 
 -- --------------------------------------------------------
@@ -52,7 +52,7 @@ INSERT INTO `code_statut` (`code`, `statut`, `utilise`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `conversation` (
-`id` int(3) NOT NULL,
+  `id` int(3) NOT NULL,
   `utilisateur0` int(3) NOT NULL,
   `utilisateur1` int(3) NOT NULL,
   `date` date NOT NULL
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `conversation` (
 --
 
 CREATE TABLE IF NOT EXISTS `cours` (
-`id` int(5) NOT NULL,
+  `id` int(5) NOT NULL,
   `libelle` varchar(50) NOT NULL,
   `description` varchar(3000) NOT NULL,
   `nomFichier` varchar(20) DEFAULT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `cours` (
 --
 
 INSERT INTO `cours` (`id`, `libelle`, `description`, `nomFichier`, `idEnseignant`) VALUES
-(1, 'Histoire', ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis est vitae sem luctus imperdiet. Phasellus lacus augue, elementum non tristique nec, porttitor eget mi. Morbi purus quam, tristique at felis eu, tempor venenatis tellus. Ut at nisl ut libero scelerisque bibendum. Nulla ultricies enim cursus pulvinar maximus. Proin ut placerat quam. Maecenas eget est sed sapien maximus dignissim. Morbi sit amet turpis egestas, viverra tortor et, aliquet est. Fusce pellentesque dapibus sem, id cursus sem rhoncus a. Etiam et nulla risus. Vestibulum non dignissim metus. Maecenas vitae lacus id nisl rhoncus ornare a non ex. Curabitur laoreet tincidunt erat, et mollis arcu lacinia eu. Maecenas nec ante non massa tempus imperdiet sit amet vitae erat. In tincidunt dignissim vestibulum. Etiam faucibus nisl turpis, nec vestibulum ante elementum eu.\n\nVestibulum posuere libero sem, sit amet egestas arcu vehicula vitae. Donec tincidunt ligula vehicula nisl molestie pulvinar.', 'courshist.pdf', 2),
+(1, 'Histoire', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis est vitae sem luctus imperdiet. Phasellus lacus augue, elementum non tristique nec, porttitor eget mi. Morbi purus quam, tristique at felis eu, tempor venenatis tellus. Ut at nisl ut libero scelerisque bibendum. Nulla ultricies enim cursus pulvinar maximus. Proin ut placerat quam. Maecenas eget est sed sapien maximus dignissim. Morbi sit amet turpis egestas, viverra tortor et, aliquet est. Fusce pellentesque dapibus sem, id cursus sem rhoncus a. Etiam et nulla risus. Vestibulum non dignissim metus. Maecenas vitae lacus id nisl rhoncus ornare a non ex. Curabitur laoreet tincidunt erat, et mollis arcu lacinia eu. Maecenas nec ante non massa tempus imperdiet sit amet vitae erat. In tincidunt dignissim vestibulum. Etiam faucibus nisl turpis, nec vestibulum ante elementum eu. Vestibulum posuere libero sem, sit amet egestas arcu vehicula vitae. Donec tincidunt ligula vehicula nisl molestie pulvinar.</p>\n', 'courshist.pdf', 2),
 (2, 'Géographie', ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis est vitae sem luctus imperdiet. Phasellus lacus augue, elementum non tristique nec, porttitor eget mi. Morbi purus quam, tristique at felis eu, tempor venenatis tellus. Ut at nisl ut libero scelerisque bibendum. Nulla ultricies enim cursus pulvinar maximus. Proin ut placerat quam. Maecenas eget est sed sapien maximus dignissim. Morbi sit amet turpis egestas, viverra tortor et, aliquet est. Fusce pellentesque dapibus sem, id cursus sem rhoncus a. Etiam et nulla risus. Vestibulum non dignissim metus. Maecenas vitae lacus id nisl rhoncus ornare a non ex. Curabitur laoreet tincidunt erat, et mollis arcu lacinia eu. Maecenas nec ante non massa tempus imperdiet sit amet vitae erat. In tincidunt dignissim vestibulum. Etiam faucibus nisl turpis, nec vestibulum ante elementum eu.\n\nVestibulum posuere libero sem, sit amet egestas arcu vehicula vitae. Donec tincidunt ligula vehicula nisl molestie pulvinar.', NULL, 2),
 (3, 'Français', ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis est vitae sem luctus imperdiet. Phasellus lacus augue, elementum non tristique nec, porttitor eget mi. Morbi purus quam, tristique at felis eu, tempor venenatis tellus. Ut at nisl ut libero scelerisque bibendum. Nulla ultricies enim cursus pulvinar maximus. Proin ut placerat quam. Maecenas eget est sed sapien maximus dignissim. Morbi sit amet turpis egestas, viverra tortor et, aliquet est. Fusce pellentesque dapibus sem, id cursus sem rhoncus a. Etiam et nulla risus. Vestibulum non dignissim metus. Maecenas vitae lacus id nisl rhoncus ornare a non ex. Curabitur laoreet tincidunt erat, et mollis arcu lacinia eu. Maecenas nec ante non massa tempus imperdiet sit amet vitae erat. In tincidunt dignissim vestibulum. Etiam faucibus nisl turpis, nec vestibulum ante elementum eu.\n\nVestibulum posuere libero sem, sit amet egestas arcu vehicula vitae. Donec tincidunt ligula vehicula nisl molestie pulvinar.', NULL, 2);
 
@@ -88,7 +88,7 @@ INSERT INTO `cours` (`id`, `libelle`, `description`, `nomFichier`, `idEnseignant
 --
 
 CREATE TABLE IF NOT EXISTS `message_prive` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL,
   `idEmetteur` int(3) NOT NULL,
   `idDestinataire` int(3) NOT NULL,
   `titre` varchar(100) NOT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `message_prive` (
 --
 
 CREATE TABLE IF NOT EXISTS `question` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL,
   `libelle` varchar(500) NOT NULL,
   `verrouille` tinyint(1) NOT NULL DEFAULT '0',
   `idCours` int(5) NOT NULL,
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `question` (
 --
 
 INSERT INTO `question` (`id`, `libelle`, `verrouille`, `idCours`, `numero`) VALUES
-(1, 'De quelle couleur est le cheval blanc d''Henri IV?', 0, 1, 1),
+(1, 'De quelle couleur est le cheval blanc d''Henri IV?', 1, 1, 1),
 (2, 'Durant quelle période se déroula la bataille de Stalingrad ?', 1, 1, 2),
 (3, 'À quelle date la France et l''Angleterre déclarent-elles la guerre à l''Allemagne ?', 0, 1, 3);
 
@@ -161,7 +161,7 @@ INSERT INTO `repondre` (`adresseIP`, `idUtilisateur`, `idReponse`, `date`, `temp
 --
 
 CREATE TABLE IF NOT EXISTS `reponse` (
-`id` int(10) NOT NULL,
+  `id` int(10) NOT NULL,
   `libelle` varchar(50) NOT NULL,
   `bonne` tinyint(1) NOT NULL,
   `nomImage` varchar(50) DEFAULT NULL,
@@ -199,6 +199,9 @@ CREATE TABLE IF NOT EXISTS `suivre_cours` (
 --
 
 INSERT INTO `suivre_cours` (`idUtilisateur`, `idCours`) VALUES
+(2, 1),
+(2, 2),
+(2, 3),
 (14, 1),
 (14, 2),
 (14, 3),
@@ -213,7 +216,7 @@ INSERT INTO `suivre_cours` (`idUtilisateur`, `idCours`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-`id` int(4) NOT NULL,
+  `id` int(4) NOT NULL,
   `login` varchar(20) NOT NULL,
   `motDePasse` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -241,55 +244,55 @@ INSERT INTO `utilisateur` (`id`, `login`, `motDePasse`, `email`, `statut`, `vali
 -- Index pour la table `code_statut`
 --
 ALTER TABLE `code_statut`
- ADD PRIMARY KEY (`code`);
+  ADD PRIMARY KEY (`code`);
 
 --
 -- Index pour la table `conversation`
 --
 ALTER TABLE `conversation`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `cours`
 --
 ALTER TABLE `cours`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `message_prive`
 --
 ALTER TABLE `message_prive`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `question`
 --
 ALTER TABLE `question`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `repondre`
 --
 ALTER TABLE `repondre`
- ADD PRIMARY KEY (`adresseIP`,`idReponse`,`date`);
+  ADD PRIMARY KEY (`adresseIP`,`idReponse`,`date`);
 
 --
 -- Index pour la table `reponse`
 --
 ALTER TABLE `reponse`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `suivre_cours`
 --
 ALTER TABLE `suivre_cours`
- ADD PRIMARY KEY (`idUtilisateur`,`idCours`);
+  ADD PRIMARY KEY (`idUtilisateur`,`idCours`);
 
 --
 -- Index pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
@@ -299,32 +302,32 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `conversation`
 --
 ALTER TABLE `conversation`
-MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `cours`
 --
 ALTER TABLE `cours`
-MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `message_prive`
 --
 ALTER TABLE `message_prive`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `question`
 --
 ALTER TABLE `question`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `reponse`
 --
 ALTER TABLE `reponse`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
