@@ -16,10 +16,10 @@
     <link href="../css/prettyPhoto.css" rel="stylesheet">
     <link href="../css/messagerie.css" rel="stylesheet">
     <link href="../css/formulaires.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
     <link href="../css/awesome-bootstrap-checkbox.css" rel="stylesheet">
     <link href="../css/responsive.css" rel="stylesheet">
     <link href="../bootstrap-select-master/bootstrap-select.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="../js/html5shiv.js"></script>
     <script src="../js/respond.min.js"></script>

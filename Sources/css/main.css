@@ -4,6 +4,15 @@
   margin: 0px 0 auto;
 }
 
+#PopUpQRcode > img{
+  width: 100% !important;
+  height: 80%;
+}
+
+.modal{
+  top: 82px;
+}
+
 html{
 	height: 100%;
 	background-color: #f2f2f2;

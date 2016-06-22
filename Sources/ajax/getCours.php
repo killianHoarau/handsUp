@@ -89,21 +89,21 @@ else { //Enseignant
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="dc-config-panel" name="trInfos<?php echo $row['id']; ?>">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="row margin-cours">
-							<div class="col-xs-4 col-sm-12 col-md-2 col-lg-2">
+							<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 								<!--Champs QRCODE -->
 								<input id="text<?php echo $row['id']; ?>" name="linkQR" type="hidden" value="http://localhost/handsup/Sources/pages/cours.php?idCours=<?php echo $row['id'];?>"/>
-								<div id="qrcode<?php echo $row['id']; ?>" class="petitQR"></div>
+								<div data-toggle="modal" data-target="#myModalQR" id="qrcode<?php echo $row['id']; ?>" class="petitQR"></div>
 							</div>
-							<div class="col-xs-4 col-sm-12 col-md-2 col-lg-2">
+							<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 								<i id="stat<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-bar-chart stats fa-3x" aria-hidden="true"></i>
 							</div>
-							<div class="col-xs-4 col-sm-12 col-md-2 col-lg-2">
+							<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 								<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr<?php echo $row['id']; ?>" class="fa fa-trash-o poubelle fa-3x"  aria-hidden="true"></i>
 							</div>
-							<div class="col-xs-4 col-sm-12 col-md-2 col-lg-2">
+							<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 								<i id="modif<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-pencil-square-o edit fa-3x" aria-hidden="true"></i>
 							</div>
-							<div class="col-xs-4 col-sm-12 col-md-2 col-lg-2">
+							<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 								<div id="logoCQMfull">
 									<img id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="icoQCM" src="../images/ico/qcm.png"/>
 								</div>
@@ -111,7 +111,7 @@ else { //Enseignant
 									<img id="qcm<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="icoQCM" src="../images/ico/qcmSmall.png"/>
 								</div>
 							</div>
-							<div class="col-xs-4 col-sm-12 col-md-2 col-lg-2">
+							<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 								<i id="goCours<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-file-text-o grand" aria-hidden="true"></i>
 							</div>
 						</div>
@@ -238,9 +238,10 @@ else { //Enseignant
 			var idclicked = this.parentNode.id.substring(6);
 			//alert(idclicked);
 			var imgClone = this.cloneNode(true);
-			imgClone.style.width = "50%";
-			$('#popup').append(imgClone);
-			$('#popup').show();
+			//imgClone.style.width = "50%";
+			$('#PopUpQRcode').append("<h4>Code d'accés au cours: "+idclicked+"</h4>");
+			$('#PopUpQRcode').append(imgClone);
+			//$('#PopUpQRcode').show();
 		});
 	}
 

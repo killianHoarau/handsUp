@@ -3,22 +3,20 @@
 	include("header.php");
 ?>
 
-<section id="feature" >
-    <div class="container pageCours">
-		<div class="center wow fadeInDown">
+<section id="feature" class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container pageCours">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 center wow fadeInDown">
 			<h2>Acceder à un cours</h2>
 			<p>Entre le code d'un cours pour y acceder</p>
 		</div>
-		<div class="row wow fadeInDown">
-			<div class="col-lg-4"></div>
-			<div class=" col-lg-4 msform">
-				<input type="text" name="idCours" value="">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform">
+			<div class="col-xs-2 col-sm-2 col-md-4 col-lg-4"></div>
+			<div class="col-xs-8 col-sm-8 col-md-4 col-lg-4">
+				<input type="text" id="idCours" placeholder="Code">
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4"></div>
-			<div class="col-lg-4">
-				<button class="next action-button">Valider</button>
+			<div class="col-xs-2 col-sm-2 col-md-4 col-lg-4"></div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<button id='btnGoCours' class="next action-button">Valider</button>
 			</div>
 		</div>
 	</div>
@@ -27,3 +25,12 @@
 <?php
     include("footer.php");
 ?>
+
+<script type="text/javascript">
+
+	$('#btnGoCours').click(function() {
+		var idCours = $('#idCours').val();
+		alert(idCours);
+		location.href = 'http://localhost/handsup/Sources/pages/cours.php?idCours='+idCours; 
+	});
+</script>

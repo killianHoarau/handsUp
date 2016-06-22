@@ -6,6 +6,16 @@
 	}
 	include("../php/infoCompte.php");
 ?>
+<!-- ModalQR -->
+<div class="modal fade"  id="myModalQR" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div id="PopUpQRcode"></div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Modal -->
 <div class="modal fade"  id="myModal" role="dialog">
 	<div class="modal-dialog modal-sm">
