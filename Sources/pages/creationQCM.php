@@ -68,9 +68,8 @@
 				<div class="col-lg-4">
 					<input type="text" name="libelleReponse" value="" placeholder="Libelle">
 				</div>
-				<div class="col-lg-2 checkbox checkbox-info checkbox-circle">
-					<input type="checkbox" name="bonneReponse" value="" id="bonneRep">
-					<label for="bonneRep">Bonne réponse</label>
+				<div class="col-lg-2 checkbox">
+					<label><input type="checkbox" name="bonneReponse" value=""> Bonne réponse</label>
 				</div>
 				<div class="col-md-2" style="text-align: right;">
 					<span id='btnAddReponse' class="next action-button">Valider</span>
