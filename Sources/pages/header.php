@@ -46,7 +46,7 @@
             <div class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
                    <li class="active"><a href="index.php">Accueil</a></li>
-					<li><a href="../pages/scan.php">Scan</a></li>
+					<li><a href="../pages/scan.php">Scanner</a></li>
 <?php
                         session_start();
                         if (!isset($_SESSION['login']))
