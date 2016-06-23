@@ -234,6 +234,8 @@ else { //Enseignant
 
 		//Affiche la popup du QRCode en gros pour pouvoir le scanner
 		$('#qrcode' + id).find("img").click(function(){
+			$('#PopUpQRcode').children('img').remove();
+			$('#PopUpQRcode').children('h4').remove();
 			// alert(this.nodeName);
 			var idclicked = this.parentNode.id.substring(6);
 			//alert(idclicked);

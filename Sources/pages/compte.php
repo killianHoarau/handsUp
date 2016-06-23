@@ -10,7 +10,7 @@
 <div class="modal fade"  id="myModalQR" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-      <div class="modal-body">
+      <div id="modalBodyQR" class="modal-body">
         <div id="PopUpQRcode"></div>
       </div>
     </div>
