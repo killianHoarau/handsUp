@@ -8,16 +8,16 @@
 			while($row=$result->fetch_assoc())	//Pour chaque Conversation
 			{  
 				$idConversation = $row['id'];
-				$query = "SELECT m.*, u1.login as Emetteur, u2.login as Destinataire FROM message_prive m, utilisateur u1, utilisateur u2 WHERE idConversation = $idConversation AND m.idEmetteur = u1.id AND m.idDestinataire = u2.id ORDER BY date ASC, m.id DESC;";
+				$query = "SELECT m.*, u1.login as Emetteur, u2.login as Destinataire FROM message_prive m, utilisateur u1, utilisateur u2 WHERE idConversation = $idConversation AND m.idEmetteur = u1.id AND m.idDestinataire = u2.id ORDER BY m.id DESC;";
 				$res = $link->query($query);
 			?>	
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-box">
 				<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-single-product-configuration" name="trCours" id="<?php echo $row['id'];?>">
 					<?php echo $row['login'];?>
-					<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr<?php echo $row['id'];?>" class="fa fa-trash-o poubelle fa-2x"  aria-hidden="true"></i>
+					<i data-toggle="modal" data-target="#myModalSupr" name="confSupr" id="confSupr<?php echo $row['id'];?>" class="fa fa-trash-o poubellePetit fa-2x"  aria-hidden="true"></i>
 				</div>
 
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="dc-config-panel" name="trInfos<?php echo $row['id'];?>">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="dc-config-panel" name="trInfos<?php echo $row['id'];?>" style="display: none;">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 contentMessage" id="mess">
 <?php				while($messages = $res->fetch_assoc())	//Et pour chaque message
 					{ ?>
@@ -39,7 +39,7 @@
 							<button name="btnRepondre" id="<?php echo $row['id']; ?>" class="next action-button">Repondre</button>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">						
-							<button class="next oubli-button" name="btnFermer">Fermer</button>
+							<button class="next oubli-button" id="btnFermer<?php echo $row['id']; ?>" name="btnFermer" >Fermer</button>
 						</div>
 					</div>
 				</div>
@@ -47,9 +47,6 @@
 <?php		} ?>
 
 <script type="text/javascript">
-$(document).ready(function(){	
-	$("div[name^='trInfos']").hide(); //Cache toutes les div dont le name commence par 'trInfos'
-});
 
 $("div[name='trCours']").click(function(){
 	var id = this.id;
@@ -75,11 +72,16 @@ $("div[name='trCours']").click(function(){
 			});
 	}
 });
+//------------Ferme la conversation------------//
+$("button[name='btnFermer']").click(function(){
+	var id = (this.id).substring(9);
+	$('div[name="trInfos'+id+'"]').slideUp(1000);
+});
 
+//------------Repondre à la conversation------------//
 $("button[name='btnRepondre']").click(function(){
-	$("div[name^='trInfos']").hide();
+	$("div[name^='trInfos']").slideUp(1000);
 	var id = this.id;
-	// alert(id);
 	$.ajax({
 			url: "../ajax/repondreMessage.php",
 			type: 'POST',
@@ -103,7 +105,13 @@ $("button[name='btnRepondre']").click(function(){
 					}
 				}
 				$('#newMessage > div > button > span[class="filter-option pull-left"]').text(destinataire); //CHEAT on ecris le nom du gars a qui on repond dans le span. (Ca le selectionne qd meme tkttttt)
-				$('#newMessage').show();	//SHOW MUST GO ON							YEEAAAAHIIIIYEAAAAAAAAAAA
+				if(!toggled)
+				{
+					$('#newMessage').animate({
+						height: 'toggle'
+					});
+					toggled = true;
+				}
 			}
 		});
 });
