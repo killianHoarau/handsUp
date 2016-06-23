@@ -1,6 +1,9 @@
 <?php
     $title="Messagerie";
     include("header.php");
+	if (!isset($_SESSION['login'])){
+		header('Location: index.php');
+	}
 	$login = $_SESSION['login'];
 	$id = $_SESSION['id'];
 	echo $_SESSION['statut'];
@@ -19,7 +22,7 @@
 			<!-- Nouveau message -->
 			<i id="btnEdit" class="fa fa-pencil-square-o" aria-hidden="true"></i>
 			<span class='popupW col-lg-12' id="RemplirChamps" style="display:none;"><?php echo utf8_encode("Veuillez remplir tous les champs"); ?></span>
-			<div id="newMessage" enctype="multipart/form-data" class="wow fadeInDown msform animated animated" style="display: block; visibility: visible; animation-name: fadeInDown;">
+			<div id="newMessage" enctype="multipart/form-data" class="msform" style="display: none; visibility: visible; animation-name: fadeInDown;">
 				<select id="selectDestinataire" class="selectpicker" data-live-search="true" multiple title="Choisir destinataire(s)" data-width="100%">
 <?php				 while($user = $resUsers->fetch_assoc())
 					 {
@@ -43,17 +46,18 @@
 	include("footer.php");
 ?>
 <script>
-$(document).ready(function(){
-	$('#newMessage').hide();
-});
 	var toggled = false;
 	$("i[id='btnEdit']").click(function(){
 		if(toggled){
-			$('#newMessage').hide();
+			$('#newMessage').animate({
+				height: 'toggle'
+			});
 			toggled = false;
 		}
 		else{
-			$('#newMessage').show();
+			$('#newMessage').animate({
+				height: 'toggle'
+			});
 			toggled = true;
 		}
 	});
@@ -95,8 +99,13 @@ $(document).ready(function(){
 						height: 'toggle'
 					});
 				}
-				else
+				else{
 					$('#list-message').html(code_html);
+					$('#newMessage').animate({
+						height: 'toggle'
+					});
+					toggled = false;
+				}
 			},
 		});
 	});
