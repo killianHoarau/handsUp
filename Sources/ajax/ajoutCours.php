@@ -45,12 +45,12 @@ $result = $link->query($sql);
 
 //SUIVRE LE COURS QU'ON A CREE
 $query = "SELECT id FROM cours WHERE idEnseignant =$idEnseignant and libelle = '$libelle';";
-$result = $link->query($sql);
+$result = $link->query($query);
 $row = $result->fetch_assoc();
 $idNewCours = $row['id'];
 
 $query="INSERT INTO suivre_cours VALUES ($idEnseignant, $idNewCours)";
-$result = $link->query($sql);
+$result = $link->query($query);
 
 header("Location: ../pages/compte.php");
 ?>

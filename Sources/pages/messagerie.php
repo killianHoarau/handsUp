@@ -1,7 +1,9 @@
 <?php
     $title="Messagerie";
     include("header.php");
-
+	if (!isset($_SESSION['login'])){
+		header('Location: index.php');
+	}
 	$login = $_SESSION['login'];
 	$id = $_SESSION['id'];
 
@@ -35,12 +37,16 @@
 <section id="feature">
 	<div class="container">
 		<div class="center wow fadeInDown animated">
-			<h2>Vos messages</h2>
+			<h2>Vos messages
+				<button id="btnEdit">
+					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+				</button>
+			</h2>
 
 			<!-- Nouveau message -->
-			<i id="btnEdit" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+			<!-- <i id="btnEdit" class="fa fa-pencil-square-o" aria-hidden="true"></i> -->
 			<span class='popupW col-lg-12' id="RemplirChamps" style="display:none;"><?php echo utf8_encode("Veuillez remplir tous les champs"); ?></span>
-			<div id="newMessage" enctype="multipart/form-data" class="wow fadeInDown msform animated animated" style="display: block; visibility: visible; animation-name: fadeInDown;">
+			<div id="newMessage" enctype="multipart/form-data" class="msform" style="display: none; visibility: visible; animation-name: fadeInDown;">
 				<select id="selectDestinataire" class="selectpicker" data-live-search="true" multiple title="Choisir destinataire(s)" data-width="100%">
 <?php				 while($user = $resUsers->fetch_assoc())
 					 {
@@ -64,21 +70,28 @@
 	include("footer.php");
 ?>
 <script>
-$(document).ready(function(){
-	$('#newMessage').hide();
-});
 	var toggled = false;
-	$("i[id='btnEdit']").click(function(){
+	$("button[id='btnEdit']").click(function(){
 		if(toggled){
-			$('#newMessage').hide();
+			$('#newMessage').animate({
+				height: 'toggle'
+			});
 			toggled = false;
 		}
 		else{
-			$('#newMessage').show();
+			$('#newMessage').animate({
+				height: 'toggle'
+			});
 			toggled = true;
 		}
 	});
 
+	function CKupdate(){
+    for ( instance in CKEDITOR.instances ){
+        CKEDITOR.instances[instance].updateElement();
+        CKEDITOR.instances[instance].setData('');
+    }
+	}
 	//Rempli la liste des conversations et des messages
 	var id = document.getElementById('idenCours').value;
 	$.ajax({
@@ -116,8 +129,16 @@ $(document).ready(function(){
 						height: 'toggle'
 					});
 				}
-				else
+				else{
 					$('#list-message').html(code_html);
+					$('#newMessage').animate({
+						height: 'toggle'
+					});
+					toggled = false;
+					$('#selectDestinataire').val('').selectpicker('refresh'); 	//Vide le select
+					document.getElementsByName('titre')[0].value = '';			//Vide le titre
+					CKupdate();													//Vide CKEDITOR
+				}
 			},
 		});
 	});

@@ -8,10 +8,9 @@ $(document).ready(function(){
 			$('#firstConnection').animate({
 							height: 'toggle'
 			});
-			}, 2000);	
+			}, 2000);
 	}
 	//else
 		//alert("no");
 
 });
-

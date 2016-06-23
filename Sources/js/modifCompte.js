@@ -8,7 +8,6 @@ $(document).ready(function(){
 			$('#listCours').html(code_html);
 		},
 	});
-	$('#formAddCours').hide();
 });
 
 

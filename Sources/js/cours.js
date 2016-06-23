@@ -97,7 +97,6 @@ $("i[id^='btnVerouiller']").click(function() {
 		},
 		success : function(code_html){
 			$('#listQCM').html(code_html);
-			// alert(code_html);
 		},
 	});
 

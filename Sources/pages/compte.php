@@ -77,7 +77,7 @@
 
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="info-perso">
-                            <h3>Votre Email</h3>
+                            <h3>Email</h3>
                             <p id="email"><?php echo $_SESSION["email"]; ?></p>
 							<input id="inputEmail" type="text"  value="<?php echo $_SESSION['email']?>" />
                         </div>
@@ -85,7 +85,7 @@
 
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="info-perso">
-                            <h3>Votre statut</h3>
+                            <h3>Statut</h3>
                             <p>
 <?php
 								if ($_SESSION["droit"] == 0) {
@@ -130,7 +130,7 @@
 				<!--<textarea name="addDescription" placeholder="Description du cours"></textarea>
 				Personnalisation de l'input file en rusant un peu-->
 				<input type="file" id="hiddenfile" style="display:none;" name="file" onChange="getvalue();"/>
-				<input type="text" id="selectedfile" placeholder="Fichier Selectionné (Facultatif : Un fichier peut être uploader une fois le cours créée)" disabled="disabled"/>
+				<input type="text" id="selectedfile" placeholder="Fichier Selectionné (Facultatif : Un fichier peut être uploadé une fois le cours créé)" disabled="disabled"/>
 				<button id="btnAddCours" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 next action-button" style='width: 100%;'>Ajouter Cours</button>
 				<input type="button" value="Joindre Fichier" class='btn-default' onclick="getfile();" />
 			</form>
