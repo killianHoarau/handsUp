@@ -115,7 +115,6 @@ $('#btnConnexion').click(function(){
 		}
 	if(!valid)
 		{
-			//$('#connectVide').show();
 			if (!connexionToggled)
 			{
 				$('#statutConnexion').animate({
@@ -124,8 +123,6 @@ $('#btnConnexion').click(function(){
 				connexionToggled = true;
 			}
 		}
-	// alert(login+mdp);
-	//alert("test");
 });
 $('#btnOubli').click(function(){
 	$('#formCompteOublie').show();
@@ -143,7 +140,6 @@ $('#btnRecuperation').click(function(){
 		}
 	if(!valid)
 		{
-			//$('#connectVide').show();
 			if (!connexionToggled)
 			{
 				$('#statutConnexion').animate({

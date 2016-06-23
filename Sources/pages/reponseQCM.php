@@ -64,7 +64,7 @@
 
 			<!-- Reponse affichée -->
 			<div id="reponse"></div>
-			<div id="diagramme" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+			<div id="diagramme" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto; display: none;"></div>
 		</div>
 
 		<div class="msform wow fadeInDown">
