@@ -1,12 +1,13 @@
 <?php
 	$title = "Statistiques";
 	include("header.php");
+	include("../php/infoStat.php");
 
 	if (!isset($_SESSION['login']) || $_SESSION['droit'] == 2 || $_SESSION['droit'] == 0){
 		header('Location: index.php');
 	}
 
-	include("../php/infoStat.php");
+
 ?>
 <section id="feature">
 	<div class="container">

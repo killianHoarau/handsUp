@@ -1,5 +1,5 @@
 <?php
-	session_start();
+
     $title="Répondre au QCM";
     include("header.php");
 	include("../php/infoReponse.php");
