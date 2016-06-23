@@ -9,7 +9,7 @@
 			WHERE email = '$email'";
 		//echo $query;
 		$result = $link->query($query);
-	}	
+	}
 ?>
 <div id="firstConnection" class="row" style="display: none;">
 		<span id="bienvenu" class="popup col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display: block;">Bienvenue, bon cours !</span>
@@ -32,7 +32,7 @@
 			<div class="feature-wrap">
 				<i class="fa fa-video-camera"></i>
 				<h2>Visualisation</h2>
-				<h3>Diffuser vos cours directement depuis Hands Up!</h3>
+				<h3>Diffusez vos cours directement depuis Hands Up!</h3>
 			</div>
 		</div>
 
@@ -99,35 +99,42 @@
 	</div><!--/.row-->
 </section>
 
-	<section id="feature" class="row">
+<section id="feature" class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container center wow fadeInDown">
         <h2>Téléchargez un lecteur de QR code</h2>
         <p class="lead">Accédez directement à un cours via le QR code fourni par l'enseignant</p>
 	</div>
 
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row features">
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-			<div class="feature-wrap">
-                            <a href="https://play.google.com/store/apps/details?id=com.application_4u.qrcode.barcode" class="fa fa-android" target="_blank"></a>
-                            <h2 id="market">Android</h2>
-                        </div>
+		<div class="col-xs-0 col-sm-0 col-md-2 col-lg-2"></div>
+		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+			<div class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+				<div class="feature-wrap">
+	                <a href="https://play.google.com/store/apps/details?id=com.application_4u.qrcode.barcode" class="fa fa-android" target="_blank"></a>
+	                <h2 id="market">Android</h2>
+	            </div>
+			</div>
 		</div>
 
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-			<div class="feature-wrap">
-                            <a href="https://itunes.apple.com/fr/app/scanner-de-codes-qr/id483336864?mt=8" class="fa fa-apple" target="_blank"></a>
-                            <h2 id="market">Apple</h2>
-                        </div>
+		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+			<div class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+				<div class="feature-wrap">
+	                <a href="https://itunes.apple.com/fr/app/scanner-de-codes-qr/id483336864?mt=8" class="fa fa-apple" target="_blank"></a>
+	                <h2 id="market">Apple</h2>
+	            </div>
+			</div>
 		</div>
 
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-			<div class="feature-wrap">
-                            <a href="https://www.microsoft.com/fr-fr/store/apps/code-qr-code-barre/9nblggh3m5fl" class="fa fa-windows" target="_blank"></a>
-                            <h2 id="market">Windows</h2>
-                        </div>
+		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+			<div class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+				<div class="feature-wrap">
+	                <a href="https://www.microsoft.com/fr-fr/store/apps/code-qr-code-barre/9nblggh3m5fl" class="fa fa-windows" target="_blank"></a>
+	                <h2 id="market">Windows</h2>
+	            </div>
+			</div>
 		</div>
 	</div>
-    </section><!--/#feature-->
+</section><!--/#feature-->
 
 <?php
     include("footer.php");
