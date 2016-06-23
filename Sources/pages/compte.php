@@ -1,5 +1,5 @@
 <?php
-	$title="Compte ". $_SESSION['login'];
+	$title="Compte ". $_SESSION['login'];	//Pas cool Rien n'est censé etre au dessus du header
 	include("header.php");
 	include("../php/infoCompte.php");
 

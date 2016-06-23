@@ -25,7 +25,7 @@
 									<li class="<?php if($_SESSION['login']==$messages['Emetteur']) echo "self"; 
 													 else echo "other";
 												?>">
-									<div class="msg" id="message<?php echo $messages['id']; ?>" name="<?php echo $message['id']; ?>">
+									<div class="msg" id="message<?php echo $messages['id']; ?>" name="<?php echo $messages['id']; ?>">
 										<h5><?php echo $messages['titre']; ?>:</h5>
 										<p><?php echo $messages['contenu']; ?></p>
 									</div>

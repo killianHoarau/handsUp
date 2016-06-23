@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start(); //Repetition
 $id = $_SESSION["id"];
 $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 

@@ -24,10 +24,14 @@
 	<script src="https://code.highcharts.com/modules/data.js"></script>
 	<script src="https://code.highcharts.com/modules/drilldown.js"></script>
 
-	<?php if(file_exists("../js/$nomScript.js"))
-	{ ?>
-		<script src="../js/<?php echo $nomScript ?>.js"></script>
-<?php } ?>
+	<?php 
+	if(isset($nomScript))
+	{
+		if(file_exists("../js/$nomScript.js"))
+		{ ?>
+			<script src="../js/<?php echo $nomScript ?>.js"></script>
+	<?php }
+	}?>
 	<script>
 		if($("#monId").length > 0) //Si le mec est logé
 		{
@@ -57,7 +61,7 @@
 							span.style.fontSize = "1.2em";
 							span.innerHTML = '<sup> ' + nombreMessage + '<sup>';
 							lienMessage.appendChild(span);
-							//Cree une div avec le nombre de message
+							// Cree une div avec le nombre de message
 						}
 					}
 				});

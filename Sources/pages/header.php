@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -58,7 +58,7 @@
                         else
                         {
 							$id = $_SESSION['id'];
-?>							<input type="hidden" value="<? echo $id; ?>" id="monId"> <?php
+?>							<input type="hidden" value="<?php echo $id; ?>" id="monId"> <?php
 							if ($_SESSION['droit'] == 2) {
 ?>
 								<li><a href="admin.php">Administration</a></li>
@@ -84,6 +84,5 @@
 
 <!-- Connexion BDD -->
 <?php
-	session_start();
 	$link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 ?>
