@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if(isset($_POST)){
 	$idUtilisateur = $_POST['idUtilisateur'];
 	$code = $_POST['code'];
@@ -52,7 +53,8 @@ if (!empty($idUtilisateur)) {
 
 if (!empty($code)) {
 	//Supprime le code
-	$query = "DELETE FROM code_statut WHERE code = $code;";
+	$query = "DELETE FROM code_statut WHERE code = '$code';";
+	echo $query;
 	$result = $link->query($query);
 
 	$query = "SELECT * FROM code_statut;";
@@ -79,7 +81,8 @@ if (!empty($code)) {
 
 if ($ajout) {
 	if (!empty($codeAjout)) {
-		$query = "INSERT INTO code_statut VALUES ($codeAjout, $statut);";
+		$query = "INSERT INTO code_statut VALUES ('$codeAjout', '$statut', 0);";
+		echo $query;
 		$result = $link->query($query);
 	}
 
@@ -107,37 +110,4 @@ if ($ajout) {
 
 
 ?>
-
-<script>
-	$("i[id^='deleteUser']").click(function() {
-		var idUtilisateur = this.attributes["name"].value;
-
-		$.ajax({
-			url: "../ajax/confirmAdmin.php",
-			type: 'POST',
-			async: true,
-			data : {
-				idUtilisateur : idUtilisateur
-			},
-			success : function(code_html){
-				$('#listUtilisateur').html(code_html);
-			},
-		});
-	});
-
-	$("i[id^='deleteCode']").click(function() {
-		var code = this.attributes["name"].value;
-
-		$.ajax({
-			url: "../ajax/confirmAdmin.php",
-			type: 'POST',
-			async: true,
-			data : {
-				code : code
-			},
-			success : function(code_html){
-				$('#listCodeAcces').html(code_html);
-			},
-		});
-	});
-</script>
+<script src="../js/admin.js"></script>

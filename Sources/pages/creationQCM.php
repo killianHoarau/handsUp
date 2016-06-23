@@ -1,12 +1,14 @@
 <?php
-	session_start();
+	$idCours = $_GET["idCours"];
+	$title="Création QCM";
+	include("header.php");
+	include("../php/infoCompte.php");
+
 	if (!isset($_SESSION['login'])){
 		header('Location: index.php');
 	}
-	$idCours = $_GET["idCours"];
-    $title="Création QCM";
-    include("header.php");
-	include("../php/infoCompte.php");
+
+
 ?>
 
 <input type="hidden" name="idCours" value="<?php echo $idCours ?>">
@@ -68,8 +70,9 @@
 				<div class="col-lg-4">
 					<input type="text" name="libelleReponse" value="" placeholder="Libelle">
 				</div>
-				<div class="col-lg-2 checkbox">
-					<label><input type="checkbox" name="bonneReponse" value=""> Bonne réponse</label>
+				<div class="col-lg-2 checkbox checkbox-info checkbox-circle">
+					<input type="checkbox" name="bonneReponse" id="btnBonneRep">
+					<label for="btnBonneRep">Bonne réponse</label>
 				</div>
 				<div class="col-md-2" style="text-align: right;">
 					<span id='btnAddReponse' class="next action-button">Valider</span>

@@ -1,13 +1,13 @@
 <?php
     $title="Accueil";
     include("header.php");
+
 	if(isset($_GET['email']))
 	{
+		//Statut apres validation du mail
 		$email = $_GET['email'];
 		$link = new mysqli('localhost', 'root', 'mysql', 'handsup');
-		$query = "UPDATE utilisateur set valide = 1
-			WHERE email = '$email'";
-		//echo $query;
+		$query = "UPDATE utilisateur set valide = 1	WHERE email = '$email'";
 		$result = $link->query($query);
 	}
 ?>

@@ -3,7 +3,7 @@ $login = $_POST['login'];
 $mdp =  hash("sha256",$_POST['mdp']);
 $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 $query = "SELECT * FROM utilisateur WHERE login = '$login' AND motDePasse = '$mdp' AND valide = 1";
-//echo $query;
+
 $result = $link->query($query);
 if ($result->num_rows > 0) {
 	$row = $result->fetch_assoc();

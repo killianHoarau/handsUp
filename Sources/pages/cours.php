@@ -2,7 +2,6 @@
 	$title="Cours";
 	include("header.php");
 	include("../php/infoCours.php");
-
 ?>
 
 <section id="feature" class="row">

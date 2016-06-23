@@ -1,10 +1,13 @@
 <?php
 	$title="Compte ". $_SESSION['login'];
 	include("header.php");
+	include("../php/infoCompte.php");
+
 	if (!isset($_SESSION['login']) || $_SESSION['droit'] == 2){
 		header('Location: index.php');
 	}
-	include("../php/infoCompte.php");
+
+
 ?>
 <!-- Modal -->
 <div class="modal fade modalCours"  id="myModalCoursModif" role="dialog">
@@ -12,7 +15,7 @@
 	  <div class="modal-content">
 	    <div class="modal-body msform">
       		<input type="hidden" id="idCoursModif">
-			<input id="modifLibelle" placeholder="Titre du cours"/>	
+			<input id="modifLibelle" placeholder="Titre du cours"/>
 			<textarea cols="80" class="ckeditor" id="editeur2" name="modifDescription" rows="10"></textarea>
 	    </div>
 	    <div class="modal-footer msform">

@@ -1,11 +1,11 @@
 <?php
-	session_start();
+	$title="Administration";
+	include("header.php");
+	include("../php/infoAdmin.php");
+
 	if (($_SESSION['droit'] != 2)){
 		header('Location: index.php');
 	}
-	$title="Administration";
-    include("header.php");
-	include("../php/infoAdmin.php");
 ?>
 
 <section id="feature" >
@@ -32,7 +32,7 @@
 									<td><?php echo $utilisateurs[$i]["login"]; ?></td>
 									<td><?php echo $utilisateurs[$i]["email"]; ?></td>
 									<td>
-<?php 
+<?php
 										if($utilisateurs[$i]["statut"]==0) echo "Etudiant";
 										else if($utilisateurs[$i]["statut"]==1) echo "Enseignant";
 										else if($utilisateurs[$i]["statut"]==2) echo "Administrateur";
@@ -69,11 +69,13 @@
 						<div class="col-lg-4">
 							<input type="text" name="code" value="" placeholder="Code">
 						</div>
-						<div class="col-lg-2">
-							<input type="radio" name="statut" value="0"> Etudiant <br>
+						<div class="col-lg-2 checkbox checkbox-info checkbox-circle">
+							<input type="radio" name="statut" value="0" id="btnEtudiant">
+							<label for="btnEtudiant">Etudiant</label>
 						</div>
-						<div class="col-lg-2">
-							<input type="radio" name="statut" value="1"> Enseignant <br>
+						<div class="col-lg-2 checkbox checkbox-info checkbox-circle">
+							<input type="radio" name="statut" value="0" id="btnEnseignant">
+							<label for="btnEnseignant">Enseignant</label>
 						</div>
 						<div class="col-md-2">
 							<span id='btnAddCode' class="next action-button">Valider</span>
@@ -106,7 +108,7 @@
 
 <section id="feature" >
 	<div class="container">
-	   
+
 	</div>
 </section>
 

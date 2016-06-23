@@ -11,7 +11,6 @@ if ($title == "Création QCM") {
 } else {
 
 	$query = "SELECT cours.id as 'idCours', libelle, description, login as 'loginEnseignant'  FROM cours, suivre_cours, utilisateur WHERE cours.id = suivre_cours.idCours AND utilisateur.id = cours.idEnseignant AND suivre_cours.idUtilisateur = '$id';";
-	// die(var_dump($query));
 	$cours = array(array());
 	$i = 0;
 

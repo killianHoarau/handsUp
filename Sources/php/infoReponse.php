@@ -23,9 +23,4 @@ if ($result->num_rows > 0) {
 	$i++;
 	}
 }
-
-// $query = "SELECT * FROM repondre WHERE idUtilisateur = $_SESSION['id'];";
-// $result = $link->query($query);
-// $row = $result->fetch_assoc();
-
 ?>

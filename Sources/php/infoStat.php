@@ -28,24 +28,24 @@ if ($result->num_rows > 0) {
 
 		$idQuestion = $row['id'];
 
-		// inférieur à 15
+		// inférieur à 10
 		$query = "SELECT count(*) as 'nbr' FROM repondre WHERE idReponse IN (SELECT id FROM reponse WHERE idQuestion = $idQuestion) AND temps between 0 and 10";
 		$resultNBR = $link->query($query);
 		$resultNBR = $resultNBR->fetch_assoc();
 		$questions[$i]['befor10'] = $resultNBR['nbr'];
-		// entre 15 et 25
+		// entre 10 ET 30
 		$query = "SELECT count(*) as 'nbr' FROM repondre WHERE idReponse IN (SELECT id FROM reponse WHERE idQuestion = $idQuestion) AND temps between 11 and 30";
 		$resultNBR = $link->query($query);
 		$resultNBR = $resultNBR->fetch_assoc();
 		$questions[$i]['befor30'] = $resultNBR['nbr'];
-		// supérieur à 25
+		// supérieur à 30
 		$query = "SELECT count(*) as 'nbr' FROM repondre WHERE idReponse IN (SELECT id FROM reponse WHERE idQuestion = $idQuestion) AND temps > 30";
 		$resultNBR = $link->query($query);
 		$resultNBR = $resultNBR->fetch_assoc();
 		$questions[$i]['after30'] = $resultNBR['nbr'];
 
 
-		//POURCENTAGE DE BONNE REPONSES
+		//POURCENTAGE DE REPONSES
 
 		$questions[$i]['reponses'] = array();
 

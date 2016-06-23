@@ -14,7 +14,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-box">
 				<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-single-product-configuration" name="trCours" id="<?php echo $row['id'];?>">
 					<?php echo $row['login'];?>
-					<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr<?php echo $row['id'];?>" class="fa fa-trash-o poubelle fa-2x"  aria-hidden="true"></i>
+					<i data-toggle="modal" data-target="#myModalSupr" name="confSupr" id="confSupr<?php echo $row['id'];?>" class="fa fa-trash-o poubellePetit fa-2x"  aria-hidden="true"></i>
 				</div>
 
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="dc-config-panel" name="trInfos<?php echo $row['id'];?>" style="display: none;">
