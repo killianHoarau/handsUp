@@ -3,7 +3,7 @@
     include("header.php");
 	$login = $_SESSION['login'];
 	$id = $_SESSION['id'];
-	
+	echo $_SESSION['statut'];
 	if($_SESSION['statut']==0) //Etudiant
 		$query = "SELECT u.id, u.login FROM utilisateur u WHERE u.statut = 1;";
 	else	//Enseignant
@@ -18,6 +18,7 @@
 			
 			<!-- Nouveau message -->
 			<i id="btnEdit" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+			<span class='popupW col-lg-12' id="RemplirChamps" style="display:none;"><?php echo utf8_encode("Veuillez remplir tous les champs"); ?></span>
 			<div id="newMessage" enctype="multipart/form-data" class="wow fadeInDown msform animated animated" style="display: block; visibility: visible; animation-name: fadeInDown;">
 				<select id="selectDestinataire" class="selectpicker" data-live-search="true" multiple title="Choisir destinataire(s)" data-width="100%">
 <?php				 while($user = $resUsers->fetch_assoc())
@@ -71,6 +72,7 @@ $(document).ready(function(){
 		},
 });
 
+//-----------------------------------Envoi du message------------------------------//
 	$('#envoyerMessage').click(function(){
 		var id = document.getElementById('idenCours').value;							//Recupère l'id de l'utilisateur connécté
 		var titre = document.getElementsByName('titre')[0].value;						//Recupère l'objet du message
@@ -87,8 +89,14 @@ $(document).ready(function(){
 				tabDestinataire : tabDestinataire
 			},
 			success : function(code_html){
-
-				$('#list-message').html(code_html);
+				if(code_html.substring(0,26)=="<br />"+ "\n"+"<b>Fatal error</b>:")
+				{
+					$('#RemplirChamps').animate({
+						height: 'toggle'
+					});
+				}
+				else
+					$('#list-message').html(code_html);
 			},
 		});
 	});
