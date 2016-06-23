@@ -6,7 +6,7 @@
 //This should be done in your php.ini, but this is how to do it if you don't have access to that
 
 $email = $_POST['email'];
-	
+
 date_default_timezone_set('Etc/UTC');
 require '../PHPMailer-master/PHPMailerAutoload.php';
 $msg = "<span>Vous pouvez activer votre compte en cliquant sur le lien suivant</span><br>
@@ -23,9 +23,9 @@ $mail->isSMTP();
 // Ask for HTML-friendly debug output
 $mail->Debugoutput = 'html';
 // Set the hostname of the mail server
-$mail->SMTPSecure = "tls"; 
+$mail->SMTPSecure = "tls";
 $mail->Host = 'smtp.gmail.com';
-$mail->Port = 587; 
+$mail->Port = 587;
 // Set the SMTP port number - likely to be 25, 465 or 587
 // Whether to use SMTP authentication
 $mail->SMTPAuth = true;
@@ -50,7 +50,8 @@ $mail->AltBody = 'This is a plain-text message body';
 // $mail->addAttachment('images/phpmailer_mini.png');
 // send the message, check for errors
 if (!$mail->send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
+	$error = true;
+    // echo "Mailer Error: " . $mail->ErrorInfo;
 } else {
     //echo "Message sent!";
 }

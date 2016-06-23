@@ -6,11 +6,27 @@
 	}
 	include("../php/infoCompte.php");
 ?>
+<!-- Modal -->
+<div class="modal fade modalCours"  id="myModalCoursModif" role="dialog">
+	<div class="modal-dialog modal-sm modalDialogCours">
+	  <div class="modal-content">
+	    <div class="modal-body msform">
+      		<input type="hidden" id="idCoursModif">
+			<input id="modifLibelle" placeholder="Titre du cours"/>	
+			<textarea cols="80" class="ckeditor" id="editeur2" name="modifDescription" rows="10"></textarea>
+	    </div>
+	    <div class="modal-footer msform">
+		  <a data-dismiss="modal" class="next oubli-button">Annuler</a>
+		  <a data-dismiss="modal" id="btnValiderModif" class='next action-button'>Modifier</a>
+	    </div>
+	  </div>
+	</div>
+</div>
 <!-- ModalQR -->
-<div class="modal fade"  id="myModalQR" role="dialog">
+<div class="modal fade modalQR"  id="myModalQR" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-      <div class="modal-body">
+      <div id="modalBodyQR" class="modal-body">
         <div id="PopUpQRcode"></div>
       </div>
     </div>
@@ -122,20 +138,6 @@
 <?php } ?>
 
         </div>
-
-		<div id="contourForm">
-			<div id="formModifCours">
-				<i id="closeModif" class="fa fa-times col-xs-12 col-sm-12 col-md-12 col-lg-12" aria-hidden="true"></i>
-				<div class="container msform">
-					<input type="hidden" id="idCoursModif">
-					<input id="modifLibelle" placeholder="Titre du cours"/>
-					<textarea cols="80" class="ckeditor" id="editeur2" name="modifDescription" rows="10"></textarea>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 msform">
-						<button id="btnValiderModif" class='next action-button'>Modifier</button>
-					</div>
-				</div>
-			</div>
-		</div>
     </section><!--/#feature-->
 
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.5
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Mer 22 Juin 2016 à 15:13
--- Version du serveur :  5.6.30
--- Version de PHP :  5.3.29
+-- Client :  127.0.0.1
+-- Généré le :  Jeu 23 Juin 2016 à 07:28
+-- Version du serveur :  5.7.9
+-- Version de PHP :  5.6.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,10 +26,12 @@ SET time_zone = "+00:00";
 -- Structure de la table `code_statut`
 --
 
+DROP TABLE IF EXISTS `code_statut`;
 CREATE TABLE IF NOT EXISTS `code_statut` (
   `code` varchar(5) NOT NULL,
   `statut` tinyint(1) NOT NULL,
-  `utilise` tinyint(1) NOT NULL DEFAULT '0'
+  `utilise` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -51,12 +53,22 @@ INSERT INTO `code_statut` (`code`, `statut`, `utilise`) VALUES
 -- Structure de la table `conversation`
 --
 
+DROP TABLE IF EXISTS `conversation`;
 CREATE TABLE IF NOT EXISTS `conversation` (
-  `id` int(3) NOT NULL,
+  `id` int(3) NOT NULL AUTO_INCREMENT,
   `utilisateur0` int(3) NOT NULL,
   `utilisateur1` int(3) NOT NULL,
-  `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `conversation`
+--
+
+INSERT INTO `conversation` (`id`, `utilisateur0`, `utilisateur1`, `date`) VALUES
+(1, 2, 14, '2016-06-22'),
+(2, 2, 17, '2016-06-22');
 
 -- --------------------------------------------------------
 
@@ -64,12 +76,14 @@ CREATE TABLE IF NOT EXISTS `conversation` (
 -- Structure de la table `cours`
 --
 
+DROP TABLE IF EXISTS `cours`;
 CREATE TABLE IF NOT EXISTS `cours` (
-  `id` int(5) NOT NULL,
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) NOT NULL,
   `description` varchar(3000) NOT NULL,
   `nomFichier` varchar(20) DEFAULT NULL,
-  `idEnseignant` int(3) NOT NULL
+  `idEnseignant` int(3) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
@@ -77,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `cours` (
 --
 
 INSERT INTO `cours` (`id`, `libelle`, `description`, `nomFichier`, `idEnseignant`) VALUES
-(1, 'Histoire', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis est vitae sem luctus imperdiet. Phasellus lacus augue, elementum non tristique nec, porttitor eget mi. Morbi purus quam, tristique at felis eu, tempor venenatis tellus. Ut at nisl ut libero scelerisque bibendum. Nulla ultricies enim cursus pulvinar maximus. Proin ut placerat quam. Maecenas eget est sed sapien maximus dignissim. Morbi sit amet turpis egestas, viverra tortor et, aliquet est. Fusce pellentesque dapibus sem, id cursus sem rhoncus a. Etiam et nulla risus. Vestibulum non dignissim metus. Maecenas vitae lacus id nisl rhoncus ornare a non ex. Curabitur laoreet tincidunt erat, et mollis arcu lacinia eu. Maecenas nec ante non massa tempus imperdiet sit amet vitae erat. In tincidunt dignissim vestibulum. Etiam faucibus nisl turpis, nec vestibulum ante elementum eu. Vestibulum posuere libero sem, sit amet egestas arcu vehicula vitae. Donec tincidunt ligula vehicula nisl molestie pulvinar.</p>\n', 'courshist.pdf', 2),
+(1, 'Histoire', ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis est vitae sem luctus imperdiet. Phasellus lacus augue, elementum non tristique nec, porttitor eget mi. Morbi purus quam, tristique at felis eu, tempor venenatis tellus. Ut at nisl ut libero scelerisque bibendum. Nulla ultricies enim cursus pulvinar maximus. Proin ut placerat quam. Maecenas eget est sed sapien maximus dignissim. Morbi sit amet turpis egestas, viverra tortor et, aliquet est. Fusce pellentesque dapibus sem, id cursus sem rhoncus a. Etiam et nulla risus. Vestibulum non dignissim metus. Maecenas vitae lacus id nisl rhoncus ornare a non ex. Curabitur laoreet tincidunt erat, et mollis arcu lacinia eu. Maecenas nec ante non massa tempus imperdiet sit amet vitae erat. In tincidunt dignissim vestibulum. Etiam faucibus nisl turpis, nec vestibulum ante elementum eu.\n\nVestibulum posuere libero sem, sit amet egestas arcu vehicula vitae. Donec tincidunt ligula vehicula nisl molestie pulvinar.', 'courshist.pdf', 2),
 (2, 'Géographie', ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis est vitae sem luctus imperdiet. Phasellus lacus augue, elementum non tristique nec, porttitor eget mi. Morbi purus quam, tristique at felis eu, tempor venenatis tellus. Ut at nisl ut libero scelerisque bibendum. Nulla ultricies enim cursus pulvinar maximus. Proin ut placerat quam. Maecenas eget est sed sapien maximus dignissim. Morbi sit amet turpis egestas, viverra tortor et, aliquet est. Fusce pellentesque dapibus sem, id cursus sem rhoncus a. Etiam et nulla risus. Vestibulum non dignissim metus. Maecenas vitae lacus id nisl rhoncus ornare a non ex. Curabitur laoreet tincidunt erat, et mollis arcu lacinia eu. Maecenas nec ante non massa tempus imperdiet sit amet vitae erat. In tincidunt dignissim vestibulum. Etiam faucibus nisl turpis, nec vestibulum ante elementum eu.\n\nVestibulum posuere libero sem, sit amet egestas arcu vehicula vitae. Donec tincidunt ligula vehicula nisl molestie pulvinar.', NULL, 2),
 (3, 'Français', ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis est vitae sem luctus imperdiet. Phasellus lacus augue, elementum non tristique nec, porttitor eget mi. Morbi purus quam, tristique at felis eu, tempor venenatis tellus. Ut at nisl ut libero scelerisque bibendum. Nulla ultricies enim cursus pulvinar maximus. Proin ut placerat quam. Maecenas eget est sed sapien maximus dignissim. Morbi sit amet turpis egestas, viverra tortor et, aliquet est. Fusce pellentesque dapibus sem, id cursus sem rhoncus a. Etiam et nulla risus. Vestibulum non dignissim metus. Maecenas vitae lacus id nisl rhoncus ornare a non ex. Curabitur laoreet tincidunt erat, et mollis arcu lacinia eu. Maecenas nec ante non massa tempus imperdiet sit amet vitae erat. In tincidunt dignissim vestibulum. Etiam faucibus nisl turpis, nec vestibulum ante elementum eu.\n\nVestibulum posuere libero sem, sit amet egestas arcu vehicula vitae. Donec tincidunt ligula vehicula nisl molestie pulvinar.', NULL, 2);
 
@@ -87,16 +101,29 @@ INSERT INTO `cours` (`id`, `libelle`, `description`, `nomFichier`, `idEnseignant
 -- Structure de la table `message_prive`
 --
 
+DROP TABLE IF EXISTS `message_prive`;
 CREATE TABLE IF NOT EXISTS `message_prive` (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `idEmetteur` int(3) NOT NULL,
   `idDestinataire` int(3) NOT NULL,
   `titre` varchar(100) NOT NULL,
   `contenu` varchar(1000) NOT NULL,
   `date` date NOT NULL,
   `lu` tinyint(1) NOT NULL,
-  `idConversation` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `idConversation` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `message_prive`
+--
+
+INSERT INTO `message_prive` (`id`, `idEmetteur`, `idDestinataire`, `titre`, `contenu`, `date`, `lu`, `idConversation`) VALUES
+(1, 2, 14, 'Comment tu vas', 'slut mon petit', '2016-06-22', 0, 1),
+(2, 2, 14, 'mqzl,m', 'LMSCZC?DMAC?L', '2016-06-22', 0, 1),
+(3, 2, 14, 'Veux tu une bonne note ...????', '<p>si oui apporte a graille <img alt="laugh" src="http://localhost/handsup/Sources/js/ckeditor/plugins/smiley/images/teeth_smile.png" style="height:23px; width:23px" title="laugh" /></p>\n', '2016-06-22', 0, 1),
+(4, 2, 17, 'zerklgh', '<p><br />\nslknerlberblerznb</p>\n', '2016-06-21', 0, 2),
+(5, 14, 2, 'note', 'Oui je veux une bonne note mais tu te dermerde pour ta bouf', '2016-06-23', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -104,12 +131,14 @@ CREATE TABLE IF NOT EXISTS `message_prive` (
 -- Structure de la table `question`
 --
 
+DROP TABLE IF EXISTS `question`;
 CREATE TABLE IF NOT EXISTS `question` (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(500) NOT NULL,
   `verrouille` tinyint(1) NOT NULL DEFAULT '0',
   `idCours` int(5) NOT NULL,
-  `numero` int(5) NOT NULL
+  `numero` int(5) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
@@ -117,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `question` (
 --
 
 INSERT INTO `question` (`id`, `libelle`, `verrouille`, `idCours`, `numero`) VALUES
-(1, 'De quelle couleur est le cheval blanc d''Henri IV?', 1, 1, 1),
+(1, 'De quelle couleur est le cheval blanc d''Henri IV?', 0, 1, 1),
 (2, 'Durant quelle période se déroula la bataille de Stalingrad ?', 1, 1, 2),
 (3, 'À quelle date la France et l''Angleterre déclarent-elles la guerre à l''Allemagne ?', 0, 1, 3);
 
@@ -127,12 +156,14 @@ INSERT INTO `question` (`id`, `libelle`, `verrouille`, `idCours`, `numero`) VALU
 -- Structure de la table `repondre`
 --
 
+DROP TABLE IF EXISTS `repondre`;
 CREATE TABLE IF NOT EXISTS `repondre` (
   `adresseIP` varchar(15) NOT NULL,
   `idUtilisateur` int(3) DEFAULT NULL,
   `idReponse` int(10) NOT NULL,
   `date` date NOT NULL,
-  `temps` double NOT NULL
+  `temps` double NOT NULL,
+  PRIMARY KEY (`adresseIP`,`idReponse`,`date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -160,12 +191,14 @@ INSERT INTO `repondre` (`adresseIP`, `idUtilisateur`, `idReponse`, `date`, `temp
 -- Structure de la table `reponse`
 --
 
+DROP TABLE IF EXISTS `reponse`;
 CREATE TABLE IF NOT EXISTS `reponse` (
-  `id` int(10) NOT NULL,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) NOT NULL,
   `bonne` tinyint(1) NOT NULL,
   `nomImage` varchar(50) DEFAULT NULL,
-  `idQuestion` int(10) NOT NULL
+  `idQuestion` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
@@ -189,9 +222,11 @@ INSERT INTO `reponse` (`id`, `libelle`, `bonne`, `nomImage`, `idQuestion`) VALUE
 -- Structure de la table `suivre_cours`
 --
 
+DROP TABLE IF EXISTS `suivre_cours`;
 CREATE TABLE IF NOT EXISTS `suivre_cours` (
   `idUtilisateur` int(3) NOT NULL,
-  `idCours` int(5) NOT NULL
+  `idCours` int(5) NOT NULL,
+  PRIMARY KEY (`idUtilisateur`,`idCours`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -199,9 +234,6 @@ CREATE TABLE IF NOT EXISTS `suivre_cours` (
 --
 
 INSERT INTO `suivre_cours` (`idUtilisateur`, `idCours`) VALUES
-(2, 1),
-(2, 2),
-(2, 3),
 (14, 1),
 (14, 2),
 (14, 3),
@@ -215,13 +247,15 @@ INSERT INTO `suivre_cours` (`idUtilisateur`, `idCours`) VALUES
 -- Structure de la table `utilisateur`
 --
 
+DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id` int(4) NOT NULL,
-  `login` varchar(20) NOT NULL,
-  `motDePasse` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `login` varchar(20) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  `motDePasse` varchar(20) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  `email` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `statut` tinyint(1) NOT NULL,
-  `valide` tinyint(1) NOT NULL DEFAULT '0'
+  `valide` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
@@ -236,98 +270,6 @@ INSERT INTO `utilisateur` (`id`, `login`, `motDePasse`, `email`, `statut`, `vali
 (16, 'jeanpierre', 'azerty', 'jeanpierre@test.fr', 0, 1),
 (17, 'jeanphilippe', 'prof', 'jeanphilippe@test.fr', 1, 1);
 
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `code_statut`
---
-ALTER TABLE `code_statut`
-  ADD PRIMARY KEY (`code`);
-
---
--- Index pour la table `conversation`
---
-ALTER TABLE `conversation`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `cours`
---
-ALTER TABLE `cours`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `message_prive`
---
-ALTER TABLE `message_prive`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `question`
---
-ALTER TABLE `question`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `repondre`
---
-ALTER TABLE `repondre`
-  ADD PRIMARY KEY (`adresseIP`,`idReponse`,`date`);
-
---
--- Index pour la table `reponse`
---
-ALTER TABLE `reponse`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `suivre_cours`
---
-ALTER TABLE `suivre_cours`
-  ADD PRIMARY KEY (`idUtilisateur`,`idCours`);
-
---
--- Index pour la table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `conversation`
---
-ALTER TABLE `conversation`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `cours`
---
-ALTER TABLE `cours`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT pour la table `message_prive`
---
-ALTER TABLE `message_prive`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `question`
---
-ALTER TABLE `question`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT pour la table `reponse`
---
-ALTER TABLE `reponse`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
---
--- AUTO_INCREMENT pour la table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

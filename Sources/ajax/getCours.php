@@ -101,7 +101,7 @@ else { //Enseignant
 								<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr<?php echo $row['id']; ?>" class="fa fa-trash-o poubelle fa-3x"  aria-hidden="true"></i>
 							</div>
 							<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
-								<i id="modif<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-pencil-square-o edit fa-3x" aria-hidden="true"></i>
+								<i data-toggle="modal" data-target="#myModalCoursModif" id="modif<?php echo $row['id']; ?>" name="<?php echo $row['id']; ?>" class="fa fa-pencil-square-o edit fa-3x" aria-hidden="true"></i>
 							</div>
 							<div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
 								<div id="logoCQMfull">
@@ -234,6 +234,8 @@ else { //Enseignant
 
 		//Affiche la popup du QRCode en gros pour pouvoir le scanner
 		$('#qrcode' + id).find("img").click(function(){
+			$('#PopUpQRcode').children('img').remove();
+			$('#PopUpQRcode').children('h4').remove();
 			// alert(this.nodeName);
 			var idclicked = this.parentNode.id.substring(6);
 			//alert(idclicked);
@@ -268,10 +270,8 @@ else { //Enseignant
 				document.getElementById('modifLibelle').value = trCours[i].attributes['value'].value;
 			}
 		}
-		CKEDITOR.instances['editeur2'].setData(document.getElementById("desc"+this.attributes['name'].value).textContent);
 		document.getElementById('idCoursModif').value = this.attributes['name'].value;
-		$('#contourForm').show();
 
-
+		CKEDITOR.instances['editeur2'].setData(document.getElementById("desc"+this.attributes['name'].value).textContent);
 	});
 </script>

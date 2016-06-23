@@ -1,6 +1,6 @@
 <?php
 $login = $_POST['login'];
-$mdp = $_POST['mdp'];
+$mdp =  hash("sha256",$_POST['mdp']);
 $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 $query = "SELECT * FROM utilisateur WHERE login = '$login' AND motDePasse = '$mdp' AND valide = 1";
 //echo $query;
@@ -12,6 +12,7 @@ if ($result->num_rows > 0) {
 	$_SESSION["login"] = $row['login'];
 	$_SESSION["droit"] = $row['statut'];
 	$_SESSION["email"] = $row['email'];
+	$_SESSION["statut"] = $row["statut"];
 	//header('Location: ../pages/index.php');
     $advert = 1;
     echo json_encode($advert);
@@ -19,7 +20,7 @@ if ($result->num_rows > 0) {
 else
 {
 	//echo "aucun resultat".$result->num_rows;
-	$advert = 0; 
+	$advert = 0;
 	?>
 	<span class='popupW col-lg-12'><?php echo utf8_encode("Erreur de login ou mot de passe"); ?></span><br>
 		<?php
