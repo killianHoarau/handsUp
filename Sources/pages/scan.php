@@ -30,7 +30,6 @@
 
 	$('#btnGoCours').click(function() {
 		var idCours = $('#idCours').val();
-		alert(idCours);
 		location.href = 'http://localhost/handsup/Sources/pages/cours.php?idCours='+idCours; 
 	});
 </script>
