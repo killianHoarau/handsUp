@@ -1,13 +1,3 @@
-$(document).ready(function(){
-	$('#statutInscription').hide();
-	$('#statutConnexion').toggle();
-	$('#statutRecuperation').toggle();
-	$('#erreurVide').hide();	
-	$('#connectVide').hide();	
-	$('#recupVide').hide();	
-	$('#formCompteOublie').hide();
-	$('#recupSpan').hide();
-});
 var inscriptionToggled = false;
 $('#btnInscription').click(function(){
 		var login = document.getElementsByName('loginI')[0];
@@ -66,7 +56,6 @@ $('#btnInscription').click(function(){
 		}
 		if(!valid)
 		{
-			$('#erreurVide').show();
 			if (!inscriptionToggled)
 			{
 				$('#statutInscription').animate({
@@ -76,7 +65,7 @@ $('#btnInscription').click(function(){
 			}
 		}
 	});
-$("input").click(function()
+$("input").focus(function()
 {
 	this.style.border = "1px solid #ccc";
 });
@@ -126,7 +115,7 @@ $('#btnConnexion').click(function(){
 		}
 	if(!valid)
 		{
-			$('#connectVide').show();
+			//$('#connectVide').show();
 			if (!connexionToggled)
 			{
 				$('#statutConnexion').animate({
@@ -154,7 +143,7 @@ $('#btnRecuperation').click(function(){
 		}
 	if(!valid)
 		{
-			$('#connectVide').show();
+			//$('#connectVide').show();
 			if (!connexionToggled)
 			{
 				$('#statutConnexion').animate({

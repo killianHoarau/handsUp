@@ -20,7 +20,7 @@ if(!empty($login)){
 	$result = $link->query($query);
 	if ($result->num_rows > 0) {
 		?>
-		<span class='popupW col-lg-12'><?php echo utf8_encode("Ce login est déja utilisé"); ?> </span><br>
+		<span class='popupW col-lg-12'><?php echo "Ce login est déja utilisé"; ?> </span><br>
 		<?php
 		$valide = false;
 	}
@@ -34,7 +34,7 @@ if(!empty($email) && ($valide)){
 	$result = $link->query($query);
 	if ($result->num_rows > 0) {
 		?>
-		<span class='popupW col-lg-12'><?php echo utf8_encode("Cet email est déja utilisé"); ?></span><br>
+		<span class='popupW col-lg-12'><?php echo "Cet email est déja utilisé"; ?></span><br>
 		<?php
 		$valide = false;
 	}
@@ -46,7 +46,7 @@ if(!empty($mdp) && isset($cmdp) && ($valide)){
 	if($mdp!=$cmdp)
 	{
 		?>
-		<span class='popupW col-lg-12'><?php echo utf8_encode("Les mots de passe ne correspondent pas"); ?></span><br>
+		<span class='popupW col-lg-12'><?php echo "Les mots de passe ne correspondent pas"; ?></span><br>
 		<?php
 		$valide = false;
 	}else {
@@ -61,7 +61,7 @@ if(!empty($code) && ($valide)){
 	$result = $link->query($query);
 	if ($result->num_rows == 0) {
 		?>
-		<span class='popupW col-lg-12'><?php echo utf8_encode("Ce code n'est pas valide. Contactez l'administration"); ?></span><br>
+		<span class='popupW col-lg-12'><?php echo "Ce code n'est pas valide. Contactez l'administration"; ?></span><br>
 		<?php
 		$valide = false;
 	}
@@ -80,7 +80,7 @@ if($valide)
 	include('../php/mailInscription.php');
 
 	if (!$error) {
-		echo utf8_encode("<span class='popup col-lg-12'>Un Mail de confirmation vous a été envoyé</span>");
+		echo "<span class='popup col-lg-12'>Un Mail de confirmation vous a été envoyé</span>";
 		//Insertion en base
 		$query = "INSERT INTO utilisateur (login,motDePasse, statut, valide, email) VALUES ('$login', '$mdp', $statut, 0, '$email');";
 		$result = $link->query($query);
@@ -88,7 +88,7 @@ if($valide)
 		$query = "UPDATE code_statut SET utilise = 1 WHERE code = $code";
 		$result = $link->query($query);
 	}else {
-		echo utf8_encode("<span class='popupW col-lg-12'>Le mail n'est pas valide</span>");
+		echo "<span class='popupW col-lg-12'>Le mail n'est pas valide</span>";
 	}
 
 

@@ -11,8 +11,8 @@
 					<span class="prg">Connexion</span>
 				</div>
 			</div>
-			<div id="statutConnexion" class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-				<span id="connectVide" class='popupW col-xs-12 col-sm-12 col-md-12 col-lg-12'>Veuillez remplir les champs vident merci.</span>
+			<div id="statutConnexion" class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="display: none;">
+				<span id="connectVide" class='popupW col-xs-12 col-sm-12 col-md-12 col-lg-12'>Veuillez remplir les champs vides</span>
 			</div>
 
 				<div id="Connect" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform">
@@ -25,7 +25,7 @@
 					</fieldset>
 				</div>
 
-				<div id='formCompteOublie' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 msform wow fadeInDown formCompteOublie'>
+				<div id='formCompteOublie' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 msform wow fadeInDown formCompteOublie' style="display: none;">
 					<fieldset>
 						<input name='emailR' placeholder="Email"/>
 						<div class="col-lg-6"><input id='btnRecuperation' type="submit" class="next action-button" value="Envoyer" /></div>
@@ -39,8 +39,8 @@
 					<span class="prg">Inscription</span>
 				</div>
 			</div>
-			<div id="statutInscription" class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-				<span id="erreurVide" class='popupW col-xs-12 col-sm-12 col-md-12 col-lg-12'>Veuillez remplir les champs vident merci.</span>
+			<div id="statutInscription" class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="display: none;">
+				<span id="erreurVide" class='popupW col-xs-12 col-sm-12 col-md-12 col-lg-12'>Veuillez remplir les champs vides</span>
 			</div>
 			<div id="signIn" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform">
 				<!-- fieldsets -->
