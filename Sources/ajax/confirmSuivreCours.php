@@ -54,39 +54,4 @@ if ($verrouillerQuestion) {
 	<?php endforeach;
 }
 ?>
-
-<script>
-$("i[id^='btnVerouiller']").click(function() {
-	var idQuestion = this.attributes["name"].value;
-	var verrouille = document.getElementsByName('verrouille'+idQuestion)[0].value;
-	var verrouillerQuestion = true;
-
-	if (verrouille == 1) {
-		verrouille = 0;
-	}else {
-		verrouille = 1;
-	}
-	$.ajax({
-		url: "../ajax/confirmSuivreCours.php",
-		type: 'POST',
-		async: true,
-		data : {
-			idCours : idCours,
-			idQuestion : idQuestion,
-			verrouille : verrouille,
-			verrouillerQuestion : verrouillerQuestion
-		},
-		success : function(code_html){
-			$('#listQCM').html(code_html);
-			// alert(code_html);
-		},
-	});
-
-});
-
-$("a[id^='btnRepondre']").click(function() {
-	var idQuestion = this.attributes["name"].value;
-	document.location = "reponseQCM.php?idQuestion="+idQuestion;
-
-});
-</script>
+<script src="../js/cours.js"></script>

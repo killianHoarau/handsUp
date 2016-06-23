@@ -25,11 +25,3 @@
 <?php
     include("footer.php");
 ?>
-
-<script type="text/javascript">
-
-	$('#btnGoCours').click(function() {
-		var idCours = $('#idCours').val();
-		location.href = 'http://localhost/handsup/Sources/pages/cours.php?idCours='+idCours;
-	});
-</script>

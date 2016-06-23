@@ -91,12 +91,5 @@ if($valide)
 		echo "<span class='popupW col-lg-12'>Le mail n'est pas valide</span>";
 	}
 
-
-	//ok cest bon
-	//Envoie mail de confirmation
-	//$destinataire = $email;
-	//$sujet = "Confirmez votre inscription � HandsUp !";
-	//$message = "<span>Veuillez cliquer sur le lien suivant pour confirmer votre inscription <a href='http://localhost:8080/handsup/Sources/pages/validerInscription.php?login=$login'>en cliquant ici</a></span>";
-	//mail($destinataire, $sujet, $message);
 }
 ?>

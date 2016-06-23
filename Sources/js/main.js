@@ -10,6 +10,12 @@ jQuery(function($) {'use strict',
 	});
 
 
+	$('#btnGoCours').click(function() {
+		var idCours = $('#idCours').val();
+		document.location.href = '../pages/cours.php?idCours='+idCours;
+	});
+
+
 // Page compte
 	var toggled = false;
 	$('#btnEdit').on('click', function(){

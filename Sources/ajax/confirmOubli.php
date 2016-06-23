@@ -71,17 +71,12 @@ if($valide)
 	$result = $link->query($query);
 	$row = $result->fetch_assoc();
 	$statut = $row['statut'];
-	
+
 	//Insertion en base
 	$query = "INSERT INTO utilisateur (login,motDePasse, statut, valide, email) VALUES ('$login', '$mdp', $statut, 1, '$email');";
 	$result = $link->query($query);
-	
+
 	echo "Vous êtes bien inscris";
-	//ok cest bon
-	//Envoie mail de confirmation
-	//$destinataire = $email;
-	//$sujet = "Confirmez votre inscription à HandsUp !";
-	//$message = "<span>Veuillez cliquer sur le lien suivant pour confirmer votre inscription <a href='http://localhost:8080/handsup/Sources/pages/validerInscription.php?login=$login'>en cliquant ici</a></span>";
-	//mail($destinataire, $sujet, $message);
+
 }
 ?>
