@@ -24,7 +24,7 @@
 <section id="feature" class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container center wow fadeInDown">
         <h2>Pour vous les profs</h2>
-        <p class="lead">Grâce à nous fini le papier, les cours rébarbatifs et sans energie!!!</p>
+        <p class="lead">Grâce à nous fini le papier, les cours rébarbatifs et sans énergie !</p>
 	</div>
 
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row features">
@@ -68,7 +68,7 @@
 				</div>
 				<div class="media-body">
 					<h3 class="media-heading">QR Code</h3>
-					<p>Pour avoir votre cours flasher son QR Code</p>
+					<p>Pour avoir votre cours, flashez son QR Code</p>
 				</div>
 			</div>
 		</div>
@@ -80,7 +80,7 @@
 				</div>
 				<div>
 					<h3 class="media-heading">Pour vous timides</h3>
-					<p>Peur de prendre la parole en public? Utilisez le Chat!</p>
+					<p>Peur de prendre la parole en public ? Utilisez la messagerie !</p>
 				</div>
 			</div>
 		</div>
