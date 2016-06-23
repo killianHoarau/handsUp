@@ -48,8 +48,8 @@ if ($_SESSION["droit"] == 0) {  // Etudiant
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-box">
 				<div  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 dc-single-product-configuration" name="trCours" id="<?php echo $row['idCours']; ?>">
 					<?php echo utf8_encode($row['libelle']); ?> - <?php echo $row['loginEnseignant']; ?>
-					<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr<?php echo $row['idCours']; ?>" class="fa fa-trash-o poubellePetit fa-2x"  aria-hidden="true"></i>
 					<i id="goCours<?php echo $row['idCours']; ?>" name="<?php echo $row['idCours']; ?>" class="fa fa-file-text-o petit" aria-hidden="true"></i>
+					<i data-toggle="modal" data-target="#myModal" name="confSupr" id="confSupr<?php echo $row['idCours']; ?>" class="fa fa-trash-o poubellePetit fa-2x"  aria-hidden="true"></i>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="dc-config-panel" name="trInfos<?php echo $row['idCours']; ?>">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

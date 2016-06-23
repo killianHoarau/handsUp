@@ -10,6 +10,25 @@
 		$query = "SELECT u.id, u.login FROM utilisateur u";
 	$resUsers = $link->query($query); 
 ?>
+<!-- Modal -->
+<div class="modal fade"  id="myModalSupr" role="dialog">
+	<div class="modal-dialog modal-sm">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	    	<input type="hidden" id="valId" value=""/>
+	      <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      <h4 class="modal-title">Attention!</h4>
+	    </div>
+	    <div class="modal-body">
+	      <p>Voulez-vous vraiment supprimer ce cours?</p>
+	    </div>
+	    <div class="modal-footer msform">
+		  <a data-dismiss="modal" class="next oubli-button">Annuler</a>
+		  <a data-dismiss="modal" class="next action-button" name="supprimerCours">Confimer</a>
+	    </div>
+	  </div>
+	</div>
+</div>
 <input id="idenCours" type='hidden' value="<?php echo $id; ?>" />
 <section id="feature">
 	<div class="container">
