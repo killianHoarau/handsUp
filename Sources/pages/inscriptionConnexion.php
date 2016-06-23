@@ -1,5 +1,5 @@
 <?php
-  $title="Inscription | Connexion";
+  	$title="Inscription | Connexion";
 	include("header.php");
 ?>
 
@@ -8,13 +8,13 @@
 		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="titleprghp wow fadeInDown">
-					<span class="prg">Connexion</span> 
+					<span class="prg">Connexion</span>
 				</div>
 			</div>
 			<div id="statutConnexion" class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
 				<span id="connectVide" class='popupW col-xs-12 col-sm-12 col-md-12 col-lg-12'>Veuillez remplir les champs vident merci.</span>
 			</div>
-			
+
 				<div id="Connect" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInDown msform">
 					<!-- fieldsets -->
 					<fieldset>
@@ -23,8 +23,8 @@
 						<div class="col-lg-6"><input id="btnConnexion" type="submit" name="next" class="next action-button" value="Connexion" /></div>
 						<div class="col-lg-6"><button id="btnOubli" class="next oubli-button">Un oubli?</button></div>
 					</fieldset>
-				</div>		
-				
+				</div>
+
 				<div id='formCompteOublie' class='col-xs-12 col-sm-12 col-md-12 col-lg-12 msform wow fadeInDown formCompteOublie'>
 					<fieldset>
 						<input name='emailR' placeholder="Email"/>
@@ -36,7 +36,7 @@
 		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="titleprghp wow fadeInDown">
-					<span class="prg">Inscription</span> 
+					<span class="prg">Inscription</span>
 				</div>
 			</div>
 			<div id="statutInscription" class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
@@ -54,8 +54,8 @@
 				</fieldset>
 			</div>
 		</div>
-	</div>	  
-</section> 
+	</div>
+</section>
 
 <?php
 	$nomScript="affiche_popUp_ConfirmationInscription";

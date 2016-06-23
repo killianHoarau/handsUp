@@ -1,21 +1,23 @@
 <?php
     $title="Messagerie";
     include("header.php");
+
 	$login = $_SESSION['login'];
 	$id = $_SESSION['id'];
-	echo $_SESSION['statut'];
+
 	if($_SESSION['statut']==0) //Etudiant
 		$query = "SELECT u.id, u.login FROM utilisateur u WHERE u.statut = 1;";
 	else	//Enseignant
 		$query = "SELECT u.id, u.login FROM utilisateur u";
-	$resUsers = $link->query($query); 
+
+	$resUsers = $link->query($query);
 ?>
 <input id="idenCours" type='hidden' value="<?php echo $id; ?>" />
 <section id="feature">
 	<div class="container">
 		<div class="center wow fadeInDown animated">
 			<h2>Vos messages</h2>
-			
+
 			<!-- Nouveau message -->
 			<i id="btnEdit" class="fa fa-pencil-square-o" aria-hidden="true"></i>
 			<span class='popupW col-lg-12' id="RemplirChamps" style="display:none;"><?php echo utf8_encode("Veuillez remplir tous les champs"); ?></span>
@@ -26,17 +28,17 @@
 						?><option value="<?php echo $user['id']; ?>"><?php echo $user['login']; ?></option>
 <?php				} ?>
 				</select>
-				<input name="titre" id="newObject" placeholder="Objet"/>	
+				<input name="titre" id="newObject" placeholder="Objet"/>
 				<textarea cols="80" class="ckeditor" id="editeur" name="editor1" rows="10"></textarea>
 				<button id="envoyerMessage" class="next action-button" style="width: 100%;">Envoyer</button>
 			</div>
 			<!-- Affiche chaque conversation -->
 			<div id="list-message">
 			</div>
-			
+
 		</div>
 	</div>
-	
+
 </section>
 
 <?php
@@ -57,7 +59,7 @@ $(document).ready(function(){
 			toggled = true;
 		}
 	});
-	
+
 	//Rempli la liste des conversations et des messages
 	var id = document.getElementById('idenCours').value;
 	$.ajax({

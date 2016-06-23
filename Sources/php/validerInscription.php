@@ -3,7 +3,7 @@ $email = $_GET['email'];
 $link = new mysqli('localhost', 'root', 'mysql', 'handsup');
 $query = "UPDATE utilisateur set valide = 1
 		WHERE email = '$email'";
-echo $query;
+
 $result = $link->query($query);
 ?>
 <div class='col-md-12'>
