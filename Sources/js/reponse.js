@@ -1,7 +1,7 @@
-$(document).ready(function(){
+//$(document).ready(function(){
 	var compteur = -1;
 	compteur = setInterval(function(){ compteur++; }, 1000);
-	$('#diagramme').hide();
+	// $('#diagramme').hide();
 
 	$('#btnValiderRetour').click(function() {
 		var idCours = document.getElementsByName('idCours')[0].value;
@@ -151,4 +151,4 @@ $(document).ready(function(){
 		});
 	});
 
-});
+//});

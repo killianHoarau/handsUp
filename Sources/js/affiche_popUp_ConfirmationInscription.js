@@ -51,6 +51,7 @@ $('#btnInscription').click(function(){
 							});
 							inscriptionToggled = true;
 						}
+						window.scrollTo(0, 0);
 				},
 			});
 		}
@@ -115,7 +116,6 @@ $('#btnConnexion').click(function(){
 		}
 	if(!valid)
 		{
-			//$('#connectVide').show();
 			if (!connexionToggled)
 			{
 				$('#statutConnexion').animate({
@@ -124,8 +124,6 @@ $('#btnConnexion').click(function(){
 				connexionToggled = true;
 			}
 		}
-	// alert(login+mdp);
-	//alert("test");
 });
 $('#btnOubli').click(function(){
 	$('#formCompteOublie').show();
@@ -143,7 +141,6 @@ $('#btnRecuperation').click(function(){
 		}
 	if(!valid)
 		{
-			//$('#connectVide').show();
 			if (!connexionToggled)
 			{
 				$('#statutConnexion').animate({

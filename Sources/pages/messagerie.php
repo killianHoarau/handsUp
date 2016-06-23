@@ -86,6 +86,12 @@
 		}
 	});
 
+	function CKupdate(){
+    for ( instance in CKEDITOR.instances ){
+        CKEDITOR.instances[instance].updateElement();
+        CKEDITOR.instances[instance].setData('');
+    }
+	}
 	//Rempli la liste des conversations et des messages
 	var id = document.getElementById('idenCours').value;
 	$.ajax({
@@ -129,6 +135,9 @@
 						height: 'toggle'
 					});
 					toggled = false;
+					$('#selectDestinataire').val('').selectpicker('refresh'); 	//Vide le select
+					document.getElementsByName('titre')[0].value = '';			//Vide le titre
+					CKupdate();													//Vide CKEDITOR
 				}
 			},
 		});
