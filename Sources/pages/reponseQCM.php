@@ -89,7 +89,7 @@
 					<?php endif; ?>
 				</div>
 				<div class="row">
-					<button class="boutons-reponse next oubli-button" onclick="window.location.href='cours.php?idCours=<?php echo $question['idCours']; ?>'">Anuler</button>
+					<button class="boutons-reponse next oubli-button" onclick="window.location.href='cours.php?idCours=<?php echo $question['idCours']; ?>'">Retour</button>
 				</div>
 			</div>
 

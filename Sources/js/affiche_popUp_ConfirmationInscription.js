@@ -51,6 +51,7 @@ $('#btnInscription').click(function(){
 							});
 							inscriptionToggled = true;
 						}
+						window.scrollTo(0, 0);
 				},
 			});
 		}
