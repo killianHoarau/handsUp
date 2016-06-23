@@ -96,7 +96,7 @@ section{
 
 /*Page création QCM*/
 
-div.dc-single-product-configuration:hover .poubelle .poubellePetit{
+.dc-single-product-configuration:hover > .poubellePetit{
   color: #151515;
 }
 
