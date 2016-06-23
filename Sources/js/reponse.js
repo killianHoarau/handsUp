@@ -64,7 +64,6 @@ $(document).ready(function(){
 				adresseIP : adresseIP
 			},
 			success : function(code_html){
-				// console.log(code_html);
 				if (code_html.indexOf('verrouille') != -1) {
 					$('.verrouille').show();
 					$('#myModal').hide();
@@ -85,6 +84,7 @@ $(document).ready(function(){
 
 	$('#btnShowReponse').click(function() {
 		var idQuestion = document.getElementsByName('idQuestion')[0].value;
+		console.log(idQuestion);
 		$.ajax({
 			url: "../ajax/showReponse.php",
 			type: 'POST',
@@ -93,10 +93,9 @@ $(document).ready(function(){
 				idQuestion : idQuestion
 			},
 			success : function(code_html){
-				// console.log(code_html);
 				var retour = JSON.parse(code_html);
 				var reponses = retour[0];
-
+				// console.log(code_html);
 				$('#contentReponse').hide();
 				$('#bntReponse').hide();
 

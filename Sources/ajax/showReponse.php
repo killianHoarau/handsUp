@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
 	}
 }
 
-$retour = array($reponses, $bonneReponse["libelle"], $bnrReponseTotal["nbr"]);
+$retour = array($reponses, utf8_encode($bonneReponse["libelle"]), $bnrReponseTotal["nbr"]);
 echo json_encode($retour);
 
 

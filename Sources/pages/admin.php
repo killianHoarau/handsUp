@@ -3,7 +3,7 @@
 	include("header.php");
 	include("../php/infoAdmin.php");
 
-	if (($_SESSION['droit'] != 2)){
+	if ($_SESSION['droit'] != 2){
 		header('Location: index.php');
 	}
 ?>

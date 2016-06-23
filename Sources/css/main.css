@@ -46,6 +46,8 @@ section{
 #reponse{
 	display: none;
 	text-align: center;
+	font-size: 20px;
+	margin-bottom: 3%;
 }
 
 .verrouille, .dejaRep{
