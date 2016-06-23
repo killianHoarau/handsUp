@@ -61,6 +61,18 @@ $("div[name='trCours']").click(function(){
 		element = document.getElementById('mess');
 		element.scrollTop = element.scrollHeight;
 		$('div[name="trInfos'+id+'"]').slideDown(1000);
+		$.ajax({
+				url: "../ajax/lireMessage.php",
+				type: 'POST',
+				async: true,
+				data : {
+					id : id
+					},
+				success: function(code_html)
+				{
+					getnbMessage();
+				}
+			});
 	}
 });
 

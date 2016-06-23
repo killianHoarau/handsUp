@@ -28,5 +28,43 @@
 	{ ?>
 		<script src="../js/<?php echo $nomScript ?>.js"></script>
 <?php } ?>
+	<script>
+		if($("#monId").length > 0) //Si le mec est logé
+		{
+			var id = document.getElementById('monId').value;
+			var lienMessage = document.getElementById('lienMessagerie');
+			function getnbMessage()
+			{
+				$.ajax({
+					url: "../ajax/getNombreMessage.php",
+					type: 'POST',
+					async: true,
+					data : {
+						id : id
+						},
+					success: function(code_html)
+					{
+						var nombreMessage = $.parseJSON(code_html);
+						if ($("#spanNbMessages").length > 0)
+						{
+							var span = document.getElementById("spanNbMessages")
+							span.innerHTML = '<sup> ' + nombreMessage + '<sup>';
+						}
+						else
+						{
+							var span = document.createElement("SPAN");
+							span.setAttribute("id", "spanNbMessages");
+							span.style.fontSize = "1.2em";
+							span.innerHTML = '<sup> ' + nombreMessage + '<sup>';
+							lienMessage.appendChild(span);
+							//Cree une div avec le nombre de message
+						}
+					}
+				});
+			}
+			getnbMessage();
+			setInterval(getnbMessage, 10000); //Rafraichi toutes les 10 secondes REPONSE 42 !
+		}
+	</script>
     </body>
 </html>

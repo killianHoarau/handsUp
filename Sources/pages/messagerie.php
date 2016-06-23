@@ -4,8 +4,10 @@
 	$login = $_SESSION['login'];
 	$id = $_SESSION['id'];
 	
-	//Récupère l'ensemble des utilisateur pour l'envoi d'un nouveau message par un prof
-	$query = "SELECT u.id, u.login FROM utilisateur u";
+	if($_SESSION['statut']==0) //Etudiant
+		$query = "SELECT u.id, u.login FROM utilisateur u WHERE u.statut = 1;";
+	else	//Enseignant
+		$query = "SELECT u.id, u.login FROM utilisateur u";
 	$resUsers = $link->query($query); 
 ?>
 <input id="idenCours" type='hidden' value="<?php echo $id; ?>" />

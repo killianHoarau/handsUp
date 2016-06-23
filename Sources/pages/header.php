@@ -57,6 +57,8 @@
                         }
                         else
                         {
+							$id = $_SESSION['id'];
+?>							<input type="hidden" value="<? echo $id; ?>" id="monId"> <?php
 							if ($_SESSION['droit'] == 2) {
 ?>
 								<li><a href="admin.php">Administration</a></li>
@@ -67,7 +69,7 @@
 <?php
 							}
 ?>
-                            <li><a href="../pages/messagerie.php">Messagerie</a></li>
+                            <li><a id="lienMessagerie" href="../pages/messagerie.php">Messagerie</a></li>
                             <li><a href="../php/deconnexion.php">Deconnexion</a></li>
 <?php
                         }
@@ -80,7 +82,7 @@
 </div><!--/header-->
 <div id="content">
 
-<!-- Connexion DBB -->
+<!-- Connexion BDD -->
 <?php
 	session_start();
 	$link = new mysqli('localhost', 'root', 'mysql', 'handsup');
