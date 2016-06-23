@@ -9,7 +9,15 @@
   height: 80%;
 }
 
-.modal{
+.modalDialogCours{
+  width: 1271px !important;
+}
+
+.modalCours{
+  top: 45px;
+}
+
+.modalQR{
   top: 82px;
 }
 
